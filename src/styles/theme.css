@@ -12,6 +12,42 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
+body.solid-nav .site-header {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(20, 17, 14, 0.06);
+}
+
+body.solid-nav .header-brand img {
+  filter: none;
+}
+
+body.solid-nav .header-nav a {
+  color: var(--wc-black);
+}
+
+body.solid-nav .header-nav a:hover,
+body.solid-nav .header-nav a.is-active {
+  color: var(--wc-base);
+}
+
+body.solid-nav .nav-burger {
+  border-color: rgba(34, 28, 19, 0.2);
+}
+
+body.solid-nav .nav-burger span {
+  background: var(--wc-black);
+}
+
+body.solid-nav .header-top {
+  border-bottom-color: rgba(34, 28, 19, 0.08);
+}
+
+body.solid-nav .header-top__inner {
+  color: var(--wc-gray);
+}
+
 @keyframes headerSlide {
   from {
     transform: translateY(-100%);

@@ -23,6 +23,7 @@ const {
   whatsappMessage,
   ogImage = '/images/hero-facade.jpg',
   schema,
+  solidNav = false,
 } = Astro.props;
 
 const fullTitle = title.includes('West Coast')
@@ -61,7 +62,7 @@ const favicon = withBase('/logos/westcoast-logo.png');
       )
     }
   </head>
-  <body>
+  <body class:list={[{ 'solid-nav': solidNav }]}>
     <SplashScreen />
     <Header />
     <main>
