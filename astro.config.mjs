@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // GitHub Pages (org project site)
 const site = 'https://tosharelater.github.io';
-const base = '/westcoast-residence';
+const base = '/westcoast-residence/';
 
 export default defineConfig({
   site,
