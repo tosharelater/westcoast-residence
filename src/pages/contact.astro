@@ -1,0 +1,85 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import MapSection from '../components/MapSection.astro';
+import { site, whatsappUrl } from '../data/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'West Coast Residence',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Boulevard Hassan II',
+    addressLocality: 'Mohammedia',
+    addressCountry: 'MA',
+  },
+  url: `${site.url}/contact`,
+  email: site.email,
+  openingHours: 'Mo-Sa 09:00-19:00',
+};
+---
+
+<BaseLayout
+  title="Contact, West Coast Residence Mohammedia"
+  description="Contactez West Coast Residence à Mohammedia : formulaire, WhatsApp, adresse et horaires de visite. Réponse rapide garantie."
+  schema={schema}
+>
+  <PageHero
+    title="Contactez-nous"
+    subtitle="Une question, une visite à organiser ? On vous répond rapidement, en priorité sur WhatsApp."
+    image={withBase("/images/stairs.jpg")}
+    alt="Contact West Coast Residence"
+    compact
+  >
+    <div class="cta-row">
+      <a
+        class="thm-btn thm-btn--whatsapp"
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Écrire sur WhatsApp
+      </a>
+    </div>
+  </PageHero>
+
+  <ContactForm pageSource="contact" />
+
+  <section class="section section--stone">
+    <div class="container coords reveal">
+      <span class="eyebrow">Coordonnées</span>
+      <h2>Nous trouver</h2>
+      <div class="divider"></div>
+      <ul>
+        <li><strong>Adresse</strong> — {site.address}</li>
+        <li><strong>Email</strong> — <a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><strong>Horaires de visite</strong> — {site.hours}</li>
+        <li><strong>WhatsApp</strong> — priorité de réponse</li>
+      </ul>
+    </div>
+  </section>
+
+  <MapSection title="Accès à West Coast Residence" />
+</BaseLayout>
+
+<style>
+  .coords {
+    max-width: 640px;
+  }
+
+  .coords ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .coords strong {
+    color: var(--ink);
+  }
+</style>

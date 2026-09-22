@@ -1,0 +1,97 @@
+---
+import { withBase } from '../../utils/paths';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { blogPosts } from '../../data/site';
+
+const featured = blogPosts.find((p) => p.featured) ?? blogPosts[0];
+const others = blogPosts.filter((p) => p.slug !== featured.slug);
+---
+
+<BaseLayout
+  title="Blog, Guides pour Acheter à Mohammedia"
+  description="Guides et conseils pour bien acheter un bien immobilier à Mohammedia : financement, Daam Sakane, investissement, choix de typologie."
+>
+  <PageHero
+    title="Nos guides pour bien acheter à Mohammedia"
+    subtitle="Financement, choix du bien, investissement : toutes nos réponses avant de vous décider."
+    image={withBase("/images/interior-33.jpg")}
+    alt="West Coast Residence Mohammedia"
+    compact
+  />
+
+  <section class="section">
+    <div class="container">
+      <a class="featured reveal" href={withBase(`/blog/${featured.slug}`)}>
+        <div class="media-frame featured__media">
+          <img src={featured.image} alt="" loading="eager" />
+        </div>
+        <div>
+          <span class="eyebrow">Article pilier</span>
+          <h2>{featured.title}</h2>
+          <div class="divider"></div>
+          <p>{featured.excerpt}</p>
+          <span class="link">Lire l'article →</span>
+        </div>
+      </a>
+
+      <div class="grid">
+        {
+          others.map((post, i) => (
+            <a
+              class="card reveal"
+              href={withBase(`/blog/${post.slug}`)}
+              style={`transition-delay:${i * 80}ms`}
+            >
+              <div class="media-frame card__media">
+                <img src={post.image} alt="" loading="lazy" />
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <span class="link">Lire →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .featured {
+    display: grid;
+    gap: 1.75rem;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .featured {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  .featured__media {
+    aspect-ratio: 16 / 11;
+  }
+
+  .grid {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 800px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .card__media {
+    aspect-ratio: 16 / 11;
+    margin-bottom: 1rem;
+  }
+
+  .link {
+    color: var(--bronze-deep);
+  }
+</style>

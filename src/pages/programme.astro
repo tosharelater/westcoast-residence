@@ -1,0 +1,194 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import MapSection from '../components/MapSection.astro';
+import { site, whatsappUrl } from '../data/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Residence',
+  name: 'West Coast Residence',
+  description:
+    'Résidence neuve déjà livrée à Mohammedia : appartements, studios, bureaux et commerces.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Boulevard Hassan II',
+    addressLocality: 'Mohammedia',
+    addressCountry: 'MA',
+  },
+  url: `${site.url}/programme`,
+};
+
+const blocks = [
+  {
+    title: 'Appartements & Studios',
+    surface: '36 à 114 m²',
+    href: '/appartements',
+    image: withBase('/images/bedroom.jpg'),
+    alt: 'Appartements et studios West Coast Residence Mohammedia',
+  },
+  {
+    title: 'Commerces',
+    surface: '58 à 119 m²',
+    href: '/commerces',
+    image: withBase('/images/commerce.jpg'),
+    alt: "Commerces en pied d'immeuble West Coast Residence",
+  },
+  {
+    title: 'Bureaux',
+    surface: '45 à 107 m²',
+    href: '/bureaux',
+    image: withBase('/images/interior-15.jpg'),
+    alt: 'Bureaux à vendre West Coast Residence Mohammedia',
+  },
+];
+
+const gallery = [
+  { src: withBase('/images/facade-angle.jpg'), alt: 'Façade West Coast Residence Mohammedia' },
+  { src: withBase('/images/hall.jpg'), alt: "Hall d'entrée West Coast Residence" },
+  { src: withBase('/images/stairs.jpg'), alt: 'Escalier marbre West Coast Residence' },
+  { src: withBase('/images/interior-22.jpg'), alt: 'Intérieur appartement West Coast Residence' },
+  { src: withBase('/images/bathroom.jpg'), alt: 'Salle de bain West Coast Residence' },
+  { src: withBase('/images/commerce.jpg'), alt: 'Commerces rez-de-chaussée West Coast Residence' },
+];
+---
+
+<BaseLayout
+  title="Le Programme, West Coast Residence Mohammedia"
+  description="Découvrez West Coast Residence : résidence neuve déjà livrée à Mohammedia, appartements, studios, bureaux et commerces, Bd Hassan II."
+  schema={schema}
+  whatsappMessage="Bonjour, je souhaite en savoir plus sur le programme West Coast Residence à Mohammedia."
+>
+  <PageHero
+    title="West Coast Residence, une résidence déjà livrée à Mohammedia"
+    subtitle="Boulevard Hassan II, Mohammedia. Deux immeubles, un seul objectif : vous permettre de vivre, travailler ou investir sans attendre."
+    image={withBase("/images/facade-angle.jpg")}
+    alt="Façade principale West Coast Residence"
+  >
+    <div class="cta-row">
+      <a
+        class="thm-btn thm-btn--base"
+        href={whatsappUrl(
+          'Bonjour, je souhaite en savoir plus sur le programme West Coast Residence à Mohammedia.'
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Écrivez-nous sur WhatsApp
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container content-block">
+      <div class="media-frame content-block__media reveal">
+        <img
+          src={withBase("/images/stairs.jpg")}
+          alt="Espaces communs West Coast Residence Mohammedia"
+          loading="lazy"
+        />
+      </div>
+      <div class="content-block__copy reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Le projet</span>
+          <h2 class="section-title__title">
+            Un programme mixte, pensé pour la vie de quartier
+          </h2>
+        </div>
+        <p>
+          West Coast Residence est composé de deux immeubles (R+4), avec parking
+          en sous-sol et terrasse commune. Le programme réunit logements,
+          bureaux et commerces au même endroit, pour créer un vrai lieu de vie
+          plutôt qu'un simple immeuble.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--primary feature-list-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Différenciation</span>
+        <h2 class="section-title__title">Ce qui différencie West Coast Residence</h2>
+      </div>
+      <ul class="list-check reveal">
+        <li>Chantier entièrement livré, visite et emménagement immédiats</li>
+        <li>Finitions soignées (marbre, verrières)</li>
+        <li>Mixité résidentiel + commerces + bureaux</li>
+        <li>Emplacement Bd Hassan II, accès facile à Casablanca et Rabat</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Offre</span>
+        <h2 class="section-title__title">Ce que vous pouvez acheter ici</h2>
+      </div>
+      <div class="offer-grid">
+        {
+          blocks.map((b, i) => (
+            <a
+              class="offer-card reveal"
+              href={b.href}
+              style={`transition-delay:${i * 80}ms`}
+            >
+              <div class="media-frame offer-card__media">
+                <img src={b.image} alt={b.alt} loading="lazy" />
+              </div>
+              <h3>{b.title}</h3>
+              <p>{b.surface}</p>
+              <span>Voir le détail →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section-title section-title--center reveal">
+        <span class="section-title__tagline">Galerie</span>
+        <h2 class="section-title__title">West Coast Residence en images</h2>
+      </div>
+      <div class="inner-gallery">
+        {
+          gallery.map((g, i) => (
+            <div
+              class="media-frame inner-gallery__item reveal"
+              style={`transition-delay:${i * 60}ms`}
+            >
+              <img src={g.src} alt={g.alt} loading="lazy" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <MapSection title="Où se trouve West Coast Residence" />
+
+  <section class="section">
+    <div class="container visit-cta reveal">
+      <div class="section-title section-title--center">
+        <span class="section-title__tagline">Visite</span>
+        <h2 class="section-title__title">Envie de visiter ?</h2>
+      </div>
+      <p>Le chantier est livré. Organisez votre visite dès cette semaine.</p>
+      <div class="cta-row">
+        <a
+          class="thm-btn thm-btn--base"
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+        <a class="thm-btn" href={withBase("/contact")}>Page contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

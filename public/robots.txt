@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tosharelater.github.io/westcoast-residence/sitemap-index.xml

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Mentions légales"
+  description="Mentions légales du site West Coast Residence Mohammedia."
+  solidNav
+>
+  <section class="section legal">
+    <div class="container">
+      <h1>Mentions légales</h1>
+      <div class="divider"></div>
+      <p>
+        Le présent site présente le programme immobilier West Coast Residence,
+        situé Boulevard Hassan II, Mohammedia (Maroc).
+      </p>
+      <h2>Éditeur</h2>
+      <p>
+        Informations d'éditeur à compléter (raison sociale, RC, siège, directeur
+        de publication).
+      </p>
+      <h2>Hébergement</h2>
+      <p>Informations d'hébergeur à compléter.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus (textes, photographies, logos, éléments
+        graphiques) est protégé. Toute reproduction non autorisée est interdite.
+      </p>
+      <h2>Prix & disponibilités</h2>
+      <p>
+        Les prix indiqués sont des prix d'appel. Les disponibilités et conditions
+        définitives sont confirmées lors du contact commercial.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    padding-top: calc(var(--nav-h) + 3rem);
+  }
+
+  .legal h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .legal {
+    max-width: none;
+  }
+
+  .legal .container {
+    max-width: 760px;
+  }
+</style>

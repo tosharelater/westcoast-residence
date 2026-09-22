@@ -1,0 +1,90 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { whatsappUrl } from '../data/site';
+---
+
+<BaseLayout
+  title="Bureau à Vendre à Mohammedia"
+  description="Bureaux de 45 à 107 m² à partir de 650 000 DH, résidence déjà livrée à Mohammedia. Idéal professions libérales et PME. Visite immédiate."
+  whatsappMessage="Bonjour, je m'intéresse aux bureaux de West Coast Residence à Mohammedia."
+>
+  <PageHero
+    title="Bureau à Vendre à Mohammedia, à partir de 650 000 DH"
+    subtitle="Des bureaux prêts à l'emploi, dans une résidence déjà livrée, pour professions libérales, PME et investisseurs."
+    image={withBase("/images/interior-15.jpg")}
+    alt="Espace bureau West Coast Residence Mohammedia"
+  >
+    <div class="cta-row">
+      <a
+        class="thm-btn thm-btn--base"
+        href={whatsappUrl(
+          'Bonjour, je souhaite organiser une visite pour un bureau à West Coast Residence.'
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Organiser une visite
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container content-block">
+      <div class="media-frame content-block__media reveal">
+        <img
+          src={withBase("/images/hall.jpg")}
+          alt="Entrée professionnelle West Coast Residence"
+          loading="lazy"
+        />
+      </div>
+      <div class="content-block__copy reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Le produit</span>
+          <h2 class="section-title__title">Des surfaces de 45 à 107 m²</h2>
+        </div>
+        <ul class="list-check">
+          <li>Livraison immédiate, aménagement possible dès l'achat</li>
+          <li>Emplacement Bd Hassan II, Mohammedia</li>
+          <li>
+            Adapté aux professions libérales (médecin, avocat, comptable), PME,
+            ou investissement locatif professionnel
+          </li>
+        </ul>
+        <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
+          Investir à Mohammedia →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--primary feature-list-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Cadre</span>
+        <h2 class="section-title__title">
+          Un cadre professionnel, pas un simple bureau
+        </h2>
+      </div>
+      <ul class="list-check reveal">
+        <li>
+          Résidence mixte : commerces et logements au même endroit, donc passage
+          et visibilité
+        </li>
+        <li>Accès facile depuis Casablanca et Rabat</li>
+        <li>Aucun risque de retard de chantier, le bien est terminé</li>
+      </ul>
+    </div>
+  </section>
+
+  <ContactForm
+    title="Discutons de votre projet"
+    text="Indiquez votre activité, on vous oriente vers les surfaces adaptées."
+    pageSource="bureaux"
+    showTypology={false}
+    showActivity
+    compact
+  />
+</BaseLayout>

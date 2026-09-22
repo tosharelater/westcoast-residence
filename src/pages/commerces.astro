@@ -1,0 +1,99 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { whatsappUrl } from '../data/site';
+---
+
+<BaseLayout
+  title="Local Commercial à Vendre à Mohammedia"
+  description="Commerces de 58 à 119 m² en pied d'immeuble à Mohammedia, résidence déjà livrée. Emplacement passant, disponibilité immédiate. Contactez-nous."
+  whatsappMessage="Bonjour, je m'intéresse aux commerces de West Coast Residence à Mohammedia."
+>
+  <PageHero
+    title="Local Commercial à Vendre à Mohammedia"
+    subtitle="Des commerces en pied d'immeuble, dans une résidence déjà livrée, sur un axe passant."
+    image={withBase("/images/commerce.jpg")}
+    alt="Commerces vitrés West Coast Residence Mohammedia"
+  >
+    <div class="cta-row">
+      <a
+        class="thm-btn thm-btn--base"
+        href={whatsappUrl(
+          'Bonjour, je souhaite demander une visite pour un local commercial à West Coast Residence.'
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Demander une visite
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section section--primary">
+    <div class="container proof-panel reveal">
+      <div class="section-title">
+        <span class="section-title__tagline">Preuve de valeur</span>
+        <h2 class="section-title__title">Un emplacement qui a déjà convaincu</h2>
+      </div>
+      <p class="proof-panel__text">
+        Un commerce de West Coast Residence a déjà été vendu à plus de
+        <strong>2 200 000 DH</strong>. La preuve que l'emplacement attire, avant
+        même la fin de la commercialisation.
+      </p>
+      <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
+        Lire : investir à Mohammedia →
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-block">
+      <div class="media-frame content-block__media reveal">
+        <img
+          src={withBase("/images/facade-angle.jpg")}
+          alt="Façade commerces West Coast Residence"
+          loading="lazy"
+        />
+      </div>
+      <div class="content-block__copy reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Le produit</span>
+          <h2 class="section-title__title">Des surfaces de 58 à 119 m²</h2>
+        </div>
+        <ul class="list-check">
+          <li>Vitrine en pied d'immeuble</li>
+          <li>Livraison immédiate, aucun délai</li>
+          <li>
+            Adapté à tout commerce de proximité (restauration, services,
+            commerces de détail)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--primary feature-list-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Investissement</span>
+        <h2 class="section-title__title">Un quartier vivant, pas juste un local</h2>
+      </div>
+      <ul class="list-check reveal">
+        <li>Résidentiel + bureaux au même endroit → flux de passage garanti</li>
+        <li>Zone en développement à Mohammedia</li>
+        <li>Bien déjà terminé, exploitable ou louable immédiatement</li>
+      </ul>
+    </div>
+  </section>
+
+  <ContactForm
+    title="Réservez votre visite"
+    text="Profil professionnel ou investisseur : laissez vos coordonnées et la surface recherchée."
+    pageSource="commerces"
+    showTypology={false}
+    showSurface
+    compact
+  />
+</BaseLayout>

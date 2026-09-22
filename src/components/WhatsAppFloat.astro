@@ -1,0 +1,51 @@
+---
+import { whatsappUrl, site } from '../data/site';
+
+interface Props {
+  message?: string;
+}
+
+const { message = site.whatsappDefaultMessage } = Astro.props;
+---
+
+<a
+  class="wa-float"
+  href={whatsappUrl(message)}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp West Coast Residence"
+>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M16.1 3.2c-7 0-12.7 5.6-12.7 12.6 0 2.2.6 4.4 1.7 6.3L3.2 28.8l6.9-1.8c1.8 1 3.9 1.5 6 1.5h.1c7 0 12.7-5.6 12.7-12.6S23.1 3.2 16.1 3.2zm0 23.1h-.1c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.3 10.3 0 0 1-1.6-5.5c0-5.7 4.7-10.4 10.5-10.4 5.8 0 10.5 4.7 10.5 10.4S21.9 26.3 16.1 26.3zm5.7-7.8c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1s0-.5.2-.6c.2-.2.3-.4.5-.6.2-.2.2-.3.3-.5s0-.4 0-.5c0-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3c.2.2 2 3.1 4.9 4.3 1.8.7 2.5.8 3.4.7.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.4z"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 90;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 14px 34px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .wa-float:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  .wa-float svg {
+    width: 28px;
+    height: 28px;
+  }
+</style>

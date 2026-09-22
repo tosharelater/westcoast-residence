@@ -1,0 +1,148 @@
+---
+import { whatsappUrl } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+  showTypology?: boolean;
+  showActivity?: boolean;
+  showSurface?: boolean;
+  pageSource?: string;
+  compact?: boolean;
+}
+
+const {
+  title = 'Une question ? Une visite à organiser ?',
+  text = 'Laissez vos coordonnées, on vous recontacte rapidement. Ou écrivez-nous directement sur WhatsApp.',
+  showTypology = true,
+  showActivity = false,
+  showSurface = false,
+  pageSource = 'accueil',
+  compact = false,
+} = Astro.props;
+---
+
+<section class:list={['section', 'lead-cta', { 'section--primary': !compact }]}>
+  <div class="container lead-cta__grid">
+    <div class="reveal">
+      <div class="section-title">
+        <span class="section-title__tagline">Contact</span>
+        <h2 class="section-title__title">{title}</h2>
+      </div>
+      <p>{text}</p>
+      <a
+        class="thm-btn thm-btn--whatsapp"
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </div>
+
+    <form class="form reveal" data-contact-form novalidate>
+      <div class="form-fields">
+        <input type="hidden" name="page" value={pageSource} />
+        <input type="hidden" name="utm_source" data-utm="utm_source" />
+        <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+        <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+
+        <div class="form-row form-row--2">
+          <div class="field">
+            <label for={`name-${pageSource}`}>Nom</label>
+            <input id={`name-${pageSource}`} name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for={`phone-${pageSource}`}>Téléphone</label>
+            <input
+              id={`phone-${pageSource}`}
+              name="phone"
+              type="tel"
+              required
+              autocomplete="tel"
+              inputmode="tel"
+            />
+          </div>
+        </div>
+
+        {
+          showTypology && (
+            <div class="field">
+              <label for={`interest-${pageSource}`}>Ce qui vous intéresse</label>
+              <select id={`interest-${pageSource}`} name="interest">
+                <option value="">Sélectionner</option>
+                <option>Studio</option>
+                <option>Appartement</option>
+                <option>Commerce</option>
+                <option>Bureau</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          )
+        }
+
+        {
+          showActivity && (
+            <div class="field">
+              <label for={`activity-${pageSource}`}>Activité</label>
+              <input id={`activity-${pageSource}`} name="activity" type="text" />
+            </div>
+          )
+        }
+
+        {
+          showSurface && (
+            <div class="field">
+              <label for={`surface-${pageSource}`}>Surface recherchée</label>
+              <input id={`surface-${pageSource}`} name="surface" type="text" placeholder="Ex. 80 m²" />
+            </div>
+          )
+        }
+
+        {
+          !compact && (
+            <div class="field">
+              <label for={`message-${pageSource}`}>Message (optionnel)</label>
+              <textarea id={`message-${pageSource}`} name="message" rows="4" />
+            </div>
+          )
+        }
+
+        <p class="form-note">
+          Vos informations sont utilisées uniquement pour vous recontacter au sujet de West Coast
+          Residence.
+        </p>
+        <button class="thm-btn" type="submit">Envoyer</button>
+      </div>
+
+      <div class="form-success" role="status">
+        <strong>Merci, nous vous recontactons rapidement.</strong>
+        <p style="margin:0.75rem 0 1rem">Vous pouvez aussi nous écrire sur WhatsApp.</p>
+        <a class="thm-btn thm-btn--whatsapp" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+          Ouvrir WhatsApp
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    const params = new URLSearchParams(window.location.search);
+    form.querySelectorAll('[data-utm]').forEach((input) => {
+      const key = input.getAttribute('data-utm');
+      if (key && input instanceof HTMLInputElement) {
+        input.value = params.get(key) || '';
+      }
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!(form instanceof HTMLFormElement)) return;
+      if (!form.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(form).entries());
+      console.info('[West Coast lead]', data);
+      form.classList.add('is-success');
+    });
+  });
+</script>

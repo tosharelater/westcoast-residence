@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Politique de confidentialité"
+  description="Politique de confidentialité et gestion des données personnelles — West Coast Residence."
+  solidNav
+>
+  <section class="section legal">
+    <div class="container">
+      <h1>Politique de confidentialité</h1>
+      <div class="divider"></div>
+      <p>
+        Vos informations collectées via le formulaire de contact sont utilisées
+        uniquement pour vous recontacter au sujet de West Coast Residence
+        (qualification, visite, suivi commercial).
+      </p>
+      <h2>Données collectées</h2>
+      <p>
+        Nom, téléphone, et éventuellement email, message, typologie recherchée,
+        ainsi que des paramètres UTM de provenance publicitaire.
+      </p>
+      <h2>Finalités</h2>
+      <p>
+        Traitement des demandes, organisation de visites, suivi commercial dans
+        le CRM, et mesure des performances marketing (sous réserve de votre
+        consentement cookies).
+      </p>
+      <h2>Cookies</h2>
+      <p>
+        Des cookies de mesure d'audience (GA4) et publicitaires (Meta Pixel)
+        peuvent être déposés après consentement via le bandeau cookies.
+      </p>
+      <h2>Vos droits</h2>
+      <p>
+        Vous pouvez demander l'accès, la rectification ou la suppression de vos
+        données en nous contactant via la page Contact.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    padding-top: calc(var(--nav-h) + 3rem);
+  }
+
+  .legal .container {
+    max-width: 760px;
+  }
+
+  .legal h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+</style>

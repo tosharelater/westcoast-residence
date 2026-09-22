@@ -1,0 +1,53 @@
+---
+import { nav, site } from '../data/site';
+import { withBase } from '../utils/paths';
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <img
+        src={withBase('/logos/westcoast-logo.png')}
+        alt="West Coast Residence"
+        width="180"
+        height="56"
+      />
+      <p>
+        Résidence neuve déjà livrée à Mohammedia. Studios, appartements, bureaux
+        et commerces — Boulevard Hassan II.
+      </p>
+    </div>
+
+    <div>
+      <h3>Navigation</h3>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <ul>
+        <li>{site.address}</li>
+        <li>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>{site.hours}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>© {new Date().getFullYear()} West Coast Residence. Tous droits réservés.</p>
+    <div>
+      <a href={withBase('/mentions-legales')}>Mentions légales</a>
+      <a href={withBase('/politique-confidentialite')}>Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>

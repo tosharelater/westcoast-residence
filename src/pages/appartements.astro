@@ -1,0 +1,179 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { whatsappUrl } from '../data/site';
+---
+
+<BaseLayout
+  title="Appartements et Studios à Vendre à Mohammedia"
+  description="Studios dès 500 000 DH, appartements familiaux jusqu'à 114 m². Résidence déjà livrée à Mohammedia. Visitez cette semaine, écrivez-nous sur WhatsApp."
+  whatsappMessage="Bonjour, je m'intéresse aux appartements / studios de West Coast Residence à Mohammedia."
+>
+  <PageHero
+    title="Studios et Appartements à Vendre à Mohammedia"
+    subtitle="Du studio à l'appartement familial, dans une résidence déjà terminée. À partir de 500 000 DH."
+    image={withBase("/images/bedroom.jpg")}
+    alt="Intérieur appartement West Coast Residence"
+  >
+    <div class="cta-row">
+      <a
+        class="thm-btn thm-btn--base"
+        href={whatsappUrl(
+          'Bonjour, je souhaite connaître les disponibilités appartements / studios à West Coast Residence.'
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Demander les disponibilités
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section" id="studios">
+    <div class="container content-block">
+      <div class="media-frame content-block__media reveal">
+        <img
+          src={withBase("/images/interior-08.jpg")}
+          alt="Studio à vendre à Mohammedia, West Coast Residence"
+          loading="lazy"
+        />
+      </div>
+      <div class="content-block__copy reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Studios</span>
+          <h2 class="section-title__title">Studios, à partir de 500 000 DH</h2>
+        </div>
+        <ul class="list-check">
+          <li>Surfaces : 36 à 53 m²</li>
+          <li>Idéal pour : premier achat, investissement locatif, jeunes actifs</li>
+          <li>
+            Éligible à l'aide de l'État Daam Sakane (jusqu'à 70 000 DH, sous
+            conditions)
+          </li>
+        </ul>
+        <p>
+          Un studio prêt à vivre, sans travaux ni attente. Le bien existe déjà,
+          vous pouvez le visiter cette semaine.
+        </p>
+        <a class="content-block__link" href={withBase("/blog/daam-sakane-guide")}>
+          Lire le guide Daam Sakane →
+        </a>
+        <div>
+          <a
+            class="thm-btn"
+            href={whatsappUrl(
+              'Bonjour, je veux visiter un studio à West Coast Residence Mohammedia.'
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Je veux visiter un studio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--primary" id="appartements-familiaux">
+    <div class="container content-block content-block--reverse">
+      <div class="media-frame content-block__media reveal">
+        <img
+          src={withBase("/images/interior-22.jpg")}
+          alt="Appartement familial à vendre à Mohammedia"
+          loading="lazy"
+        />
+      </div>
+      <div class="content-block__copy reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Familles</span>
+          <h2 class="section-title__title">
+            Appartements familiaux, de 2 à 3 chambres
+          </h2>
+        </div>
+        <ul class="list-check">
+          <li>Surfaces : 65 à 114 m²</li>
+          <li>
+            Idéal pour : familles, résidence secondaire, Marocains résidant à
+            l'étranger
+          </li>
+        </ul>
+        <p>
+          Des appartements pensés pour la vie de famille, à quelques minutes des
+          commerces du quartier et de la mer.
+        </p>
+        <div>
+          <a
+            class="thm-btn"
+            href={whatsappUrl(
+              'Bonjour, je veux visiter un appartement familial à West Coast Residence.'
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Je veux visiter un appartement
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-list-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Avantages</span>
+        <h2 class="section-title__title">
+          Le bien existe déjà, pas besoin d'attendre
+        </h2>
+      </div>
+      <ul class="list-check reveal">
+        <li>Chantier livré, aucun risque de retard</li>
+        <li>Visite possible cette semaine</li>
+        <li>
+          Financement facilité, aide de l'État possible pour les biens éligibles
+        </li>
+        <li>Quartier vivant, commerces en pied d'immeuble</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--primary">
+    <div class="container reveal">
+      <div class="section-title">
+        <span class="section-title__tagline">Récapitulatif</span>
+        <h2 class="section-title__title">Typologies disponibles</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Typologie</th>
+              <th>Surfaces</th>
+              <th>À partir de</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Studio</td>
+              <td>36–53 m²</td>
+              <td>500 000 DH</td>
+            </tr>
+            <tr>
+              <td>Appartement 2–3 chambres</td>
+              <td>65–114 m²</td>
+              <td>sur demande</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm
+    title="Demander une visite"
+    text="Indiquez votre typologie préférée, on vous rappelle rapidement."
+    pageSource="appartements"
+    compact
+  />
+</BaseLayout>

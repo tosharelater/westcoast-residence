@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image: string;
+  alt: string;
+  eyebrow?: string;
+  compact?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  image,
+  alt,
+  eyebrow = 'West Coast Residence',
+} = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="page-hero__media" aria-hidden="true">
+    <img src={image} alt={alt} />
+  </div>
+  <div class="page-hero__shade"></div>
+  <div class="page-hero__content">
+    <p class="page-hero__brand">{eyebrow}</p>
+    <h1>{title}</h1>
+    {subtitle && <p class="page-hero__sub">{subtitle}</p>}
+    <slot />
+  </div>
+</section>

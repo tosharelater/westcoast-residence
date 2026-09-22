@@ -1,0 +1,111 @@
+---
+import { withBase } from '../utils/paths';
+---
+
+<div class="cookie" data-cookie role="dialog" aria-live="polite" aria-label="Consentement cookies">
+  <p>
+    Nous utilisons des cookies de mesure d'audience et publicitaires.
+    <a href={withBase('/politique-confidentialite')}>En savoir plus</a>
+  </p>
+  <div class="cookie__actions">
+    <button type="button" class="thm-btn cookie__btn" data-cookie-refuse>
+      Refuser
+    </button>
+    <button type="button" class="thm-btn thm-btn--base cookie__btn" data-cookie-accept>
+      Accepter
+    </button>
+  </div>
+</div>
+
+<script>
+  const KEY = 'wc_cookie_consent';
+  const box = document.querySelector('[data-cookie]');
+  const acceptBtn = document.querySelector('[data-cookie-accept]');
+  const refuseBtn = document.querySelector('[data-cookie-refuse]');
+
+  function closeBanner(value) {
+    try {
+      localStorage.setItem(KEY, value);
+    } catch (_) {
+      /* private mode / blocked storage */
+    }
+    box?.classList.remove('is-open');
+  }
+
+  let saved = null;
+  try {
+    saved = localStorage.getItem(KEY);
+  } catch (_) {
+    saved = null;
+  }
+
+  if (box && !saved) {
+    box.classList.add('is-open');
+  }
+
+  acceptBtn?.addEventListener('click', (event) => {
+    event.preventDefault();
+    closeBanner('accepted');
+  });
+
+  refuseBtn?.addEventListener('click', (event) => {
+    event.preventDefault();
+    closeBanner('refused');
+  });
+</script>
+
+<style>
+  .cookie {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 90px;
+    z-index: 95;
+    display: none;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin-inline: auto;
+    padding: 18px 20px;
+    background: #fff;
+    border: 1px solid rgba(34, 28, 19, 0.1);
+    box-shadow: 0 20px 50px rgba(34, 28, 19, 0.15);
+  }
+
+  .cookie.is-open {
+    display: flex;
+  }
+
+  .cookie p {
+    margin: 0;
+    flex: 1 1 240px;
+    font-size: 14px;
+    color: var(--wc-black);
+  }
+
+  .cookie a {
+    color: var(--wc-base);
+    text-decoration: underline;
+  }
+
+  .cookie__actions {
+    display: flex;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cookie__btn {
+    padding: 12px 18px;
+    font-size: 13px;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .cookie__btn::before {
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,331 @@
+---
+import { withBase } from '../utils/paths';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import MapSection from '../components/MapSection.astro';
+import {
+  advantages,
+  blogPosts,
+  typologies,
+  whatsappUrl,
+} from '../data/site';
+
+const slides = [
+  {
+    image: withBase('/images/hero-facade.jpg'),
+    title: 'Appartements & Studios\nà Mohammedia',
+    badge: 'Déjà livré',
+    sub: 'Visitez cette semaine',
+    isH1: true,
+  },
+  {
+    image: withBase('/images/stairs.jpg'),
+    title: 'Finitions soignées\nMarbre & Verrières',
+    badge: 'R+4',
+    sub: 'Deux immeubles, Bd Hassan II',
+    isH1: false,
+  },
+  {
+    image: withBase('/images/bedroom.jpg'),
+    title: 'Studios dès\n500 000 DH',
+    badge: '36–53 m²',
+    sub: 'Aide Daam Sakane possible',
+    isH1: false,
+  },
+];
+
+const counters = [
+  { value: 2, label: 'Immeubles', suffix: '' },
+  { value: 4, label: 'Étages (R+4)', suffix: '' },
+  { value: 114, label: 'm² max logements', suffix: '' },
+  { value: 70, label: '000 DH aide max', prefix: '', suffix: '' },
+];
+
+const gallery = [
+  { src: withBase('/images/facade-angle.jpg'), alt: 'Façade West Coast Residence', tall: true },
+  { src: withBase('/images/hall.jpg'), alt: 'Hall West Coast Residence' },
+  { src: withBase('/images/interior-22.jpg'), alt: 'Salon appartement' },
+  { src: withBase('/images/bathroom.jpg'), alt: 'Salle de bain' },
+  { src: withBase('/images/commerce.jpg'), alt: 'Commerces rez-de-chaussée' },
+  { src: withBase('/images/interior-08.jpg'), alt: 'Intérieur studio' },
+];
+
+const posts = blogPosts.slice(0, 3);
+const whyPoints = advantages.slice(0, 6);
+---
+
+<BaseLayout
+  title="Appartements & Studios à Vendre à Mohammedia"
+  description="Résidence neuve déjà livrée à Mohammedia : studios, appartements, bureaux et commerces disponibles. Visitez cette semaine, écrivez-nous sur WhatsApp."
+>
+  <!-- MAIN SLIDER -->
+  <section class="main-slider">
+    <div class="swiper" data-hero-swiper>
+      <div class="swiper-wrapper">
+        {
+          slides.map((slide) => (
+            <div class="swiper-slide">
+              <div
+                class="main-slider__layer"
+                style={`background-image:url('${slide.image}')`}
+              />
+              <div class="main-slider__overlay" />
+              <div class="main-slider__content">
+                <img
+                  class="main-slider__brand"
+                  src={withBase("/logos/westcoast-logo.png")}
+                  alt="West Coast Residence"
+                  width="260"
+                  height="80"
+                />
+                {slide.isH1 ? (
+                  <h1
+                    class="main-slider__title"
+                    set:html={slide.title.replace('\n', '<br />')}
+                  />
+                ) : (
+                  <p
+                    class="main-slider__title"
+                    set:html={slide.title.replace('\n', '<br />')}
+                  />
+                )}
+                <p class="main-slider__sub">
+                  <span>{slide.badge}</span>
+                  {slide.sub}
+                </p>
+                <div class="main-slider__actions cta-row">
+                  <a
+                    class="thm-btn thm-btn--base"
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
+                  <a class="thm-btn thm-btn--ghost" href={withBase("/programme")}>
+                    Voir le programme
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="main-slider__nav">
+      <button type="button" aria-label="Précédent" data-hero-prev>‹</button>
+      <button type="button" aria-label="Suivant" data-hero-next>›</button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-one">
+    <img class="about-one__deco float-bob-y" src={withBase("/theme/about-one-shape-2.png")} alt="" />
+    <div class="container about-one__grid">
+      <div class="about-one__media reveal-left">
+        <span class="about-one__watermark">West Coast</span>
+        <img class="main" src={withBase("/images/facade-angle.jpg")} alt="West Coast Residence Mohammedia" />
+        <img class="about-one__shape float-bob-x" src={withBase("/theme/about-one-shape-1.png")} alt="" />
+      </div>
+      <div class="reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Notre résidence</span>
+          <h2 class="section-title__title">Un bien pour chaque projet à Mohammedia</h2>
+        </div>
+        <p class="about-one__lead">Résidence déjà livrée — zéro attente chantier</p>
+        <p>
+          Studios, appartements familiaux, bureaux et commerces dans une résidence terminée
+          Boulevard Hassan II. Ce que vous visitez, c’est ce que vous achetez.
+        </p>
+        <div class="about-points">
+          <article>
+            <h3>Mixité intelligente</h3>
+            <p>Logements, commerces et bureaux réunis pour une vraie vie de quartier.</p>
+          </article>
+          <article>
+            <h3>Finitions premium</h3>
+            <p>Marbre, verrières, façade moderne — un niveau de détail pensé pour durer.</p>
+          </article>
+        </div>
+        <div class="cta-row">
+          <a class="thm-btn" href={withBase("/programme")}>Plus de détails</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTERS -->
+  <div class="counter-one">
+    <div
+      class="counter-one__bg"
+      style={`background-image:url(${withBase('/theme/counter-one-bg-img-1.png')})`}
+    ></div>
+    <div class="container counter-one__grid">
+      {
+        counters.map((c, i) => (
+          <div class="counter-one__item reveal" style={`transition-delay:${i * 80}ms`}>
+            <div class="counter-one__icon">0{i + 1}</div>
+            <div
+              class="counter-one__number"
+              data-count={c.value}
+              data-prefix={c.prefix || ''}
+              data-suffix={c.suffix || ''}
+            >
+              0
+            </div>
+            <div class="counter-one__label">{c.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE -->
+  <section class="why-one">
+    <div
+      class="why-one__bg"
+      data-parallax
+      style={`background-image:url(${withBase('/images/stairs.jpg')})`}
+    ></div>
+    <img class="why-one__shape float-bob-y" src={withBase("/theme/why-choose-one-shape-2.png")} alt="" />
+    <div class="container why-one__inner">
+      <div class="reveal">
+        <a
+          class="why-one__video"
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contacter sur WhatsApp"
+        >
+          ▶
+        </a>
+        <h2>Pourquoi choisir West Coast Residence ?</h2>
+      </div>
+      <ul class="why-one__points reveal">
+        {
+          whyPoints.map((item) => (
+            <li>
+              <span>✓</span>
+              {item.title}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- APARTMENTS / TYPOLOGIES -->
+  <section class="apartment-one">
+    <div
+      class="apartment-one__bg"
+      style={`background-image:url(${withBase('/theme/apartment-one-bg.jpg')})`}
+    ></div>
+    <div class="container container--wide">
+      <div class="section-title section-title--center reveal">
+        <span class="section-title__tagline">Typologies</span>
+        <h2 class="section-title__title">Choisissez votre bien</h2>
+      </div>
+      <div class="apartment-grid">
+        {
+          typologies.map((item, i) => (
+            <a
+              class="apartment-card reveal"
+              href={item.href}
+              style={`transition-delay:${i * 90}ms`}
+            >
+              <div class="apartment-card__img">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+              </div>
+              <span class="apartment-card__badge">{item.surface}</span>
+              <div class="apartment-card__body">
+                <h3>
+                  {item.title}
+                  <br />
+                  {item.price}
+                </h3>
+                <span class="apartment-card__arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-one">
+    <div class="container">
+      <div class="section-title section-title--center reveal">
+        <span class="section-title__tagline">Galerie</span>
+        <h2 class="section-title__title">West Coast en images</h2>
+      </div>
+      <div class="gallery-grid">
+        {
+          gallery.map((g, i) => (
+            <div
+              class:list={['gallery-item', 'reveal', { 'gallery-item--tall': g.tall }]}
+              style={`transition-delay:${i * 60}ms`}
+            >
+              <img src={g.src} alt={g.alt} loading="lazy" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <MapSection />
+
+  <!-- BLOG -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title section-title--center reveal">
+        <span class="section-title__tagline">Guides</span>
+        <h2 class="section-title__title">Bien acheter à Mohammedia</h2>
+      </div>
+      <div class="news-grid">
+        {
+          posts.map((post, i) => (
+            <a
+              class="news-card reveal"
+              href={withBase(`/blog/${post.slug}`)}
+              style={`transition-delay:${i * 80}ms`}
+            >
+              <div class="news-card__media">
+                <img src={post.image} alt="" loading="lazy" />
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactForm pageSource="accueil" />
+</BaseLayout>
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-fade';
+  import 'swiper/css/navigation';
+
+  const root = document.querySelector('[data-hero-swiper]');
+  if (root) {
+    const swiper = new Swiper(root as HTMLElement, {
+      modules: [Autoplay, EffectFade, Navigation],
+      effect: 'fade',
+      loop: true,
+      speed: 1200,
+      autoplay: { delay: 5500, disableOnInteraction: false },
+      navigation: {
+        nextEl: '[data-hero-next]',
+        prevEl: '[data-hero-prev]',
+      },
+    });
+    void swiper;
+  }
+</script>
