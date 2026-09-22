@@ -43,7 +43,7 @@ export const typologies = [
     surface: '36 à 53 m²',
     hook: 'Idéal premier achat',
     href: withBase('/appartements') + '#studios',
-    image: withBase('/images/bedroom.jpg'),
+    image: withBase('/images/bedroom.webp'),
     alt: 'Studio à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -53,7 +53,7 @@ export const typologies = [
     surface: '65 à 114 m²',
     hook: 'Pour les familles et résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
-    image: withBase('/images/interior-22.jpg'),
+    image: withBase('/images/interior-22.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -63,7 +63,7 @@ export const typologies = [
     surface: '58 à 119 m²',
     hook: "En pied d'immeuble",
     href: withBase('/commerces'),
-    image: withBase('/images/commerce.jpg'),
+    image: withBase('/images/commerce.webp'),
     alt: 'Local commercial à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -73,7 +73,7 @@ export const typologies = [
     surface: '45 à 107 m²',
     hook: 'Pour professionnels et PME',
     href: withBase('/bureaux'),
-    image: withBase('/images/interior-15.jpg'),
+    image: withBase('/images/interior-15.webp'),
     alt: 'Bureau à vendre à Mohammedia, West Coast Residence',
   },
 ];
@@ -111,7 +111,7 @@ export const blogPosts = [
     title: 'Comment acheter à Mohammedia en 2026',
     excerpt:
       'Les étapes clés pour réussir votre achat immobilier à Mohammedia cette année.',
-    image: withBase('/images/facade-angle.jpg'),
+    image: withBase('/images/facade-angle.webp'),
     featured: true,
     date: '2026-09-01',
     ctaHref: withBase('/appartements'),
@@ -122,7 +122,7 @@ export const blogPosts = [
     title: 'Daam Sakane, le guide complet',
     excerpt:
       "Conditions, montants et biens éligibles : tout comprendre avant de demander l'aide.",
-    image: withBase('/images/hall.jpg'),
+    image: withBase('/images/hall.webp'),
     featured: false,
     date: '2026-08-20',
     ctaHref: withBase('/appartements') + '#studios',
@@ -133,7 +133,7 @@ export const blogPosts = [
     title: 'Studio ou appartement familial : comment choisir',
     excerpt:
       'Premier achat, famille ou investissement : comment trancher selon votre projet.',
-    image: withBase('/images/bedroom.jpg'),
+    image: withBase('/images/bedroom.webp'),
     featured: false,
     date: '2026-08-10',
     ctaHref: withBase('/appartements'),
@@ -144,7 +144,7 @@ export const blogPosts = [
     title: 'Investir à Mohammedia : rendement et opportunités',
     excerpt:
       'Rendement locatif, emplacements et typologies pour investir à Mohammedia.',
-    image: withBase('/images/stairs.jpg'),
+    image: withBase('/images/stairs.webp'),
     featured: false,
     date: '2026-07-28',
     ctaHref: withBase('/commerces'),

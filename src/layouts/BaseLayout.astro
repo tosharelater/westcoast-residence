@@ -14,15 +14,17 @@ interface Props {
   ogImage?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
   solidNav?: boolean;
+  preloadImage?: string;
 }
 
 const {
   title,
   description,
   whatsappMessage,
-  ogImage = '/images/hero-facade.jpg',
+  ogImage = '/images/hero-facade.webp',
   schema,
   solidNav = false,
+  preloadImage,
 } = Astro.props;
 
 const fullTitle = title.includes('West Coast')
@@ -30,7 +32,9 @@ const fullTitle = title.includes('West Coast')
   : `${title} | West Coast Residence`;
 
 const resolvedOg = withBase(ogImage);
-const favicon = withBase('/logos/westcoast-logo.png');
+const favicon = withBase('/logos/westcoast-logo.webp');
+const fontsHref =
+  'https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap';
 ---
 
 <!doctype html>
@@ -41,7 +45,7 @@ const favicon = withBase('/logos/westcoast-logo.png');
     <meta name="description" content={description} />
     <meta name="theme-color" content="#221c13" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="icon" type="image/png" href={favicon} />
+    <link rel="icon" type="image/webp" href={favicon} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -50,10 +54,25 @@ const favicon = withBase('/logos/westcoast-logo.png');
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      preloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={withBase(preloadImage)}
+          fetchpriority="high"
+        />
+      )
+    }
     <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href={fontsHref}
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link href={fontsHref} rel="stylesheet" />
+    </noscript>
     <title>{fullTitle}</title>
     {
       schema && (
@@ -90,9 +109,14 @@ const favicon = withBase('/logos/westcoast-logo.png');
       reveal();
 
       const header = document.querySelector('[data-header]');
+      let stickyQueued = false;
       const onScroll = () => {
-        if (!header) return;
-        header.classList.toggle('is-sticky', window.scrollY > 120);
+        if (!header || stickyQueued) return;
+        stickyQueued = true;
+        requestAnimationFrame(() => {
+          header.classList.toggle('is-sticky', window.scrollY > 120);
+          stickyQueued = false;
+        });
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -137,16 +161,24 @@ const favicon = withBase('/logos/westcoast-logo.png');
       );
       counters.forEach((c) => countIo.observe(c));
 
-      // Light parallax on why section
-      const whyBg = document.querySelector('[data-parallax]') as HTMLElement | null;
+      // Light parallax (rAF-throttled) on why section
+      const whyBg = document.querySelector(
+        '[data-parallax]'
+      ) as HTMLElement | null;
       if (whyBg) {
+        let parallaxQueued = false;
         window.addEventListener(
           'scroll',
           () => {
-            const rect = whyBg.parentElement?.getBoundingClientRect();
-            if (!rect) return;
-            const offset = rect.top * -0.15;
-            whyBg.style.transform = `translateY(${offset}px) scale(1.08)`;
+            if (parallaxQueued) return;
+            parallaxQueued = true;
+            requestAnimationFrame(() => {
+              const rect = whyBg.parentElement?.getBoundingClientRect();
+              if (rect) {
+                whyBg.style.transform = `translateY(${rect.top * -0.12}px) scale(1.06)`;
+              }
+              parallaxQueued = false;
+            });
           },
           { passive: true }
         );
