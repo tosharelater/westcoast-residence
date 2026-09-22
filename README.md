@@ -2,28 +2,23 @@
 
 Site vitrine Astro pour West Coast Residence (Mohammedia).
 
-## Démarrage
+## Public preview
+
+**https://tosharelater.github.io/westcoast-residence/**
+
+Repo: [tosharelater/westcoast-residence](https://github.com/tosharelater/westcoast-residence)
+
+## Local
 
 ```bash
-cd westcoast-site
 npm install
 npm run dev
 ```
 
-Ouvrir [http://localhost:4321](http://localhost:4321).
+Dev URL with base path: [http://localhost:4321/westcoast-residence/](http://localhost:4321/westcoast-residence/)
 
-## Contenu & structure
+## Stack
 
-- Pages alignées sur `contenu-Site-Web`
-- Identité visuelle basée sur les logos West Coast (bronze / encre)
-- Photos réelles du programme dans `public/images`
-- WhatsApp flottant, formulaires (prêts Odoo), FAQ schema.org, sitemap
-
-## À renseigner
-
-Dans `src/data/site.ts` :
-
-- numéro WhatsApp Business
-- email / téléphone
-- horaires
-- URL Google Maps embed précise
+- Astro + Swiper
+- Fonts: Crimson Pro + Inter
+- GitHub Pages deploy via Actions
