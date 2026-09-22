@@ -1,53 +1,190 @@
 ---
-import { nav, site } from '../data/site';
+import { nav, site, whatsappUrl } from '../data/site';
 import { withBase } from '../utils/paths';
+
+const explorePrimary = nav.slice(0, 4);
+const exploreSecondary = nav.slice(4);
+
+const phoneIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg>';
+const mailIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
+const pinIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+const clockIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+const whatsappIcon =
+  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.5-.4zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>';
 ---
 
 <footer class="site-footer">
-  <div class="container site-footer__grid">
-    <div class="site-footer__brand">
-      <img
-        src={withBase('/logos/westcoast-logo.webp')}
-        alt="West Coast Residence"
-        width="180"
-        height="56"
-      />
-      <p>
-        Résidence neuve déjà livrée à Mohammedia. Studios, appartements, bureaux
-        et commerces — Boulevard Hassan II.
-      </p>
-    </div>
+  <img
+    class="site-footer__shape"
+    src={withBase('/theme/site-footer-shape-1.webp')}
+    alt=""
+    width="300"
+    height="300"
+    loading="lazy"
+    decoding="async"
+  />
 
-    <div>
-      <h3>Navigation</h3>
-      <ul>
-        {
-          nav.map((item) => (
+  <div class="container site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__columns">
+        <div class="footer-widget__about">
+          <a class="footer-widget__logo" href={withBase('/')} aria-label={site.name}>
+            <img
+              src={withBase('/logos/westcoast-logo.webp')}
+              alt="West Coast Residence"
+              width="168"
+              height="52"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <p class="footer-widget__contact-text">
+            Résidence neuve déjà livrée à Mohammedia. Studios, appartements,
+            bureaux et commerces — Boulevard Hassan II.
+          </p>
+        </div>
+
+        <div class="footer-widget__explore">
+          <div class="footer-widget__title-box">
+            <h3 class="footer-widget__title">Explorer</h3>
+          </div>
+          <div class="footer-widget__explore-list-box">
+            <ul class="footer-widget__explore-list">
+              {
+                explorePrimary.map((item) => (
+                  <li>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+            <ul class="footer-widget__explore-list">
+              {
+                exploreSecondary.map((item) => (
+                  <li>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-widget__contact">
+          <div class="footer-widget__title-box">
+            <h3 class="footer-widget__title">Contact</h3>
+          </div>
+          <p class="footer-widget__contact-text">{site.address}</p>
+          <ul class="footer-widget__contact-list">
             <li>
-              <a href={item.href}>{item.label}</a>
+              <span class="icon" set:html={mailIcon} />
+              <div class="text">
+                <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+              </div>
             </li>
-          ))
-        }
-      </ul>
+            <li>
+              <span class="icon" set:html={whatsappIcon} />
+              <div class="text">
+                <p>
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer">WhatsApp</a
+                  >
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="icon" set:html={clockIcon} />
+              <div class="text">
+                <p>{site.hours}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-widget__newsletter">
+          <div class="footer-widget__title-box">
+            <h3 class="footer-widget__title">Actualités</h3>
+          </div>
+          <form class="footer-widget__email-box" data-newsletter-form novalidate>
+            <div class="footer-widget__email-input-box">
+              <label class="sr-only" for="newsletter-email">Adresse email</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                placeholder="Adresse email"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <button type="submit" class="footer-widget__subscribe-btn thm-btn">
+              S'inscrire
+            </button>
+            <p
+              class="footer-widget__newsletter-thanks"
+              hidden
+              role="status">Merci, à très vite !</p
+            >
+          </form>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <h3>Contact</h3>
-      <ul>
-        <li>{site.address}</li>
-        <li>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </li>
-        <li>{site.hours}</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container site-footer__bottom">
-    <p>© {new Date().getFullYear()} West Coast Residence. Tous droits réservés.</p>
-    <div>
-      <a href={withBase('/mentions-legales')}>Mentions légales</a>
-      <a href={withBase('/politique-confidentialite')}>Politique de confidentialité</a>
+    <div class="site-footer__bottom">
+      <p class="site-footer__bottom-text">
+        © {new Date().getFullYear()} West Coast Residence. Tous droits réservés.
+      </p>
+      <div class="site-footer__bottom-inner">
+        <div class="site-footer__legal">
+          <a href={withBase('/mentions-legales')}>Mentions légales</a>
+          <a href={withBase('/politique-confidentialite')}>Politique de confidentialité</a>
+        </div>
+        <div class="site-footer__social">
+          <a
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            set:html={whatsappIcon}
+          />
+          <a
+            href={site.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Maps"
+            set:html={pinIcon}
+          />
+          <a href={`mailto:${site.email}`} aria-label="Email" set:html={mailIcon} />
+          <a
+            href={`tel:${site.phone}`}
+            aria-label="Téléphone"
+            set:html={phoneIcon}
+          />
+        </div>
+      </div>
     </div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('[data-newsletter-form]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!(form instanceof HTMLFormElement)) return;
+      if (!form.reportValidity()) return;
+      const thanks = form.querySelector('.footer-widget__newsletter-thanks');
+      const btn = form.querySelector('button');
+      if (thanks instanceof HTMLElement) thanks.hidden = false;
+      if (btn instanceof HTMLButtonElement) {
+        btn.disabled = true;
+        btn.textContent = 'Inscrit ✓';
+      }
+    });
+  });
+</script>

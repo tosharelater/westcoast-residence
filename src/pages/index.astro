@@ -35,11 +35,38 @@ const slides = [
 ];
 
 const counters = [
-  { value: 2, label: 'Immeubles', suffix: '' },
-  { value: 4, label: 'Étages (R+4)', suffix: '' },
-  { value: 114, label: 'm² max logements', suffix: '' },
-  { value: 70, label: '000 DH aide max', prefix: '', suffix: '' },
+  { value: 2, label: 'Immeubles', icon: 'building' },
+  { value: 4, label: 'Étages (R+4)', icon: 'layers' },
+  { value: 114, label: 'm² max logements', icon: 'area' },
+  { value: 70000, label: 'DH aide max', icon: 'tag' },
 ];
+
+const counterIcons: Record<string, string> = {
+  building:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16"/><path d="M13 9h5a1 1 0 0 1 1 1v11"/><path d="M8 8h2M8 12h2M8 16h2M16 13h1M16 17h1"/></svg>',
+  layers:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 5.5L12 13 2 7.5 12 2z"/><path d="M2 12.5L12 18l10-5.5"/><path d="M2 17.5L12 23l10-5.5"/></svg>',
+  area:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 3v4M3 8h4M16 21v-4M21 16h-4"/></svg>',
+  tag:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4a2 2 0 0 0-2 2v5.6c0 .5.2 1 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l5.6-5.6a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>',
+};
+
+const tagIcon = counterIcons.tag;
+
+const postDateMeta = (date: string) => {
+  const parts = date.split('-').map((n) => Number(n) || 1);
+  const month = parts[1] ?? 1;
+  const day = parts[2] ?? 1;
+  const months = [
+    'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
+    'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc',
+  ];
+  return {
+    day: String(day).padStart(2, '0'),
+    month: months[Math.min(Math.max(month, 1), 12) - 1] ?? 'Jan',
+  };
+};
 
 const gallery = [
   { src: withBase('/images/facade-angle.webp'), alt: 'Façade West Coast Residence', tall: true },
@@ -78,14 +105,6 @@ const whyPoints = advantages.slice(0, 6);
             </div>
             <div class="main-slider__overlay" />
             <div class="main-slider__content">
-              <img
-                class="main-slider__brand"
-                src={withBase('/logos/westcoast-logo.webp')}
-                alt="West Coast Residence"
-                width="260"
-                height="80"
-                decoding="async"
-              />
               {slide.isH1 ? (
                 <h1
                   class="main-slider__title"
@@ -171,16 +190,18 @@ const whyPoints = advantages.slice(0, 6);
       {
         counters.map((c, i) => (
           <div class="counter-one__item reveal" style={`transition-delay:${i * 80}ms`}>
-            <div class="counter-one__icon">0{i + 1}</div>
-            <div
-              class="counter-one__number"
-              data-count={c.value}
-              data-prefix={c.prefix || ''}
-              data-suffix={c.suffix || ''}
-            >
-              0
+            <div class="counter-one__single">
+              <div class="counter-one__top">
+                <div class="counter-one__shape" />
+                <div class="counter-one__icon" set:html={counterIcons[c.icon] ?? ''} />
+              </div>
+              <div class="counter-one__count-box">
+                <div class="counter-one__number" data-count={c.value}>
+                  0
+                </div>
+                <p class="counter-one__label">{c.label}</p>
+              </div>
             </div>
-            <div class="counter-one__label">{c.label}</div>
           </div>
         ))
       }
@@ -197,15 +218,6 @@ const whyPoints = advantages.slice(0, 6);
     <img class="why-one__shape float-bob-y" src={withBase("/theme/why-choose-one-shape-2.webp")} alt="" width="240" height="240" decoding="async" loading="lazy" />
     <div class="container why-one__inner">
       <div class="reveal">
-        <a
-          class="why-one__video"
-          href={whatsappUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Contacter sur WhatsApp"
-        >
-          ▶
-        </a>
         <h2>Pourquoi choisir West Coast Residence ?</h2>
       </div>
       <ul class="why-one__points reveal">
@@ -281,8 +293,6 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <MapSection />
-
   <!-- BLOG -->
   <section class="section">
     <div class="container">
@@ -292,25 +302,53 @@ const whyPoints = advantages.slice(0, 6);
       </div>
       <div class="news-grid">
         {
-          posts.map((post, i) => (
-            <a
-              class="news-card reveal"
-              href={withBase(`/blog/${post.slug}`)}
-              style={`transition-delay:${i * 80}ms`}
-            >
-              <div class="news-card__media">
-                <img src={post.image} alt="" width="1200" height="825" loading="lazy" decoding="async" />
-              </div>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-            </a>
-          ))
+          posts.map((post, i) => {
+            const d = postDateMeta(post.date);
+            return (
+              <a
+                class="news-card reveal"
+                href={withBase(`/blog/${post.slug}`)}
+                style={`transition-delay:${i * 80}ms`}
+              >
+                <div class="news-card__img-box">
+                  <div class="news-card__img">
+                    <img
+                      src={post.image}
+                      alt=""
+                      width="1200"
+                      height="825"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="news-card__date">
+                    <p>{d.day} {d.month}</p>
+                  </div>
+                  <div class="news-card__content">
+                    <ul class="news-card__meta">
+                      <li>
+                        <span set:html={tagIcon} />
+                        Guide immobilier
+                      </li>
+                    </ul>
+                    <h3>{post.title}</h3>
+                    <p class="news-card__excerpt">{post.excerpt}</p>
+                    <div class="news-card__bottom">
+                      <span class="news-card__button">Lire l'article →</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })
         }
       </div>
     </div>
   </section>
 
   <ContactForm pageSource="accueil" />
+
+  <MapSection overlap />
 </BaseLayout>
 
 <script>

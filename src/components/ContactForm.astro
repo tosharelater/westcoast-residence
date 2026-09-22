@@ -1,5 +1,6 @@
 ---
-import { whatsappUrl } from '../data/site';
+import { site, whatsappUrl } from '../data/site';
+import { withBase } from '../utils/paths';
 
 interface Props {
   title?: string;
@@ -20,111 +21,205 @@ const {
   pageSource = 'accueil',
   compact = false,
 } = Astro.props;
+
+const formBg = withBase('/theme/contact-form-bg-img-1.webp');
+
+const phoneIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg>';
+const mailIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
 ---
 
-<section class:list={['section', 'lead-cta', { 'section--primary': !compact }]}>
-  <div class="container lead-cta__grid">
-    <div class="reveal">
+<section class:list={['section', 'contact-one', { 'contact-one--compact': compact }]}>
+  <div class="container contact-one__grid">
+    <div class="contact-one__left reveal">
       <div class="section-title">
         <span class="section-title__tagline">Contact</span>
         <h2 class="section-title__title">{title}</h2>
       </div>
       <p>{text}</p>
-      <a
-        class="thm-btn thm-btn--whatsapp"
-        href={whatsappUrl()}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        WhatsApp
-      </a>
-    </div>
-
-    <form class="form reveal" data-contact-form novalidate>
-      <div class="form-fields">
-        <input type="hidden" name="page" value={pageSource} />
-        <input type="hidden" name="utm_source" data-utm="utm_source" />
-        <input type="hidden" name="utm_medium" data-utm="utm_medium" />
-        <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
-
-        <div class="form-row form-row--2">
-          <div class="field">
-            <label for={`name-${pageSource}`}>Nom</label>
-            <input id={`name-${pageSource}`} name="name" type="text" required autocomplete="name" />
-          </div>
-          <div class="field">
-            <label for={`phone-${pageSource}`}>Téléphone</label>
-            <input
-              id={`phone-${pageSource}`}
-              name="phone"
-              type="tel"
-              required
-              autocomplete="tel"
-              inputmode="tel"
-            />
-          </div>
-        </div>
-
-        {
-          showTypology && (
-            <div class="field">
-              <label for={`interest-${pageSource}`}>Ce qui vous intéresse</label>
-              <select id={`interest-${pageSource}`} name="interest">
-                <option value="">Sélectionner</option>
-                <option>Studio</option>
-                <option>Appartement</option>
-                <option>Commerce</option>
-                <option>Bureau</option>
-                <option>Autre</option>
-              </select>
-            </div>
-          )
-        }
-
-        {
-          showActivity && (
-            <div class="field">
-              <label for={`activity-${pageSource}`}>Activité</label>
-              <input id={`activity-${pageSource}`} name="activity" type="text" />
-            </div>
-          )
-        }
-
-        {
-          showSurface && (
-            <div class="field">
-              <label for={`surface-${pageSource}`}>Surface recherchée</label>
-              <input id={`surface-${pageSource}`} name="surface" type="text" placeholder="Ex. 80 m²" />
-            </div>
-          )
-        }
-
-        {
-          !compact && (
-            <div class="field">
-              <label for={`message-${pageSource}`}>Message (optionnel)</label>
-              <textarea id={`message-${pageSource}`} name="message" rows="4" />
-            </div>
-          )
-        }
-
-        <p class="form-note">
-          Vos informations sont utilisées uniquement pour vous recontacter au sujet de West Coast
-          Residence.
-        </p>
-        <button class="thm-btn" type="submit">Envoyer</button>
-      </div>
-
-      <div class="form-success" role="status">
-        <strong>Merci, nous vous recontactons rapidement.</strong>
-        <p style="margin:0.75rem 0 1rem">Vous pouvez aussi nous écrire sur WhatsApp.</p>
-        <a class="thm-btn thm-btn--whatsapp" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-          Ouvrir WhatsApp
+      <div class="cta-row">
+        <a
+          class="thm-btn thm-btn--whatsapp"
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
         </a>
       </div>
-    </form>
+      <ul class="contact-one__points">
+        <li>
+          <span class="icon" set:html={phoneIcon} />
+          <div class="content">
+            <p>Une question ?</p>
+            <h4><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></h4>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={mailIcon} />
+          <div class="content">
+            <p>Écrivez-nous</p>
+            <h4><a href={`mailto:${site.email}`}>{site.email}</a></h4>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-one__right reveal">
+      <div class="contact-one__form-box">
+        <div
+          class="contact-form-bg"
+          style={`background-image:url('${formBg}')`}
+        ></div>
+        <div class="section-title">
+          <span class="section-title__tagline">Contact</span>
+          <h2 class="section-title__title">Écrivez-nous</h2>
+        </div>
+
+        <form class="form" data-contact-form novalidate>
+          <div class="form-fields">
+            <input type="hidden" name="page" value={pageSource} />
+            <input type="hidden" name="utm_source" data-utm="utm_source" />
+            <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+            <input
+              type="hidden"
+              name="utm_campaign"
+              data-utm="utm_campaign"
+            />
+
+            <div class="contact-one__input-box">
+              <label class="sr-only" for={`name-${pageSource}`}>Nom</label>
+              <input
+                id={`name-${pageSource}`}
+                name="name"
+                type="text"
+                placeholder="Votre nom"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="contact-one__input-box">
+              <label class="sr-only" for={`phone-${pageSource}`}>Téléphone</label>
+              <input
+                id={`phone-${pageSource}`}
+                name="phone"
+                type="tel"
+                placeholder="Téléphone"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+              />
+            </div>
+
+            {
+              showTypology && (
+                <div class="contact-one__input-box">
+                  <label class="sr-only" for={`interest-${pageSource}`}>
+                    Ce qui vous intéresse
+                  </label>
+                  <select id={`interest-${pageSource}`} name="interest">
+                    <option value="">Ce qui vous intéresse</option>
+                    <option>Studio</option>
+                    <option>Appartement</option>
+                    <option>Commerce</option>
+                    <option>Bureau</option>
+                    <option>Autre</option>
+                  </select>
+                </div>
+              )
+            }
+
+            {
+              showActivity && (
+                <div class="contact-one__input-box">
+                  <label class="sr-only" for={`activity-${pageSource}`}>
+                    Activité
+                  </label>
+                  <input
+                    id={`activity-${pageSource}`}
+                    name="activity"
+                    type="text"
+                    placeholder="Votre activité"
+                  />
+                </div>
+              )
+            }
+
+            {
+              showSurface && (
+                <div class="contact-one__input-box">
+                  <label class="sr-only" for={`surface-${pageSource}`}>
+                    Surface recherchée
+                  </label>
+                  <input
+                    id={`surface-${pageSource}`}
+                    name="surface"
+                    type="text"
+                    placeholder="Surface recherchée (ex. 80 m²)"
+                  />
+                </div>
+              )
+            }
+
+            {
+              !compact && (
+                <div class="contact-one__input-box text-message-box">
+                  <label class="sr-only" for={`message-${pageSource}`}>
+                    Message (optionnel)
+                  </label>
+                  <textarea
+                    id={`message-${pageSource}`}
+                    name="message"
+                    rows="4"
+                    placeholder="Écrivez votre message"
+                  />
+                </div>
+              )
+            }
+
+            <p class="form-note">
+              Vos informations sont utilisées uniquement pour vous recontacter au
+              sujet de West Coast Residence.
+            </p>
+            <button class="thm-btn contact-one__btn" type="submit">
+              Envoyer un message
+            </button>
+          </div>
+
+          <div class="form-success" role="status">
+            <strong>Merci, nous vous recontactons rapidement.</strong>
+            <p style="margin:0.75rem 0 1rem">
+              Vous pouvez aussi nous écrire sur WhatsApp.
+            </p>
+            <a
+              class="thm-btn thm-btn--whatsapp"
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ouvrir WhatsApp
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .contact-one--compact {
+    padding: 70px 0;
+  }
+
+  .contact-one .section-title {
+    margin-bottom: 36px;
+  }
+
+  .contact-one .cta-row {
+    margin-top: 22px;
+  }
+</style>
 
 <script>
   document.querySelectorAll('[data-contact-form]').forEach((form) => {

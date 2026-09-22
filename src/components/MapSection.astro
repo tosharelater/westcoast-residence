@@ -4,39 +4,75 @@ import { site } from '../data/site';
 interface Props {
   title?: string;
   text?: string;
+  overlap?: boolean;
 }
 
 const {
-  title = 'Mohammedia, bien placé sur l\'axe Casa-Rabat',
-  text = 'Mohammedia offre un bon compromis entre calme et accessibilité, à proximité de Casablanca et sur l\'axe vers Rabat. West Coast Residence se trouve Boulevard Hassan II.',
+  title = "Mohammedia, bien placé sur l'axe Casa-Rabat",
+  text = "Mohammedia offre un bon compromis entre calme et accessibilité, à proximité de Casablanca et sur l'axe vers Rabat. West Coast Residence se trouve Boulevard Hassan II.",
+  overlap = false,
 } = Astro.props;
 ---
 
-<section class="section section--primary">
-  <div class="container split">
-    <div class="reveal">
-      <div class="section-title">
-        <span class="section-title__tagline">Localisation</span>
-        <h2 class="section-title__title">{title}</h2>
-      </div>
-      <p>{text}</p>
-      <p><strong style="color:var(--wc-black)">{site.address}</strong></p>
-      <a
-        class="thm-btn"
-        href={site.mapsLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Google Maps
-      </a>
-    </div>
-    <div class="map-frame reveal">
+{
+  overlap ? (
+    <section class="google-map">
       <iframe
+        class="google-map__one"
         title="Carte West Coast Residence Mohammedia"
         src={site.mapsEmbed}
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
+        allowfullscreen
+      />
+    </section>
+  ) : (
+    <section class="section section--primary">
+      <div class="container split">
+        <div class="reveal">
+          <div class="section-title">
+            <span class="section-title__tagline">Localisation</span>
+            <h2 class="section-title__title">{title}</h2>
+          </div>
+          <p>{text}</p>
+          <p>
+            <strong style="color:var(--wc-black)">{site.address}</strong>
+          </p>
+          <a
+            class="thm-btn"
+            href={site.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Maps
+          </a>
+        </div>
+        <div class="map-frame reveal">
+          <iframe
+            title="Carte West Coast Residence Mohammedia"
+            src={site.mapsEmbed}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .google-map {
+    position: relative;
+    display: block;
+    background-color: var(--wc-primary);
+  }
+
+  .google-map__one {
+    display: block;
+    border: none;
+    height: 475px;
+    width: 100%;
+    mix-blend-mode: luminosity;
+  }
+</style>
