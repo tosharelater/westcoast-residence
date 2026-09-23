@@ -53,8 +53,6 @@ const schema = {
     </div>
   </PageHero>
 
-  <ContactForm pageSource="contact" />
-
   <section class="section section--stone">
     <div class="container coords reveal">
       <span class="eyebrow">Coordonnées</span>
@@ -69,7 +67,9 @@ const schema = {
     </div>
   </section>
 
-  <MapSection />
+  <ContactForm pageSource="contact" overlap />
+
+  <MapSection overlap />
 </BaseLayout>
 
 <style>
