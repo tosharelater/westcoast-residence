@@ -686,49 +686,30 @@ body.solid-nav .header-top__inner {
 .why-one__points {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 0 48px;
 }
 
 .why-one__points li {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 2px 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.92);
-  transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    transform 0.35s var(--wc-ease);
+  transition: color 0.3s ease;
 }
 
 .why-one__points li:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(var(--wc-base-rgb), 0.55);
-  transform: translateY(-2px);
+  color: #fff;
 }
 
 .why-one__points li span {
-  width: 30px;
-  height: 30px;
-  background: rgba(var(--wc-base-rgb), 0.18);
-  border: 1px solid rgba(var(--wc-base-rgb), 0.4);
+  font-family: var(--wc-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   color: var(--wc-base);
-  display: grid;
-  place-items: center;
-  font-size: 12px;
   flex-shrink: 0;
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease;
-}
-
-.why-one__points li:hover span {
-  background: var(--wc-base);
-  border-color: var(--wc-base);
-  color: #fff;
 }
 
 @media (max-width: 759px) {
@@ -2046,10 +2027,10 @@ body.solid-nav .header-top__inner {
 }
 
 .why-one__points li {
-  font-family: var(--wc-font);
-  font-size: 14px;
+  font-family: var(--wc-font-display);
+  font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-transform: none;
 }
 

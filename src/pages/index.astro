@@ -201,9 +201,9 @@ const whyPoints = advantages.slice(0, 6);
       </div>
       <ul class="why-one__points reveal">
         {
-          whyPoints.map((item) => (
+          whyPoints.map((item, i) => (
             <li>
-              <span>✓</span>
+              <span>{String(i + 1).padStart(2, '0')}</span>
               {item.title}
             </li>
           ))
