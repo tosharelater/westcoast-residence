@@ -6,17 +6,10 @@ interface Props {
   subtitle?: string;
   image: string;
   alt: string;
-  eyebrow?: string;
   compact?: boolean;
 }
 
-const {
-  title,
-  subtitle,
-  image,
-  alt,
-  eyebrow = 'West Coast Residence',
-} = Astro.props;
+const { title, subtitle, image, alt } = Astro.props;
 ---
 
 <section class="page-hero">
@@ -32,7 +25,6 @@ const {
   </div>
   <div class="page-hero__shade"></div>
   <div class="page-hero__content">
-    <p class="page-hero__brand">{eyebrow}</p>
     <h1>{title}</h1>
     {subtitle && <p class="page-hero__sub">{subtitle}</p>}
     <slot />

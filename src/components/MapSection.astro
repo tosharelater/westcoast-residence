@@ -12,6 +12,11 @@ const {
   text = "Mohammedia offre un bon compromis entre calme et accessibilité, à proximité de Casablanca et sur l'axe vers Rabat. West Coast Residence se trouve Boulevard Hassan II.",
   overlap = false,
 } = Astro.props;
+
+const pinIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+const clockIcon =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 ---
 
 {
@@ -27,41 +32,69 @@ const {
       />
     </section>
   ) : (
-    <section class="section section--primary">
-      <div class="container split">
-        <div class="reveal">
+    <>
+      <section class="google-map-section">
+        <div class="container google-map-section__inner reveal">
           <div class="section-title">
             <span class="section-title__tagline">Localisation</span>
             <h2 class="section-title__title">{title}</h2>
           </div>
-          <p>{text}</p>
-          <p>
-            <strong style="color:var(--wc-black)">{site.address}</strong>
-          </p>
-          <a
-            class="thm-btn"
-            href={site.mapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Itinéraire
-          </a>
+          <p class="google-map-section__text">{text}</p>
+          <ul class="contact-one__points">
+            <li>
+              <span class="icon" set:html={pinIcon} />
+              <div class="content">
+                <p>Adresse</p>
+                <h4>{site.address}</h4>
+              </div>
+            </li>
+            <li>
+              <span class="icon" set:html={clockIcon} />
+              <div class="content">
+                <p>Horaires de visite</p>
+                <h4>{site.hours}</h4>
+              </div>
+            </li>
+          </ul>
+          <div class="cta-row">
+            <a
+              class="thm-btn thm-btn--base"
+              href={site.mapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Itinéraire
+            </a>
+          </div>
         </div>
-        <div class="map-frame reveal">
-          <iframe
-            title="Carte West Coast Residence Mohammedia"
-            src={site.mapsEmbed}
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+      <section class="google-map">
+        <iframe
+          class="google-map__one"
+          title="Carte West Coast Residence Mohammedia"
+          src={site.mapsEmbed}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        />
+      </section>
+    </>
   )
 }
 
 <style>
+  .google-map-section {
+    padding: 100px 0 80px;
+  }
+
+  .google-map-section__inner {
+    max-width: 640px;
+  }
+
+  .google-map-section__text {
+    max-width: 34rem;
+  }
+
   .google-map {
     position: relative;
     display: block;
