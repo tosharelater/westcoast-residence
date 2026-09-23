@@ -647,11 +647,11 @@ body.solid-nav .header-top__inner {
 
 .why-one__bg {
   position: absolute;
-  inset: 0;
+  inset: -25% 0;
   background-size: cover;
   background-position: center;
-  transform: scale(1.05);
-  transition: transform 0.1s linear;
+  transform: scale(1.1);
+  will-change: transform;
 }
 
 .why-one__bg::after {
@@ -659,16 +659,6 @@ body.solid-nav .header-top__inner {
   position: absolute;
   inset: 0;
   background: rgba(26, 21, 14, 0.78);
-}
-
-.why-one__shape {
-  position: absolute;
-  left: 0;
-  bottom: 40px;
-  width: min(22vw, 240px);
-  z-index: 1;
-  opacity: 0.7;
-  pointer-events: none;
 }
 
 .why-one__inner {
