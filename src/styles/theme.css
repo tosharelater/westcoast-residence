@@ -686,29 +686,55 @@ body.solid-nav .header-top__inner {
 .why-one__points {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
+  gap: 12px;
 }
 
 .why-one__points li {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.88);
-  font-family: var(--wc-font-display);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 16px;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s var(--wc-ease);
+}
+
+.why-one__points li:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(var(--wc-base-rgb), 0.55);
+  transform: translateY(-2px);
 }
 
 .why-one__points li span {
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--wc-base);
+  width: 30px;
+  height: 30px;
+  background: rgba(var(--wc-base-rgb), 0.18);
+  border: 1px solid rgba(var(--wc-base-rgb), 0.4);
   color: var(--wc-base);
   display: grid;
   place-items: center;
   font-size: 12px;
   flex-shrink: 0;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.why-one__points li:hover span {
+  background: var(--wc-base);
+  border-color: var(--wc-base);
+  color: #fff;
+}
+
+@media (max-width: 759px) {
+  .why-one__points {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========== APARTMENTS ========== */
