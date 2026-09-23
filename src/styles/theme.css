@@ -431,7 +431,7 @@ body.solid-nav .header-top__inner {
 .about-one__grid {
   display: grid;
   gap: 50px;
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 992px) {
@@ -447,6 +447,8 @@ body.solid-nav .header-top__inner {
 
 .about-one__media img.main {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   position: relative;
   z-index: 1;
 }
