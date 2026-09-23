@@ -3,6 +3,7 @@ import { withBase } from '../utils/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
+import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
 ---
 
@@ -96,4 +97,6 @@ import { whatsappUrl } from '../data/site';
     showSurface
     compact
   />
+
+  <MapSection />
 </BaseLayout>

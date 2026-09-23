@@ -10,29 +10,16 @@ import {
   whatsappUrl,
 } from '../data/site';
 
-const slides = [
-  {
-    image: withBase('/images/hero-facade.webp'),
-    title: 'Appartements et Studios\nà Vendre à Mohammedia',
-    badge: 'Déjà livré',
-    sub: "Studios, appartements familiaux, bureaux et commerces. Visitez cette semaine, sans attendre la fin d'un chantier.",
-    isH1: true,
-  },
-  {
-    image: withBase('/images/stairs.webp'),
-    title: 'Finitions soignées\nMarbre & Verrières',
-    badge: 'R+4',
-    sub: 'Deux immeubles, Bd Hassan II',
-    isH1: false,
-  },
-  {
-    image: withBase('/images/bedroom.webp'),
-    title: 'Studios dès\n500 000 DH',
-    badge: '36–53 m²',
-    sub: 'Aide Daam Sakane possible',
-    isH1: false,
-  },
+// Le texte du hero vient du brief de contenu et reste FIXE ; seules les images défilent.
+const heroImages = [
+  withBase('/images/hall.webp'),
+  withBase('/images/hero-facade.webp'),
+  withBase('/images/stairs.webp'),
+  withBase('/images/bedroom.webp'),
 ];
+const heroTitle = 'Appartements et Studios\nà Vendre à Mohammedia';
+const heroBadge = 'Déjà livré';
+const heroSub = "Studios, appartements familiaux, bureaux et commerces. Visitez cette semaine, sans attendre la fin d'un chantier.";
 
 const counters = [
   { value: 2, label: 'Immeubles', icon: 'building' },
@@ -84,17 +71,17 @@ const whyPoints = advantages.slice(0, 6);
 <BaseLayout
   title="Appartements & Studios à Vendre à Mohammedia"
   description="Résidence neuve déjà livrée à Mohammedia : studios, appartements, bureaux et commerces disponibles. Visitez cette semaine, écrivez-nous sur WhatsApp."
-  preloadImage="/images/hero-facade.webp"
+  preloadImage="/images/hall.webp"
 >
   <!-- MAIN SLIDER -->
   <section class="main-slider" data-hero-slider>
     <div class="main-slider__track">
       {
-        slides.map((slide, i) => (
+        heroImages.map((image, i) => (
           <div class:list={['main-slider__slide', { 'is-active': i === 0 }]} data-slide>
             <div class="main-slider__layer">
               <img
-                src={slide.image}
+                src={image}
                 alt=""
                 width="1600"
                 height="1067"
@@ -104,39 +91,30 @@ const whyPoints = advantages.slice(0, 6);
               />
             </div>
             <div class="main-slider__overlay" />
-            <div class="main-slider__content">
-              {slide.isH1 ? (
-                <h1
-                  class="main-slider__title"
-                  set:html={slide.title.replace('\n', '<br />')}
-                />
-              ) : (
-                <p
-                  class="main-slider__title"
-                  set:html={slide.title.replace('\n', '<br />')}
-                />
-              )}
-              <p class="main-slider__sub">
-                <span>{slide.badge}</span>
-                {slide.sub}
-              </p>
-              <div class="main-slider__actions cta-row">
-                <a
-                  class="thm-btn thm-btn--base"
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  WhatsApp
-                </a>
-                <a class="thm-btn thm-btn--ghost" href={withBase('/programme')}>
-                  Voir le programme
-                </a>
-              </div>
-            </div>
           </div>
         ))
       }
+    </div>
+    <!-- Texte fixe (brief de contenu) — les images défilent derrière -->
+    <div class="main-slider__content">
+      <h1 class="main-slider__title" set:html={heroTitle.replace('\n', '<br />')} />
+      <p class="main-slider__sub">
+        <span>{heroBadge}</span>
+        {heroSub}
+      </p>
+      <div class="main-slider__actions cta-row">
+        <a
+          class="thm-btn thm-btn--base"
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+        <a class="thm-btn thm-btn--ghost" href={withBase('/programme')}>
+          Voir le programme
+        </a>
+      </div>
     </div>
     <div class="main-slider__nav">
       <button type="button" aria-label="Précédent" data-hero-prev>‹</button>

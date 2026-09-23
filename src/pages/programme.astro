@@ -3,6 +3,7 @@ import { withBase } from '../utils/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import MapSection from '../components/MapSection.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { site, whatsappUrl } from '../data/site';
 
 const schema = {
@@ -170,6 +171,8 @@ const gallery = [
   </section>
 
   <MapSection title="Où se trouve West Coast Residence" />
+
+  <ContactForm pageSource="programme" compact />
 
   <section class="section">
     <div class="container visit-cta reveal">

@@ -107,9 +107,16 @@ p {
   text-transform: uppercase;
   padding: 16px 32px;
   cursor: pointer;
-  transition: color 0.4s linear;
+  transition:
+    color 0.4s linear,
+    letter-spacing 0.4s ease,
+    transform 0.2s ease;
   z-index: 1;
   overflow: hidden;
+}
+
+.thm-btn:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .thm-btn::before {
@@ -124,6 +131,7 @@ p {
 
 .thm-btn:hover {
   color: var(--wc-white);
+  letter-spacing: 0.09em;
 }
 
 .thm-btn:hover::before {
@@ -344,6 +352,7 @@ p {
 
 .form.is-success .form-success {
   display: block;
+  animation: wcFadeUp 0.55s var(--wc-ease) backwards;
 }
 
 .table-wrap {
@@ -437,4 +446,114 @@ table.data td {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* ========== MOTION UTILITIES (additive) ========== */
+::selection {
+  background: var(--wc-base);
+  color: #fff;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 1s var(--wc-ease),
+    transform 1s var(--wc-ease);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity 0.9s var(--wc-ease),
+    transform 0.9s var(--wc-ease);
+}
+
+.reveal-zoom.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes wcFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wcFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pageHeroIn {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes navItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes waPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Newsletter/footer link hover is defined in theme.css */
+
+.cookie.is-open {
+  animation: wcFadeUp 0.55s var(--wc-ease) backwards;
+}
+
+/* Accessibility: honor reduced-motion preference everywhere */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

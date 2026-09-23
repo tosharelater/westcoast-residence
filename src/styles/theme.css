@@ -119,6 +119,7 @@ body.solid-nav .header-top__inner {
 }
 
 .header-nav a {
+  position: relative;
   display: block;
   padding: 10px 12px;
   font-family: var(--wc-font-display);
@@ -297,9 +298,9 @@ body.solid-nav .header-top__inner {
 }
 
 .main-slider__content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 3;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -308,6 +309,12 @@ body.solid-nav .header-top__inner {
   margin-inline: auto;
   max-width: 900px;
   margin-left: max(15px, calc((100% - var(--wc-max)) / 2));
+  pointer-events: none;
+}
+
+.main-slider__content a,
+.main-slider__content button {
+  pointer-events: auto;
 }
 
 .main-slider__title {
@@ -319,16 +326,18 @@ body.solid-nav .header-top__inner {
   letter-spacing: 0.01em;
   text-transform: none;
   margin: 0 0 16px;
-  opacity: 0;
-  transform: translateY(-80px);
-  transition:
-    opacity 1.6s ease 0.35s,
-    transform 1.6s ease 0.35s;
+  animation: heroTitleIn 1.6s var(--wc-ease) 0.35s backwards;
 }
 
-.main-slider__slide.is-active .main-slider__title {
-  opacity: 1;
-  transform: none;
+@keyframes heroTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .main-slider__sub {
@@ -343,16 +352,18 @@ body.solid-nav .header-top__inner {
   font-weight: 500;
   color: #fff;
   margin: 0 0 28px;
-  opacity: 0;
-  transform: translateY(80px);
-  transition:
-    opacity 1.6s ease 0.45s,
-    transform 1.6s ease 0.45s;
+  animation: heroSubIn 1.6s var(--wc-ease) 0.5s backwards;
 }
 
-.main-slider__slide.is-active .main-slider__sub {
-  opacity: 1;
-  transform: none;
+@keyframes heroSubIn {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .main-slider__sub span {
@@ -362,16 +373,10 @@ body.solid-nav .header-top__inner {
 }
 
 .main-slider__actions {
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 1.2s ease 0.7s,
-    transform 1.2s ease 0.7s;
-}
-
-.main-slider__slide.is-active .main-slider__actions {
-  opacity: 1;
-  transform: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
 }
 
 .main-slider__nav {
@@ -2051,4 +2056,321 @@ body.solid-nav .header-top__inner {
   letter-spacing: 0.01em;
   text-transform: none;
   font-weight: 500;
+}
+
+/* ========== MOTION & MICRO-INTERACTIONS (additive, CSS only) ========== */
+
+/* --- Section titles: bronze line draws in on reveal --- */
+.section-title__tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title__tagline::before {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--wc-base);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--wc-ease) 0.15s;
+}
+
+.is-visible .section-title__tagline::before,
+.section-title__tagline.is-visible::before {
+  transform: scaleX(1);
+}
+
+/* --- Desktop nav: staggered entrance --- */
+.header-nav li {
+  opacity: 0;
+  animation: navItemIn 0.55s var(--wc-ease) forwards;
+}
+
+.header-nav li:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.header-nav li:nth-child(2) {
+  animation-delay: 0.11s;
+}
+
+.header-nav li:nth-child(3) {
+  animation-delay: 0.17s;
+}
+
+.header-nav li:nth-child(4) {
+  animation-delay: 0.23s;
+}
+
+.header-nav li:nth-child(5) {
+  animation-delay: 0.29s;
+}
+
+.header-nav li:nth-child(6) {
+  animation-delay: 0.35s;
+}
+
+.header-nav li:nth-child(7) {
+  animation-delay: 0.41s;
+}
+
+.header-nav li:nth-child(8) {
+  animation-delay: 0.47s;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 5px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--wc-ease);
+}
+
+.header-nav a:hover::after,
+.header-nav a.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- Hero slider: text is FIXED (brief content), images pass behind ---
+   Intro plays once on page load; arrow clicks only swap images. */
+.main-slider__sub span {
+  display: inline-block;
+  animation: wcFadeIn 0.9s var(--wc-ease) 1.15s backwards;
+}
+
+.main-slider__actions .thm-btn {
+  animation: wcFadeUp 0.8s var(--wc-ease) backwards;
+}
+
+.main-slider__actions .thm-btn:nth-child(1) {
+  animation-delay: 0.75s;
+}
+
+.main-slider__actions .thm-btn:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.main-slider__nav button {
+  transition:
+    border-color 0.4s ease,
+    color 0.4s ease,
+    transform 0.25s ease;
+}
+
+.main-slider__nav button:hover {
+  transform: scale(1.08);
+}
+
+.main-slider__nav button:active {
+  transform: scale(0.94);
+}
+
+/* --- Counters: count-box stabilizes during odometer roll --- */
+.counter-one__number [data-count] {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+.counter-one__single::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 46px;
+  height: 3px;
+  background: var(--wc-base);
+  opacity: 0.35;
+  transition:
+    width 0.6s var(--wc-ease),
+    opacity 0.6s ease;
+}
+
+.counter-one__item:hover .counter-one__single::after {
+  width: 120px;
+  opacity: 1;
+}
+
+.counter-one__icon svg {
+  transition: transform 500ms var(--wc-ease);
+}
+
+/* --- Apartment cards --- */
+.apartment-card__badge {
+  transition: transform 0.45s var(--wc-ease);
+}
+
+.apartment-card:hover .apartment-card__badge {
+  transform: translateY(6px);
+}
+
+.apartment-card__arrow {
+  background: var(--wc-base);
+  color: #fff;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s var(--wc-ease),
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.apartment-card:hover .apartment-card__arrow {
+  background: transparent;
+  color: var(--wc-base);
+}
+
+/* --- Gallery: shine sweep on hover --- */
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transform: skewX(-18deg);
+  transition: left 0.85s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-item:hover::before {
+  left: 130%;
+}
+
+/* --- Blog cards: lift with the existing shadow --- */
+.news-card {
+  transition: transform 0.55s var(--wc-ease);
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+}
+
+/* --- Contact form: focus glow + arrow slide on submit button --- */
+.contact-one__input-box input,
+.contact-one__input-box select,
+.contact-one__input-box textarea {
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.contact-one__input-box input:focus,
+.contact-one__input-box select:focus,
+.contact-one__input-box textarea:focus {
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(var(--wc-base-rgb), 0.18);
+}
+
+.contact-one__points li .icon {
+  transition: all 500ms var(--wc-ease);
+}
+
+.contact-one__points li:hover .icon {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+/* --- Footer social: smoother flip + icon pop --- */
+.site-footer__social a::after {
+  transition: transform 0.45s var(--wc-ease);
+}
+
+.site-footer__social a svg {
+  transition: transform 0.35s var(--wc-ease);
+}
+
+.site-footer__social a:hover svg {
+  transform: scale(1.15);
+}
+
+/* --- WhatsApp float: attention pulse ring --- */
+.wa-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  z-index: -1;
+  animation: waPulse 2.4s ease-out 1.2s infinite;
+}
+
+/* --- FAQ --- */
+.faq summary {
+  transition: color 0.3s ease;
+}
+
+.faq summary:hover {
+  color: var(--wc-base);
+}
+
+/* --- Mobile menu: links stagger in as the panel opens --- */
+.mobile-nav.is-open li {
+  animation: wcFadeUp 0.5s var(--wc-ease) backwards;
+}
+
+.mobile-nav.is-open li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.mobile-nav.is-open li:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.mobile-nav.is-open li:nth-child(3) {
+  animation-delay: 0.22s;
+}
+
+.mobile-nav.is-open li:nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+.mobile-nav.is-open li:nth-child(5) {
+  animation-delay: 0.34s;
+}
+
+.mobile-nav.is-open li:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.mobile-nav.is-open li:nth-child(7) {
+  animation-delay: 0.46s;
+}
+
+.mobile-nav.is-open li:nth-child(8) {
+  animation-delay: 0.52s;
+}
+
+/* --- Page heroes: content rises in once per load --- */
+.page-hero__content > * {
+  animation: pageHeroIn 0.9s var(--wc-ease) backwards;
+}
+
+.page-hero__content > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.page-hero__content > *:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.page-hero__content > *:nth-child(3) {
+  animation-delay: 0.27s;
+}
+
+.page-hero__content > *:nth-child(4) {
+  animation-delay: 0.38s;
 }

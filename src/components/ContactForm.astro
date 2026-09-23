@@ -119,6 +119,16 @@ const mailIcon =
                 inputmode="tel"
               />
             </div>
+            <div class="contact-one__input-box">
+              <label class="sr-only" for={`email-${pageSource}`}>Email</label>
+              <input
+                id={`email-${pageSource}`}
+                name="email"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+              />
+            </div>
 
             {
               showTypology && (
