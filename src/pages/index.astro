@@ -13,9 +13,9 @@ import {
 const slides = [
   {
     image: withBase('/images/hero-facade.webp'),
-    title: 'Appartements & Studios\nà Mohammedia',
+    title: 'Appartements et Studios\nà Vendre à Mohammedia',
     badge: 'Déjà livré',
-    sub: 'Visitez cette semaine',
+    sub: "Studios, appartements familiaux, bureaux et commerces. Visitez cette semaine, sans attendre la fin d'un chantier.",
     isH1: true,
   },
   {
@@ -38,7 +38,7 @@ const counters = [
   { value: 2, label: 'Immeubles', icon: 'building' },
   { value: 4, label: 'Étages (R+4)', icon: 'layers' },
   { value: 114, label: 'm² max logements', icon: 'area' },
-  { value: 70000, label: 'DH aide max', icon: 'tag' },
+  { value: 70000, unit: 'DH', label: 'aide au logement', icon: 'tag' },
 ];
 
 const counterIcons: Record<string, string> = {
@@ -196,8 +196,9 @@ const whyPoints = advantages.slice(0, 6);
                 <div class="counter-one__icon" set:html={counterIcons[c.icon] ?? ''} />
               </div>
               <div class="counter-one__count-box">
-                <div class="counter-one__number" data-count={c.value}>
-                  0
+                <div class="counter-one__number">
+                  <span data-count={c.value}>0</span>
+                  {c.unit && <span class="counter-one__unit">{c.unit}</span>}
                 </div>
                 <p class="counter-one__label">{c.label}</p>
               </div>
@@ -346,7 +347,7 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <ContactForm pageSource="accueil" />
+  <ContactForm pageSource="accueil" overlap />
 
   <MapSection overlap />
 </BaseLayout>

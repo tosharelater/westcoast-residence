@@ -10,6 +10,7 @@ interface Props {
   showSurface?: boolean;
   pageSource?: string;
   compact?: boolean;
+  overlap?: boolean;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   showSurface = false,
   pageSource = 'accueil',
   compact = false,
+  overlap = false,
 } = Astro.props;
 
 const formBg = withBase('/theme/contact-form-bg-img-1.webp');
@@ -30,7 +32,13 @@ const mailIcon =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
 ---
 
-<section class:list={['section', 'contact-one', { 'contact-one--compact': compact }]}>
+<section
+  class:list={[
+    'section',
+    'contact-one',
+    { 'contact-one--compact': compact, 'contact-one--overlap': overlap },
+  ]}
+>
   <div class="container contact-one__grid">
     <div class="contact-one__left reveal">
       <div class="section-title">
@@ -210,6 +218,25 @@ const mailIcon =
 <style>
   .contact-one--compact {
     padding: 70px 0;
+  }
+
+  /* Homepage: the full-width map below slides under the dark form box */
+  .contact-one--overlap {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .contact-one--overlap :global(.contact-one__right) {
+    pointer-events: auto;
+  }
+
+  .contact-one--overlap :global(.contact-one__left) {
+    pointer-events: none;
+  }
+
+  .contact-one--overlap :global(.contact-one__left > *) {
+    pointer-events: auto;
   }
 
   .contact-one .section-title {

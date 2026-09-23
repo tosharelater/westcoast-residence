@@ -531,7 +531,30 @@ body.solid-nav .header-top__inner {
   display: block;
   background-color: #fff;
   box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
-  padding: 36px 38px 26px 0;
+  padding: 36px 38px 30px 0;
+  transition:
+    transform 0.45s var(--wc-ease),
+    box-shadow 0.45s var(--wc-ease);
+}
+
+.counter-one__single::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--wc-base);
+  transition: width 0.5s var(--wc-ease);
+}
+
+.counter-one__item:hover .counter-one__single {
+  transform: translateY(-6px);
+  box-shadow: 0px 18px 60px 0px rgba(0, 0, 0, 0.14);
+}
+
+.counter-one__item:hover .counter-one__single::before {
+  width: 100%;
 }
 
 .counter-one__top {
@@ -575,20 +598,33 @@ body.solid-nav .header-top__inner {
 
 .counter-one__number {
   font-family: var(--wc-font-display);
-  font-size: clamp(34px, 3vw, 46px);
+  font-size: clamp(40px, 3.6vw, 54px);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: 0.02em;
   color: var(--wc-black);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.counter-one__unit {
+  font-family: var(--wc-font);
+  font-size: 0.38em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wc-base);
+  transform: translateY(-0.18em);
 }
 
 .counter-one__label {
-  font-size: 14px;
+  font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--wc-gray);
   font-family: var(--wc-font);
-  margin: 6px 0 0;
+  margin: 10px 0 0;
 }
 
 /* ========== WHY CHOOSE ========== */

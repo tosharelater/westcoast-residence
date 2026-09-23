@@ -16,7 +16,7 @@ const {
 
 {
   overlap ? (
-    <section class="google-map">
+    <section class="google-map google-map--overlap">
       <iframe
         class="google-map__one"
         title="Carte West Coast Residence Mohammedia"
@@ -44,7 +44,7 @@ const {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Google Maps
+            Itinéraire
           </a>
         </div>
         <div class="map-frame reveal">
@@ -66,6 +66,17 @@ const {
     position: relative;
     display: block;
     background-color: var(--wc-primary);
+  }
+
+  /* Homepage: slide up under the dark contact form box (Alipes-style) */
+  .google-map--overlap {
+    margin-top: -230px;
+  }
+
+  @media (max-width: 991px) {
+    .google-map--overlap {
+      margin-top: 0;
+    }
   }
 
   .google-map__one {

@@ -7,17 +7,16 @@ export const site = {
   address: 'Boulevard Hassan II, Mohammedia',
   city: 'Mohammedia',
   country: 'Maroc',
-  phone: '+212600000000', // à renseigner
-  phoneDisplay: 'À renseigner',
+  phone: '+212661502502',
+  phoneDisplay: '06 61 50 25 02',
   email: 'contact@westcoastresidence.ma', // à renseigner
-  hours: 'Lun – Sam : 9h – 19h',
-  whatsapp: '212600000000', // format international sans +
+  hours: 'Lun – Sam : 10h – 19h',
+  whatsapp: '212661502502', // format international sans +
   whatsappDefaultMessage:
     "Bonjour, je m'intéresse à West Coast Residence à Mohammedia.",
   mapsEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.5!2d-7.385!3d33.705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBoulevard%20Hassan%20II%2C%20Mohammedia!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma',
-  mapsLink:
-    'https://www.google.com/maps/search/?api=1&query=Boulevard+Hassan+II+Mohammedia',
+  mapsLink: 'https://share.google/R9UAGPCI5aGRfuTH1',
 };
 
 export function whatsappUrl(message = site.whatsappDefaultMessage) {
