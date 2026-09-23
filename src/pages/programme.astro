@@ -19,6 +19,13 @@ const schema = {
     addressCountry: 'MA',
   },
   url: `${site.url}/programme`,
+  telephone: site.phone,
+  image: `${site.url}/images/hero-facade.webp`,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.latitude,
+    longitude: site.geo.longitude,
+  },
 };
 
 const blocks = [

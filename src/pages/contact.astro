@@ -18,6 +18,13 @@ const schema = {
   },
   url: `${site.url}/contact`,
   email: site.email,
+  telephone: site.phone,
+  image: `${site.url}/images/hero-facade.webp`,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.latitude,
+    longitude: site.geo.longitude,
+  },
   openingHours: 'Mo-Sa 10:00-19:00',
 };
 ---

@@ -14,9 +14,11 @@ export const site = {
   whatsapp: '212661502502', // format international sans +
   whatsappDefaultMessage:
     "Bonjour, je m'intéresse à West Coast Residence à Mohammedia.",
+  // Embed centré sur la fiche Google Maps "West coast Résidence" (33.693386, -7.3915007)
   mapsEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.5!2d-7.385!3d33.705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBoulevard%20Hassan%20II%2C%20Mohammedia!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma',
-  mapsLink: 'https://share.google/R9UAGPCI5aGRfuTH1',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2500!2d-7.3915007!3d33.693386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7b700723a1f81%3A0x5445e7d6d79be724!2sWest%20coast%20R%C3%A9sidence!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma',
+  mapsLink: 'https://maps.app.goo.gl/B1zmS67wkt4D868w5',
+  geo: { latitude: 33.693386, longitude: -7.3915007 },
 };
 
 export function whatsappUrl(message = site.whatsappDefaultMessage) {
