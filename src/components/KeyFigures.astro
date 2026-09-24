@@ -1,0 +1,78 @@
+---
+import { withBase } from '../utils/paths';
+import {
+  iconBriefcase,
+  iconHome,
+  iconStore,
+  iconTag,
+} from '../utils/icons';
+
+interface Figure {
+  value: number;
+  unit?: string;
+  label: string;
+  note?: string;
+  icon: string;
+}
+
+const figures: Figure[] = [
+  {
+    value: 72,
+    label: 'logements',
+    note: '56 studios · 16 appartements familiaux',
+    icon: iconHome,
+  },
+  {
+    value: 40,
+    label: 'bureaux',
+    icon: iconBriefcase,
+  },
+  {
+    value: 8,
+    label: 'commerces',
+    icon: iconStore,
+  },
+  {
+    value: 70000,
+    unit: 'DH',
+    label: "d'aide au logement possible",
+    note: 'Daam Sakane, sous conditions',
+    icon: iconTag,
+  },
+];
+---
+
+<section class="counter-one">
+  <div
+    class="counter-one__bg"
+    style={`background-image:url('${withBase('/theme/counter-one-bg-img-1.webp')}')`}
+  ></div>
+  <div class="container counter-one__inner">
+    <div class="section-title section-title--center reveal">
+      <span class="section-title__tagline">Chiffres clés</span>
+      <h2 class="section-title__title">West Coast Residence en quelques chiffres</h2>
+    </div>
+    <div class="counter-one__grid">
+      {
+        figures.map((c, i) => (
+          <div class="counter-one__item reveal" style={`transition-delay:${i * 80}ms`}>
+            <div class="counter-one__single">
+              <div class="counter-one__top">
+                <div class="counter-one__shape" />
+                <div class="counter-one__icon" set:html={c.icon} />
+              </div>
+              <div class="counter-one__count-box">
+                <div class="counter-one__number">
+                  <span data-count={c.value}>0</span>
+                  {c.unit && <span class="counter-one__unit">{c.unit}</span>}
+                </div>
+                <p class="counter-one__label">{c.label}</p>
+                {c.note && <p class="counter-one__note">{c.note}</p>}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

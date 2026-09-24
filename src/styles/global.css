@@ -212,6 +212,10 @@ p {
   position: relative;
 }
 
+section[id] {
+  scroll-margin-top: 120px;
+}
+
 .section--primary {
   background: var(--wc-primary);
 }

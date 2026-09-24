@@ -2,9 +2,20 @@
 import { withBase } from '../utils/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import KeyFigures from '../components/KeyFigures.astro';
 import MapSection from '../components/MapSection.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site, whatsappUrl } from '../data/site';
+import {
+  iconCheck,
+  iconDrop,
+  iconElevator,
+  iconLayers,
+  iconParking,
+  iconScales,
+  iconShield,
+  iconTerrasse,
+} from '../utils/icons';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -32,23 +43,42 @@ const blocks = [
   {
     title: 'Appartements & Studios',
     surface: '36 à 114 m²',
-    href: '/appartements',
+    href: withBase('/appartements'),
     image: withBase('/images/bedroom.webp'),
     alt: 'Appartements et studios West Coast Residence Mohammedia',
   },
   {
     title: 'Commerces',
     surface: '58 à 119 m²',
-    href: '/commerces',
+    href: withBase('/commerces'),
     image: withBase('/images/commerce.webp'),
     alt: "Commerces en pied d'immeuble West Coast Residence",
   },
   {
     title: 'Bureaux',
     surface: '45 à 107 m²',
-    href: '/bureaux',
+    href: withBase('/bureaux'),
     image: withBase('/images/interior-15.webp'),
     alt: 'Bureaux à vendre West Coast Residence Mohammedia',
+  },
+];
+
+const equipments = [
+  {
+    icon: iconParking,
+    text: 'Parking en sous-sol',
+  },
+  {
+    icon: iconTerrasse,
+    text: 'Terrasse commune',
+  },
+  {
+    icon: iconElevator,
+    text: 'Ascenseur',
+  },
+  {
+    icon: iconShield,
+    text: 'Accès sécurisé',
   },
 ];
 
@@ -129,6 +159,9 @@ const gallery = [
     </div>
   </section>
 
+  <!-- CHIFFRES CLÉS -->
+  <KeyFigures />
+
   <section class="section">
     <div class="container">
       <div class="section-title reveal">
@@ -156,6 +189,47 @@ const gallery = [
     </div>
   </section>
 
+  <!-- ÉQUIPEMENTS & PRESTATIONS COMMUNES -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Prestations</span>
+        <h2 class="section-title__title">Ce qui est inclus dans la résidence</h2>
+      </div>
+      <ul class="icon-list icon-list--board reveal">
+        {
+          equipments.map((e, i) => (
+            <li>
+              <span class="icon" set:html={e.icon} />
+              <div>
+                <strong>{e.text}</strong>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="icon-list__fine">
+        Prestations complémentaires (gardiennage, vidéosurveillance) en cours
+        de validation avec le promoteur.
+      </p>
+    </div>
+  </section>
+
+  <!-- ENVIRONNEMENT & VIE DE QUARTIER -->
+  <section class="section feature-list-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Vie de quartier</span>
+        <h2 class="section-title__title">Tout à proximité</h2>
+      </div>
+      <ul class="list-check list-check--full reveal">
+        <li>Commerces et services directement intégrés au rez-de-chaussée de la résidence</li>
+        <li>Accès direct au Boulevard Hassan II, axe vers Casablanca et Rabat</li>
+        <li>Mohammedia : plages, centre-ville à proximité</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section section--dark">
     <div class="container">
       <div class="section-title section-title--center reveal">
@@ -177,9 +251,93 @@ const gallery = [
     </div>
   </section>
 
+  <!-- GARANTIES & DÉMARCHES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Garanties</span>
+        <h2 class="section-title__title">Un achat sécurisé</h2>
+      </div>
+      <div class="info-panel reveal">
+        <ul class="icon-list">
+          <li>
+            <span class="icon" set:html={iconScales} />
+            <div>
+              <strong>Titre foncier et permis d'habiter</strong>
+              <p>Disponibles pour consultation avant toute décision.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconCheck} />
+            <div>
+              <strong>Accompagnement notarial</strong>
+              <p>Nous vous accompagnons dans les démarches, de la réservation à la signature.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconShield} />
+            <div>
+              <strong>Résidence déjà réceptionnée</strong>
+              <p>Aucun risque de retard de livraison, contrairement à un achat sur plan.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN DE SITUATION -->
+  <section class="section section--primary loc-section">
+    <div class="container split">
+      <div class="reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Localisation</span>
+          <h2 class="section-title__title">Où se trouve West Coast Residence</h2>
+        </div>
+        <p class="loc-section__lead">
+          La résidence se situe Boulevard Hassan II, sur l'axe principal qui relie
+          Casablanca à Rabat.
+        </p>
+        <div class="cta-row">
+          <a
+            class="thm-btn thm-btn--base"
+            href={site.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Itinéraire sur Google Maps
+          </a>
+          <a class="thm-btn" href={withBase("/contact")}>Page contact</a>
+        </div>
+      </div>
+      <aside class="loc-card reveal">
+        <div class="loc-card__head">
+          <span class="loc-card__kicker">Adresse</span>
+          <p class="loc-card__address">{site.address}</p>
+        </div>
+        <ul class="loc-card__list">
+          <li>
+            <span class="loc-card__icon" set:html={iconLayers} />
+            <div>
+              <strong>Axe Casablanca–Rabat</strong>
+              <p>Accès direct depuis le Bd Hassan II.</p>
+            </div>
+          </li>
+          <li>
+            <span class="loc-card__icon" set:html={iconDrop} />
+            <div>
+              <strong>Centre de Mohammedia</strong>
+              <p>Plages, commerces et centre-ville à quelques minutes.</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
   <ContactForm pageSource="programme" compact overlap />
 
-  <MapSection overlap />
+  <MapSection />
 
   <section class="section">
     <div class="container visit-cta reveal">

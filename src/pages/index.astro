@@ -2,13 +2,20 @@
 import { withBase } from '../utils/paths';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
+import KeyFigures from '../components/KeyFigures.astro';
 import MapSection from '../components/MapSection.astro';
 import {
   advantages,
   blogPosts,
+  site,
   typologies,
   whatsappUrl,
 } from '../data/site';
+import {
+  iconDrop,
+  iconLayers,
+  iconTag,
+} from '../utils/icons';
 
 // Le texte du hero vient du brief de contenu et reste FIXE ; seules les images défilent.
 const heroImages = [
@@ -17,29 +24,31 @@ const heroImages = [
   withBase('/images/stairs.webp'),
   withBase('/images/bedroom.webp'),
 ];
-const heroTitle = 'Appartements et Studios\nà Vendre à Mohammedia';
+const heroTitle = 'Appartements et Studios à Vendre à Mohammedia';
 const heroBadge = 'Déjà livré';
-const heroSub = "Studios, appartements familiaux, bureaux et commerces. Visitez cette semaine, sans attendre la fin d'un chantier.";
+const heroSub =
+  'Studios, appartements familiaux, bureaux et commerces, dans une résidence déjà livrée. Visitez cette semaine, sans attendre la fin d\u2019un chantier.';
 
-const counters = [
-  { value: 2, label: 'Immeubles', icon: 'building' },
-  { value: 4, label: 'Étages (R+4)', icon: 'layers' },
-  { value: 114, label: 'm² max superficie', icon: 'area' },
-  { value: 70000, unit: 'DH', label: 'aide au logement', icon: 'tag' },
+const steps = [
+  {
+    num: '01',
+    drift: '0.34',
+    title: 'Contact',
+    text: "Écrivez-nous sur WhatsApp ou remplissez le formulaire, réponse rapide.",
+  },
+  {
+    num: '02',
+    drift: '0.22',
+    title: 'Visite',
+    text: "Le bien est déjà livré : vous visitez le logement, bureau ou commerce réel, pas une maquette ni un plan.",
+  },
+  {
+    num: '03',
+    drift: '0.1',
+    title: 'Signature chez le notaire',
+    text: "Une fois décidé, signature directement chez le notaire, remise des clés immédiate.",
+  },
 ];
-
-const counterIcons: Record<string, string> = {
-  building:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16"/><path d="M13 9h5a1 1 0 0 1 1 1v11"/><path d="M8 8h2M8 12h2M8 16h2M16 13h1M16 17h1"/></svg>',
-  layers:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 5.5L12 13 2 7.5 12 2z"/><path d="M2 12.5L12 18l10-5.5"/><path d="M2 17.5L12 23l10-5.5"/></svg>',
-  area:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 3v4M3 8h4M16 21v-4M21 16h-4"/></svg>',
-  tag:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4a2 2 0 0 0-2 2v5.6c0 .5.2 1 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l5.6-5.6a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>',
-};
-
-const tagIcon = counterIcons.tag;
 
 const postDateMeta = (date: string) => {
   const parts = date.split('-').map((n) => Number(n) || 1);
@@ -125,8 +134,8 @@ const whyPoints = advantages.slice(0, 6);
 
   <!-- ABOUT -->
   <section class="about-one">
-<img class="about-one__deco float-bob-y" src={withBase("/theme/about-one-shape-2.webp")} alt="" width="320" height="320" decoding="async" loading="lazy" />
-      <div class="container about-one__grid">
+    <img class="about-one__deco float-bob-y" src={withBase("/theme/about-one-shape-2.webp")} alt="" width="320" height="320" decoding="async" loading="lazy" />
+    <div class="container about-one__grid">
       <div class="about-one__media reveal-left">
         <span class="about-one__watermark">West Coast</span>
         <img class="main" src={withBase("/images/facade-angle.webp")} alt="West Coast Residence Mohammedia" width="1600" height="1067" decoding="async" loading="lazy" />
@@ -159,59 +168,6 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <!-- COUNTERS -->
-  <div class="counter-one">
-    <div
-      class="counter-one__bg"
-      style={`background-image:url('${withBase('/theme/counter-one-bg-img-1.webp')}')`}
-    ></div>
-    <div class="container counter-one__grid">
-      {
-        counters.map((c, i) => (
-          <div class="counter-one__item reveal" style={`transition-delay:${i * 80}ms`}>
-            <div class="counter-one__single">
-              <div class="counter-one__top">
-                <div class="counter-one__shape" />
-                <div class="counter-one__icon" set:html={counterIcons[c.icon] ?? ''} />
-              </div>
-              <div class="counter-one__count-box">
-                <div class="counter-one__number">
-                  <span data-count={c.value}>0</span>
-                  {c.unit && <span class="counter-one__unit">{c.unit}</span>}
-                </div>
-                <p class="counter-one__label">{c.label}</p>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- WHY CHOOSE -->
-  <section class="why-one">
-    <div
-      class="why-one__bg"
-      data-parallax
-      style={`background-image:url('${withBase('/images/stairs.webp')}')`}
-    ></div>
-    <div class="container why-one__inner">
-      <div class="reveal">
-        <h2>Pourquoi choisir West Coast Residence ?</h2>
-      </div>
-      <ul class="why-one__points reveal">
-        {
-          whyPoints.map((item, i) => (
-            <li>
-              <span>{String(i + 1).padStart(2, '0')}</span>
-              {item.title}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
   <!-- APARTMENTS / TYPOLOGIES -->
   <section class="apartment-one">
     <div
@@ -221,7 +177,7 @@ const whyPoints = advantages.slice(0, 6);
     <div class="container container--wide">
       <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Typologies</span>
-        <h2 class="section-title__title">Choisissez votre bien</h2>
+        <h2 class="section-title__title">Un bien pour chaque projet</h2>
       </div>
       <div class="apartment-grid">
         {
@@ -236,16 +192,98 @@ const whyPoints = advantages.slice(0, 6);
               </div>
               <span class="apartment-card__badge">{item.surface}</span>
               <div class="apartment-card__body">
-                <h3>
-                  {item.title}
-                  <br />
-                  {item.price}
-                </h3>
+                <div>
+                  <h3>
+                    {item.title}
+                    <br />
+                    {item.price}
+                  </h3>
+                  <p class="apartment-card__hook">{item.hook}</p>
+                </div>
                 <span class="apartment-card__arrow" aria-hidden="true">→</span>
               </div>
             </a>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <KeyFigures />
+
+  <!-- WHY CHOOSE -->
+  <section class="why-one">
+    <div
+      class="why-one__bg"
+      data-parallax
+      style={`background-image:url('${withBase('/images/stairs.webp')}')`}
+    ></div>
+    <div class="container why-one__inner">
+      <div class="why-one__head reveal">
+        <span class="section-title__tagline">Nos atouts</span>
+        <h2>Pourquoi choisir West Coast Residence ?</h2>
+        <p class="why-one__note">
+          Six raisons concrètes, dans une résidence qui existe déjà.
+        </p>
+        <div class="cta-row">
+          <a
+            class="thm-btn thm-btn--base"
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Écrivez-nous sur WhatsApp
+          </a>
+        </div>
+      </div>
+      <ol class="why-one__list reveal">
+        {
+          whyPoints.map((item, i) => (
+            <li class="why-one__item" style={`transition-delay:${i * 70}ms`}>
+              <span class="why-one__num">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- PARCOURS D'ACHAT -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title section-title--center reveal">
+        <span class="section-title__tagline">Votre achat</span>
+        <h2 class="section-title__title">Un parcours simple, en 3 étapes</h2>
+      </div>
+      <ol class="steps">
+        {
+          steps.map((step) => (
+            <li class="step">
+              <span class="step__num" data-parallax-num={step.drift}>
+                {step.num}
+              </span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="cta-row steps__cta">
+        <a
+          class="thm-btn thm-btn--base"
+          href={whatsappUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Écrivez-nous sur WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -272,12 +310,61 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
+  <!-- LOCALISATION -->
+  <section class="section loc-section">
+    <div class="container split">
+      <div class="reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Localisation</span>
+          <h2 class="section-title__title">Mohammedia, bien placé sur l'axe Casa-Rabat</h2>
+        </div>
+        <p class="loc-section__lead">
+          Mohammedia offre un bon compromis entre calme et accessibilité, à
+          proximité de Casablanca et sur l'axe vers Rabat. West Coast Residence
+          se trouve Boulevard Hassan II.
+        </p>
+        <div class="cta-row">
+          <a
+            class="thm-btn thm-btn--base"
+            href={site.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Itinéraire sur Google Maps
+          </a>
+        </div>
+      </div>
+      <aside class="loc-card reveal">
+        <div class="loc-card__head">
+          <span class="loc-card__kicker">Adresse</span>
+          <p class="loc-card__address">{site.address}</p>
+        </div>
+        <ul class="loc-card__list">
+          <li>
+            <span class="loc-card__icon" set:html={iconLayers} />
+            <div>
+              <strong>Axe Casa–Rabat</strong>
+              <p>Accès rapide à Casablanca et Rabat depuis le Bd Hassan II.</p>
+            </div>
+          </li>
+          <li>
+            <span class="loc-card__icon" set:html={iconDrop} />
+            <div>
+              <strong>À proximité</strong>
+              <p>Plages et centre-ville de Mohammedia.</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
   <!-- BLOG -->
   <section class="section">
     <div class="container">
       <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Guides</span>
-        <h2 class="section-title__title">Bien acheter à Mohammedia</h2>
+        <h2 class="section-title__title">Nos guides pour bien acheter à Mohammedia</h2>
       </div>
       <div class="news-grid">
         {
@@ -306,7 +393,7 @@ const whyPoints = advantages.slice(0, 6);
                   <div class="news-card__content">
                     <ul class="news-card__meta">
                       <li>
-                        <span set:html={tagIcon} />
+                        <span set:html={iconTag} />
                         Guide immobilier
                       </li>
                     </ul>
@@ -357,5 +444,42 @@ const whyPoints = advantages.slice(0, 6);
       play();
     });
     play();
+  }
+
+  const stepsRoot = document.querySelector('.steps');
+  if (stepsRoot) {
+    document.documentElement.classList.add('steps-js');
+    const steps = Array.from(stepsRoot.querySelectorAll('.step'));
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const desk = window.innerWidth >= 900;
+      const rect = stepsRoot.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = rect.height + vh * 0.5;
+      let p = (vh - rect.top + vh * 0.15) / total;
+      p = Math.max(0, Math.min(1, p));
+
+      steps.forEach((el, i) => {
+        const seg = Math.max(0, Math.min(1, p * steps.length - i));
+        const rise = (1 - seg) * 44;
+        const base = desk ? i * 48 : 0;
+        const y = base + rise;
+        el.style.opacity = String(seg);
+        el.style.transform = `translateY(${y.toFixed(1)}px)`;
+      });
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
   }
 </script>

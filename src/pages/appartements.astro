@@ -5,6 +5,13 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
+import {
+  iconBuilding,
+  iconCheck,
+  iconGem,
+  iconKey,
+  iconMoney,
+} from '../utils/icons';
 ---
 
 <BaseLayout
@@ -32,6 +39,16 @@ import { whatsappUrl } from '../data/site';
     </div>
   </PageHero>
 
+  <section class="section page-toc-section">
+    <div class="container">
+      <nav class="page-toc reveal" aria-label="Sommaire de la page">
+        <a href="#studios">Studios</a>
+        <a href="#appartements-familiaux">Appartements familiaux</a>
+        <a href="#paiement">Paiement</a>
+      </nav>
+    </div>
+  </section>
+
   <section class="section" id="studios">
     <div class="container content-block">
       <div class="media-frame content-block__media reveal">
@@ -48,6 +65,7 @@ import { whatsappUrl } from '../data/site';
         </div>
         <ul class="list-check">
           <li>Surfaces : 36 à 53 m²</li>
+          <li>56 studios disponibles au total</li>
           <li>Idéal pour : premier achat, investissement locatif, jeunes actifs</li>
           <li>
             Éligible à l'aide de l'État Daam Sakane (jusqu'à 70 000 DH, sous
@@ -95,6 +113,7 @@ import { whatsappUrl } from '../data/site';
         </div>
         <ul class="list-check">
           <li>Surfaces : 65 à 114 m²</li>
+          <li>16 appartements familiaux disponibles au total</li>
           <li>
             Idéal pour : familles, résidence secondaire, Marocains résidant à
             l'étranger
@@ -120,7 +139,40 @@ import { whatsappUrl } from '../data/site';
     </div>
   </section>
 
-  <section class="section feature-list-section">
+  <!-- PRESTATIONS & FINITIONS INCLUSES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Prestations</span>
+        <h2 class="section-title__title">Ce qui est déjà fait pour vous</h2>
+      </div>
+      <ul class="icon-list icon-list--duo reveal">
+        <li>
+          <span class="icon" set:html={iconGem} />
+          <div>
+            <strong>Finitions soignées</strong>
+            <p>Marbre et carrelage dans les parties communes, façade avec verrières.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconKey} />
+          <div>
+            <strong>Logement prêt à l'usage</strong>
+            <p>Menuiserie et sanitaires posés, prêt à vivre dès la remise des clés.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconBuilding} />
+          <div>
+            <strong>Parties communes terminées</strong>
+            <p>Hall, ascenseur et accès sécurisé déjà en place.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--primary feature-list-section">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Avantages</span>
@@ -139,6 +191,44 @@ import { whatsappUrl } from '../data/site';
     </div>
   </section>
 
+  <!-- MODALITÉS DE PAIEMENT -->
+  <section class="section" id="paiement">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Paiement</span>
+        <h2 class="section-title__title">
+          Un paiement simplifié, parce que le bien est déjà livré
+        </h2>
+      </div>
+      <div class="info-panel reveal">
+        <p class="info-panel__lead">
+          Contrairement à un achat sur plan, il n'y a pas d'échéancier lié à
+          l'avancement des travaux. En pratique :
+        </p>
+        <ul class="icon-list">
+          <li>
+            <span class="icon" set:html={iconMoney} />
+            <div>
+              <strong>Acompte à la réservation</strong>
+              <p>Un montant fixe pour bloquer le lot choisi.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconCheck} />
+            <div>
+              <strong>Solde à la signature</strong>
+              <p>Le reste est réglé chez le notaire, remise des clés immédiate.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <p class="icon-list__fine">
+        L'échéancier exact et le montant des charges de copropriété vous sont
+        communiqués directement selon le bien qui vous intéresse.
+      </p>
+    </div>
+  </section>
+
   <section class="section section--primary">
     <div class="container reveal">
       <div class="section-title">
@@ -152,6 +242,7 @@ import { whatsappUrl } from '../data/site';
               <th>Typologie</th>
               <th>Surfaces</th>
               <th>À partir de</th>
+              <th>Disponibilité</th>
             </tr>
           </thead>
           <tbody>
@@ -159,11 +250,13 @@ import { whatsappUrl } from '../data/site';
               <td>Studio</td>
               <td>36–53 m²</td>
               <td>500 000 DH</td>
+              <td>56 unités</td>
             </tr>
             <tr>
               <td>Appartement 2–3 chambres</td>
               <td>65–114 m²</td>
               <td>sur demande</td>
+              <td>16 unités</td>
             </tr>
           </tbody>
         </table>

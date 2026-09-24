@@ -161,27 +161,43 @@ const fontsHref =
       );
       counters.forEach((c) => countIo.observe(c));
 
-      // Light parallax (rAF-throttled) on why section
-      const whyBg = document.querySelector(
-        '[data-parallax]'
-      ) as HTMLElement | null;
-      if (whyBg) {
-        let parallaxQueued = false;
+      // Parallax layers — photo backgrounds + drifting step numerals
+      const layers = Array.from(
+        document.querySelectorAll('[data-parallax], [data-parallax-num]')
+      );
+      if (layers.length) {
+        let layerQueued = false;
+        const drawLayers = () => {
+          for (const el of layers) {
+            const host = el.closest('section') || el.parentElement;
+            if (!host) continue;
+            const rect = host.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) continue;
+            const off =
+              (rect.top + rect.height / 2 - window.innerHeight / 2) /
+              window.innerHeight;
+            if (el.hasAttribute('data-parallax')) {
+              const speed = parseFloat(el.dataset.parallaxSpeed || '0.2');
+              el.style.transform = `translateY(${
+                off * speed * window.innerHeight * -1
+              }px) scale(1.1)`;
+            } else {
+              const speed = parseFloat(el.dataset.parallaxNum || '0.15');
+              el.style.transform = `translateY(${off * speed * 300}px)`;
+            }
+          }
+          layerQueued = false;
+        };
         window.addEventListener(
           'scroll',
           () => {
-            if (parallaxQueued) return;
-            parallaxQueued = true;
-            requestAnimationFrame(() => {
-              const rect = whyBg.parentElement?.getBoundingClientRect();
-              if (rect) {
-                whyBg.style.transform = `translateY(${rect.top * -0.2}px) scale(1.1)`;
-              }
-              parallaxQueued = false;
-            });
+            if (layerQueued) return;
+            layerQueued = true;
+            requestAnimationFrame(drawLayers);
           },
           { passive: true }
         );
+        drawLayers();
       }
     </script>
   </body>

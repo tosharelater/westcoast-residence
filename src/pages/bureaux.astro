@@ -5,6 +5,17 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
+import {
+  iconArrowOut,
+  iconBlueprint,
+  iconBriefcase,
+  iconBuilding,
+  iconDrop,
+  iconMoney,
+  iconScales,
+  iconTag,
+  iconUsers,
+} from '../utils/icons';
 ---
 
 <BaseLayout
@@ -15,8 +26,8 @@ import { whatsappUrl } from '../data/site';
   <PageHero
     title="Bureau à Vendre à Mohammedia, à partir de 650 000 DH"
     subtitle="Des bureaux prêts à l'emploi, dans une résidence déjà livrée, pour professions libérales, PME et investisseurs."
-    image={withBase("/images/interior-15.webp")}
-    alt="Espace bureau West Coast Residence Mohammedia"
+    image={withBase("/images/facade-angle.webp")}
+    alt="Façade bureaux West Coast Residence Mohammedia"
   >
     <div class="cta-row">
       <a
@@ -48,16 +59,80 @@ import { whatsappUrl } from '../data/site';
         </div>
         <ul class="list-check">
           <li>Livraison immédiate, aménagement possible dès l'achat</li>
+          <li>40 bureaux disponibles au total</li>
           <li>Emplacement Bd Hassan II, Mohammedia</li>
           <li>
             Adapté aux professions libérales (médecin, avocat, comptable), PME,
             ou investissement locatif professionnel
           </li>
         </ul>
-        <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
-          Investir à Mohammedia →
-        </a>
       </div>
+    </div>
+  </section>
+
+  <!-- AMÉNAGEMENT & CONFIGURATION -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Configuration</span>
+        <h2 class="section-title__title">Un espace qui s'adapte à votre activité</h2>
+      </div>
+      <ul class="icon-list icon-list--duo reveal">
+        <li>
+          <span class="icon" set:html={iconBlueprint} />
+          <div>
+            <strong>Plateau modulable</strong>
+            <p>Cloisonnable en plusieurs bureaux ou aménageable en open space.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconArrowOut} />
+          <div>
+            <strong>Circulation dédiée</strong>
+            <p>Accès et circulation pensés pour un usage professionnel.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconDrop} />
+          <div>
+            <strong>Sanitaires</strong>
+            <p>Privatifs ou communs selon le lot, à préciser sur place.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROFILS D'ACTIVITÉ ADAPTÉS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Profils</span>
+        <h2 class="section-title__title">Pour qui sont ces bureaux ?</h2>
+      </div>
+      <ul class="icon-list icon-list--duo reveal">
+        <li>
+          <span class="icon" set:html={iconUsers} />
+          <div>
+            <strong>Professions libérales</strong>
+            <p>Médecin, avocat, comptable, notaire.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconBuilding} />
+          <div>
+            <strong>PME et petites structures</strong>
+            <p>Équipes administratives et commerciales.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconMoney} />
+          <div>
+            <strong>Investisseurs</strong>
+            <p>Bien livré, à louer immédiatement à un professionnel.</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -77,6 +152,76 @@ import { whatsappUrl } from '../data/site';
         <li>Accès facile depuis Casablanca et Rabat</li>
         <li>Aucun risque de retard de chantier, le bien est terminé</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- RENDEMENT LOCATIF POUR INVESTISSEURS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Rentabilité</span>
+        <h2 class="section-title__title">Un bureau, un actif qui travaille</h2>
+      </div>
+      <div class="info-panel reveal">
+        <p class="info-panel__lead">
+          À Mohammedia, la demande de bureaux reste portée par le développement
+          de l'axe Casa-Rabat. Un bureau déjà livré peut être loué immédiatement,
+          sans attendre la fin d'un chantier, contrairement à la plupart des
+          programmes concurrents encore en construction.
+        </p>
+        <p style="margin:0">
+          <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
+            Lire : investir à Mohammedia →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARGES & DOCUMENTS -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Documents</span>
+        <h2 class="section-title__title">Ce que vous achetez, concrètement</h2>
+      </div>
+      <div class="info-panel reveal">
+        <ul class="icon-list">
+          <li>
+            <span class="icon" set:html={iconBriefcase} />
+            <div>
+              <strong>Lot de copropriété à usage de bureau</strong>
+              <p>Bien vendu en pleine propriété.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconScales} />
+            <div>
+              <strong>Règlement de copropriété</strong>
+              <p>Disponible sur demande avant toute décision.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconTag} />
+            <div>
+              <strong>Charges communes applicables</strong>
+              <p>Le montant exact vous est communiqué selon le lot visé.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="cta-row">
+        <a
+          class="thm-btn thm-btn--base"
+          href={whatsappUrl(
+            'Bonjour, je souhaite organiser une visite pour un bureau à West Coast Residence.'
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Organiser une visite
+        </a>
+      </div>
     </div>
   </section>
 

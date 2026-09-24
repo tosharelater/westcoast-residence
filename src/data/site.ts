@@ -52,7 +52,7 @@ export const typologies = [
     title: 'Appartements',
     price: 'sur demande',
     surface: '65 à 114 m²',
-    hook: 'Pour les familles et résidences secondaires',
+    hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
     image: withBase('/images/interior-22.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
@@ -62,7 +62,7 @@ export const typologies = [
     title: 'Commerces',
     price: 'emplacement passant',
     surface: '58 à 119 m²',
-    hook: "En pied d'immeuble",
+    hook: 'Emplacement en pied d’immeuble',
     href: withBase('/commerces'),
     image: withBase('/images/commerce.webp'),
     alt: 'Local commercial à vendre à Mohammedia, West Coast Residence',
@@ -81,28 +81,34 @@ export const typologies = [
 
 export const advantages = [
   {
+    icon: 'delivered',
     title: 'Chantier livré',
     text: 'Prêt à visiter et à habiter immédiatement, zéro risque de retard.',
   },
   {
+    icon: 'everything',
     title: 'Tout en un seul endroit',
     text: 'Studios, appartements, bureaux et commerces réunis.',
   },
   {
+    icon: 'finishes',
     title: 'Finitions soignées',
     text: 'Marbre, verrières, façade moderne.',
   },
   {
+    icon: 'state-aid',
     title: "Aide de l'État possible",
     text: "Jusqu'à 70 000 DH via Daam Sakane pour les biens éligibles.",
   },
   {
+    icon: 'whatsapp',
     title: 'Réponse rapide sur WhatsApp',
     text: 'On vous répond vite, tous les jours.',
   },
   {
+    icon: 'emplacement',
     title: 'Emplacement stratégique',
-    text: 'À Mohammedia, sur l\'axe Casablanca–Rabat.',
+    text: "À Mohammedia, sur l'axe Casablanca–Rabat.",
   },
 ];
 

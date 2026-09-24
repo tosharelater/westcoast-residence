@@ -5,6 +5,14 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
+import {
+  iconArrowOut,
+  iconDrop,
+  iconScales,
+  iconStore,
+  iconTag,
+  iconWindow,
+} from '../utils/icons';
 ---
 
 <BaseLayout
@@ -41,7 +49,8 @@ import { whatsappUrl } from '../data/site';
       <p class="proof-panel__text">
         Un commerce de West Coast Residence a déjà été vendu à plus de
         <strong>2 200 000 DH</strong>. La preuve que l'emplacement attire, avant
-        même la fin de la commercialisation.
+        même la fin de la commercialisation, sur un total de seulement
+        <strong>8 commerces</strong> disponibles dans tout le programme.
       </p>
       <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
         Lire : investir à Mohammedia →
@@ -65,6 +74,7 @@ import { whatsappUrl } from '../data/site';
         </div>
         <ul class="list-check">
           <li>Vitrine en pied d'immeuble</li>
+          <li>8 commerces disponibles au total</li>
           <li>Livraison immédiate, aucun délai</li>
           <li>
             Adapté à tout commerce de proximité (restauration, services,
@@ -72,6 +82,59 @@ import { whatsappUrl } from '../data/site';
           </li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- CARACTÉRISTIQUES TECHNIQUES -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Fiche technique</span>
+        <h2 class="section-title__title">Des locaux prêts à exploiter</h2>
+      </div>
+      <ul class="icon-list icon-list--duo reveal">
+        <li>
+          <span class="icon" set:html={iconWindow} />
+          <div>
+            <strong>Vitrine sur rue</strong>
+            <p>Visibilité directe depuis le Bd Hassan II.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconDrop} />
+          <div>
+            <strong>Eau et électricité en place</strong>
+            <p>Arrivées prêtes, raccordement immédiat.</p>
+          </div>
+        </li>
+        <li>
+          <span class="icon" set:html={iconArrowOut} />
+          <div>
+            <strong>Accès dédié</strong>
+            <p>Entrée indépendante des parties résidentielles.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="icon-list__fine">
+        Hauteur sous plafond et puissance électrique à confirmer local par local
+        : le détail complet se donne sur place, lors de la visite.
+      </p>
+    </div>
+  </section>
+
+  <!-- ACTIVITÉS ADAPTÉES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Usages</span>
+        <h2 class="section-title__title">Quel commerce installer ici ?</h2>
+      </div>
+      <ul class="tag-list reveal">
+        <li>Commerce de proximité : supérette, boulangerie, pressing</li>
+        <li>Restauration rapide, café</li>
+        <li>Santé : pharmacie, cabinet paramédical</li>
+        <li>Services : agence, coiffure, esthétique</li>
+      </ul>
     </div>
   </section>
 
@@ -86,6 +149,75 @@ import { whatsappUrl } from '../data/site';
         <li>Zone en développement à Mohammedia</li>
         <li>Bien déjà terminé, exploitable ou louable immédiatement</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- RENDEMENT LOCATIF POTENTIEL -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Rentabilité</span>
+        <h2 class="section-title__title">Un investissement, pas juste un achat</h2>
+      </div>
+      <div class="info-panel reveal">
+        <p class="info-panel__lead">
+          Comme pour les logements, la rentabilité locative commerciale à
+          Mohammedia profite d'un quartier en développement, animé dès le départ
+          par la mixité de la résidence elle-même.
+        </p>
+        <p style="margin:0">
+          <a class="content-block__link" href={withBase("/blog/investir-mohammedia")}>
+            Lire : investir à Mohammedia →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUT JURIDIQUE & DOCUMENTS -->
+  <section class="section section--primary">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-title__tagline">Documents</span>
+        <h2 class="section-title__title">Ce que vous achetez, concrètement</h2>
+      </div>
+      <div class="info-panel reveal">
+        <ul class="icon-list">
+          <li>
+            <span class="icon" set:html={iconStore} />
+            <div>
+              <strong>Lot de copropriété à usage commercial</strong>
+              <p>Bien vendu en pleine propriété, comme un lot résidentiel.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconScales} />
+            <div>
+              <strong>Règlement de copropriété</strong>
+              <p>Disponible sur demande avant toute décision.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon" set:html={iconTag} />
+            <div>
+              <strong>Charges communes applicables</strong>
+              <p>Le montant exact vous est communiqué selon le lot visé.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="cta-row">
+        <a
+          class="thm-btn thm-btn--base"
+          href={whatsappUrl(
+            'Bonjour, je souhaite une visite pour un local commercial à West Coast Residence.'
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Réserver une visite
+        </a>
+      </div>
     </div>
   </section>
 
