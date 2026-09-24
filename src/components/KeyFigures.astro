@@ -7,6 +7,12 @@ import {
   iconTag,
 } from '../utils/icons';
 
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
 interface Figure {
   value: number;
   unit?: string;
@@ -25,11 +31,13 @@ const figures: Figure[] = [
   {
     value: 40,
     label: 'bureaux',
+    note: '45 à 107 m² · dès 650 000 DH',
     icon: iconBriefcase,
   },
   {
     value: 8,
     label: 'commerces',
+    note: "58 à 119 m² · pied d'immeuble",
     icon: iconStore,
   },
   {
@@ -42,7 +50,7 @@ const figures: Figure[] = [
 ];
 ---
 
-<section class="counter-one">
+<section class:list={['counter-one', className]}>
   <div
     class="counter-one__bg"
     style={`background-image:url('${withBase('/theme/counter-one-bg-img-1.webp')}')`}

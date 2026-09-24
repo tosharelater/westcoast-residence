@@ -33,7 +33,6 @@ export const nav = [
   { href: withBase('/bureaux'), label: 'Bureaux' },
   { href: withBase('/blog'), label: 'Blog' },
   { href: withBase('/faq'), label: 'FAQ' },
-  { href: withBase('/contact'), label: 'Contact' },
 ];
 
 export const typologies = [
@@ -54,7 +53,7 @@ export const typologies = [
     surface: '65 à 114 m²',
     hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
-    image: withBase('/images/interior-22.webp'),
+    image: withBase('/images/interior-27.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
   },
   {

@@ -67,13 +67,13 @@ const postDateMeta = (date: string) => {
 };
 
 const gallery = [
-  { src: withBase('/images/facade-angle.webp'), alt: 'Façade West Coast Residence', tall: true },
-  { src: withBase('/images/hall.webp'), alt: 'Hall West Coast Residence' },
-  { src: withBase('/images/interior-22.webp'), alt: 'Salon appartement' },
-  { src: withBase('/images/bathroom.webp'), alt: 'Salle de bain' },
+  { src: withBase('/images/hero-facade.webp'), alt: 'Façade West Coast Residence', tall: true },
+  { src: withBase('/images/stairs.webp'), alt: 'Escalier marbre West Coast Residence' },
+  { src: withBase('/images/interior-27.webp'), alt: 'Salon appartement' },
+  { src: withBase('/images/bedroom.webp'), alt: 'Chambre West Coast Residence' },
   { src: withBase('/images/commerce.webp'), alt: 'Commerces rez-de-chaussée' },
-  { src: withBase('/images/interior-08.webp'), alt: 'Intérieur studio' },
-  { src: withBase('/images/interior-26.webp'), alt: 'Séjour lumineux West Coast Residence', wide: true },
+  { src: withBase('/images/hall.webp'), alt: 'Hall West Coast Residence' },
+  { src: withBase('/images/interior-45.webp'), alt: 'Séjour lumineux West Coast Residence', wide: true },
 ];
 
 const posts = blogPosts.slice(0, 3);
@@ -121,7 +121,7 @@ const whyPoints = advantages.slice(0, 6);
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp
+          Discuter maintenant
         </a>
         <a class="thm-btn thm-btn--ghost" href={withBase('/programme')}>
           Voir le programme
@@ -172,10 +172,6 @@ const whyPoints = advantages.slice(0, 6);
 
   <!-- APARTMENTS / TYPOLOGIES -->
   <section class="apartment-one">
-    <div
-      class="apartment-one__bg"
-      style={`background-image:url('${withBase('/theme/apartment-one-bg.webp')}')`}
-    ></div>
     <div class="container container--wide">
       <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Typologies</span>
@@ -199,6 +195,7 @@ const whyPoints = advantages.slice(0, 6);
               <div class="apartment-card__body">
                 <div>
                   <h3>{item.title}</h3>
+                  <p class="apartment-card__hook">{item.hook}</p>
                 </div>
                 <span class="apartment-card__arrow" aria-hidden="true">→</span>
               </div>
@@ -233,7 +230,7 @@ const whyPoints = advantages.slice(0, 6);
             target="_blank"
             rel="noopener noreferrer"
           >
-            Écrivez-nous sur WhatsApp
+            Poser une question
           </a>
         </div>
       </div>
@@ -282,14 +279,14 @@ const whyPoints = advantages.slice(0, 6);
           target="_blank"
           rel="noopener noreferrer"
         >
-          Écrivez-nous sur WhatsApp
+          Organiser une visite
         </a>
       </div>
     </div>
   </section>
 
   <!-- GALLERY -->
-  <section class="gallery-one">
+  <section class="gallery-one section--tight-bottom">
     <div class="container">
       <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Galerie</span>
@@ -311,7 +308,7 @@ const whyPoints = advantages.slice(0, 6);
   </section>
 
   <!-- BLOG -->
-  <section class="section">
+  <section class="section section--tight-top section--tight-bottom">
     <div class="container">
       <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Guides</span>
@@ -364,7 +361,7 @@ const whyPoints = advantages.slice(0, 6);
   </section>
 
   <!-- LOCALISATION -->
-  <section class="section loc-section">
+  <section class="section loc-section section--tight-top">
     <div class="container split">
       <div class="reveal">
         <div class="section-title">
@@ -390,7 +387,11 @@ const whyPoints = advantages.slice(0, 6);
       <aside class="loc-card reveal">
         <div class="loc-card__head">
           <span class="loc-card__kicker">Adresse</span>
-          <p class="loc-card__address">{site.address}</p>
+          <p class="loc-card__address">
+            <a href={site.mapsLink} target="_blank" rel="noopener noreferrer"
+              >{site.address}</a
+            >
+          </p>
         </div>
         <ul class="loc-card__list">
           <li>
@@ -414,7 +415,7 @@ const whyPoints = advantages.slice(0, 6);
 
   <MapSection />
 
-  <ContactForm pageSource="accueil" />
+  <ContactForm pageSource="accueil" whatsappLabel="Réponse rapide" />
 </BaseLayout>
 
 <script>

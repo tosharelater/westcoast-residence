@@ -6,13 +6,38 @@ import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
 import {
-  iconArrowOut,
+  iconChat,
+  iconDoor,
   iconDrop,
   iconScales,
   iconStore,
   iconTag,
+  iconUsers,
   iconWindow,
 } from '../utils/icons';
+
+const usages = [
+  {
+    icon: iconStore,
+    title: 'Commerce de proximité',
+    text: 'Supérette, boulangerie, pressing — le quotidien du quartier.',
+  },
+  {
+    icon: iconChat,
+    title: 'Restauration & café',
+    text: 'Restauration rapide, café, snack — un flux du midi déjà là.',
+  },
+  {
+    icon: iconDrop,
+    title: 'Santé & bien-être',
+    text: 'Pharmacie, cabinet paramédical, soins de proximité.',
+  },
+  {
+    icon: iconUsers,
+    title: 'Services',
+    text: 'Agence, coiffure, esthétique — des métiers qui ont besoin de vitrine.',
+  },
+];
 ---
 
 <BaseLayout
@@ -43,7 +68,6 @@ import {
   <section class="section section--primary">
     <div class="container proof-panel reveal">
       <div class="section-title">
-        <span class="section-title__tagline">Preuve de valeur</span>
         <h2 class="section-title__title">Un emplacement qui a déjà convaincu</h2>
       </div>
       <p class="proof-panel__text">
@@ -86,13 +110,13 @@ import {
   </section>
 
   <!-- CARACTÉRISTIQUES TECHNIQUES -->
-  <section class="section section--primary">
+  <section class="section section--primary section--tight-bottom">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Fiche technique</span>
         <h2 class="section-title__title">Des locaux prêts à exploiter</h2>
       </div>
-      <ul class="icon-list icon-list--duo reveal">
+      <ul class="icon-list icon-list--trio reveal">
         <li>
           <span class="icon" set:html={iconWindow} />
           <div>
@@ -108,7 +132,7 @@ import {
           </div>
         </li>
         <li>
-          <span class="icon" set:html={iconArrowOut} />
+          <span class="icon" set:html={iconDoor} />
           <div>
             <strong>Accès dédié</strong>
             <p>Entrée indépendante des parties résidentielles.</p>
@@ -123,37 +147,90 @@ import {
   </section>
 
   <!-- ACTIVITÉS ADAPTÉES -->
-  <section class="section">
+  <section class="section section--tight-top">
     <div class="container">
-      <div class="section-title reveal">
+      <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Usages</span>
         <h2 class="section-title__title">Quel commerce installer ici ?</h2>
       </div>
-      <ul class="tag-list reveal">
-        <li>Commerce de proximité : supérette, boulangerie, pressing</li>
-        <li>Restauration rapide, café</li>
-        <li>Santé : pharmacie, cabinet paramédical</li>
-        <li>Services : agence, coiffure, esthétique</li>
+      <p class="usage-grid__lead reveal">
+        Des surfaces pensées pour des activités de proximité, avec vitrine sur rue
+        et flux résidentiel + bureaux au même endroit.
+      </p>
+      <ul class="usage-grid reveal">
+        {
+          usages.map((u, i) => (
+            <li style={`transition-delay:${i * 70}ms`}>
+              <span class="usage-grid__icon" set:html={u.icon} />
+              <div>
+                <h3>{u.title}</h3>
+                <p>{u.text}</p>
+              </div>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
 
-  <section class="section section--primary feature-list-section">
+  <section class="section feature-list-section section--tight-bottom">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Investissement</span>
         <h2 class="section-title__title">Un quartier vivant, pas juste un local</h2>
       </div>
-      <ul class="list-check reveal">
-        <li>Résidentiel + bureaux au même endroit → flux de passage garanti</li>
-        <li>Zone en développement à Mohammedia</li>
-        <li>Bien déjà terminé, exploitable ou louable immédiatement</li>
+      <ul class="invest-cards reveal">
+        <li>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/facade-angle.webp')}
+              alt="Façade West Coast Residence"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">01</span>
+          <h3>Flux de passage garanti</h3>
+          <p>Résidentiel + bureaux au même endroit — une clientèle déjà sur place.</p>
+        </li>
+        <li>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/interior-45.webp')}
+              alt="Quartier Mohammedia en développement"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">02</span>
+          <h3>Zone en développement</h3>
+          <p>Mohammedia sur l’axe Casa–Rabat, un quartier qui continue de croître.</p>
+        </li>
+        <li>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/commerce.webp')}
+              alt="Local commercial prêt à exploiter"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">03</span>
+          <h3>Exploitable immédiatement</h3>
+          <p>Bien déjà terminé — à ouvrir ou à louer dès la signature.</p>
+        </li>
       </ul>
     </div>
   </section>
 
   <!-- RENDEMENT LOCATIF POTENTIEL -->
-  <section class="section">
+  <section class="section section--tight-top">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Rentabilité</span>
@@ -228,8 +305,7 @@ import {
     showTypology={false}
     showSurface
     compact
-    overlap
   />
 
-  <MapSection overlap />
+  <MapSection />
 </BaseLayout>

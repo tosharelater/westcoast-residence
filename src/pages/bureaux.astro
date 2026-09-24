@@ -6,10 +6,10 @@ import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
 import {
-  iconArrowOut,
   iconBlueprint,
   iconBriefcase,
   iconBuilding,
+  iconCorridor,
   iconDrop,
   iconMoney,
   iconScales,
@@ -77,7 +77,7 @@ import {
         <span class="section-title__tagline">Configuration</span>
         <h2 class="section-title__title">Un espace qui s'adapte à votre activité</h2>
       </div>
-      <ul class="icon-list icon-list--duo reveal">
+      <ul class="icon-list icon-list--trio reveal">
         <li>
           <span class="icon" set:html={iconBlueprint} />
           <div>
@@ -86,7 +86,7 @@ import {
           </div>
         </li>
         <li>
-          <span class="icon" set:html={iconArrowOut} />
+          <span class="icon" set:html={iconCorridor} />
           <div>
             <strong>Circulation dédiée</strong>
             <p>Accès et circulation pensés pour un usage professionnel.</p>
@@ -110,7 +110,7 @@ import {
         <span class="section-title__tagline">Profils</span>
         <h2 class="section-title__title">Pour qui sont ces bureaux ?</h2>
       </div>
-      <ul class="icon-list icon-list--duo reveal">
+      <ul class="icon-list icon-list--trio reveal">
         <li>
           <span class="icon" set:html={iconUsers} />
           <div>
@@ -144,13 +144,55 @@ import {
           Un cadre professionnel, pas un simple bureau
         </h2>
       </div>
-      <ul class="list-check reveal">
+      <ul class="invest-cards reveal">
         <li>
-          Résidence mixte : commerces et logements au même endroit, donc passage
-          et visibilité
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/commerce.webp')}
+              alt="Résidence mixte West Coast"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">01</span>
+          <h3>Résidence mixte</h3>
+          <p>
+            Commerces et logements au même endroit — passage et visibilité au
+            quotidien.
+          </p>
         </li>
-        <li>Accès facile depuis Casablanca et Rabat</li>
-        <li>Aucun risque de retard de chantier, le bien est terminé</li>
+        <li>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/facade-angle.webp')}
+              alt="Accès Casa–Rabat"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">02</span>
+          <h3>Accès Casa–Rabat</h3>
+          <p>Emplacement Bd Hassan II, accès facile depuis Casablanca et Rabat.</p>
+        </li>
+        <li>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/hall.webp')}
+              alt="Bureau déjà terminé"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <span class="invest-cards__num">03</span>
+          <h3>Bien déjà terminé</h3>
+          <p>Aucun risque de retard de chantier — le bureau est livré et prêt.</p>
+        </li>
       </ul>
     </div>
   </section>
@@ -232,8 +274,7 @@ import {
     showTypology={false}
     showActivity
     compact
-    overlap
   />
 
-  <MapSection overlap />
+  <MapSection />
 </BaseLayout>

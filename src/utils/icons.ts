@@ -71,6 +71,14 @@ export const iconArrowOut = svg(
   '<path d="M12 5v14M5 12h9M11 8l4 4-4 4"/><path d="M15 5h4v4"/>'
 );
 
+export const iconDoor = svg(
+  '<path d="M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><circle cx="13.5" cy="12" r="1"/>'
+);
+
+export const iconCorridor = svg(
+  '<path d="M4 3v18M20 3v18"/><path d="M4 12h10"/><path d="M11 8l4 4-4 4"/>'
+);
+
 export const iconBlueprint = svg(
   '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>'
 );

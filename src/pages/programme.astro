@@ -160,9 +160,9 @@ const gallery = [
   </section>
 
   <!-- CHIFFRES CLÉS -->
-  <KeyFigures />
+  <KeyFigures class="section--tight-bottom" />
 
-  <section class="section">
+  <section class="section section--tight-top">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Offre</span>
@@ -335,28 +335,7 @@ const gallery = [
     </div>
   </section>
 
-  <ContactForm pageSource="programme" compact overlap />
-
   <MapSection />
 
-  <section class="section">
-    <div class="container visit-cta reveal">
-      <div class="section-title section-title--center">
-        <span class="section-title__tagline">Visite</span>
-        <h2 class="section-title__title">Envie de visiter ?</h2>
-      </div>
-      <p>Le chantier est livré. Organisez votre visite dès cette semaine.</p>
-      <div class="cta-row">
-        <a
-          class="thm-btn thm-btn--base"
-          href={whatsappUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp
-        </a>
-        <a class="thm-btn" href={withBase("/contact")}>Page contact</a>
-      </div>
-    </div>
-  </section>
+  <ContactForm pageSource="programme" compact overlap />
 </BaseLayout>

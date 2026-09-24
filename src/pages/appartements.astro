@@ -5,13 +5,7 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
-import {
-  iconBuilding,
-  iconCheck,
-  iconGem,
-  iconKey,
-  iconMoney,
-} from '../utils/icons';
+import { iconCheck, iconMoney } from '../utils/icons';
 ---
 
 <BaseLayout
@@ -38,16 +32,6 @@ import {
       </a>
     </div>
   </PageHero>
-
-  <section class="section page-toc-section">
-    <div class="container">
-      <nav class="page-toc reveal" aria-label="Sommaire de la page">
-        <a href="#studios">Studios</a>
-        <a href="#appartements-familiaux">Appartements familiaux</a>
-        <a href="#paiement">Paiement</a>
-      </nav>
-    </div>
-  </section>
 
   <section class="section" id="studios">
     <div class="container content-block">
@@ -139,40 +123,99 @@ import {
     </div>
   </section>
 
-  <!-- PRESTATIONS & FINITIONS INCLUSES -->
   <section class="section">
+    <div class="container reveal">
+      <div class="section-title">
+        <span class="section-title__tagline">Récapitulatif</span>
+        <h2 class="section-title__title">Typologies disponibles</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Typologie</th>
+              <th>Surfaces</th>
+              <th>À partir de</th>
+              <th>Disponibilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Studio</td>
+              <td>36–53 m²</td>
+              <td>500 000 DH</td>
+              <td>56 unités</td>
+            </tr>
+            <tr>
+              <td>Appartement 2–3 chambres</td>
+              <td>65–114 m²</td>
+              <td>sur demande</td>
+              <td>16 unités</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESTATIONS & FINITIONS INCLUSES -->
+  <section class="section section--primary">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Prestations</span>
         <h2 class="section-title__title">Ce qui est déjà fait pour vous</h2>
       </div>
-      <ul class="icon-list icon-list--duo reveal">
+      <ul class="invest-cards reveal">
         <li>
-          <span class="icon" set:html={iconGem} />
-          <div>
-            <strong>Finitions soignées</strong>
-            <p>Marbre et carrelage dans les parties communes, façade avec verrières.</p>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/stairs.webp')}
+              alt="Finitions marbre et verrières"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
+          <span class="invest-cards__num">01</span>
+          <h3>Finitions soignées</h3>
+          <p>Marbre et carrelage dans les parties communes, façade avec verrières.</p>
         </li>
         <li>
-          <span class="icon" set:html={iconKey} />
-          <div>
-            <strong>Logement prêt à l'usage</strong>
-            <p>Menuiserie et sanitaires posés, prêt à vivre dès la remise des clés.</p>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/bathroom.webp')}
+              alt="Logement prêt à l'usage"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
+          <span class="invest-cards__num">02</span>
+          <h3>Logement prêt à l'usage</h3>
+          <p>Menuiserie et sanitaires posés, prêt à vivre dès la remise des clés.</p>
         </li>
         <li>
-          <span class="icon" set:html={iconBuilding} />
-          <div>
-            <strong>Parties communes terminées</strong>
-            <p>Hall, ascenseur et accès sécurisé déjà en place.</p>
+          <div class="invest-cards__media">
+            <img
+              src={withBase('/images/hall.webp')}
+              alt="Parties communes terminées"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
+          <span class="invest-cards__num">03</span>
+          <h3>Parties communes terminées</h3>
+          <p>Hall, ascenseur et accès sécurisé déjà en place.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="section section--primary feature-list-section">
+  <section class="section feature-list-section">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Avantages</span>
@@ -192,7 +235,7 @@ import {
   </section>
 
   <!-- MODALITÉS DE PAIEMENT -->
-  <section class="section" id="paiement">
+  <section class="section section--primary" id="paiement">
     <div class="container">
       <div class="section-title reveal">
         <span class="section-title__tagline">Paiement</span>
@@ -229,48 +272,12 @@ import {
     </div>
   </section>
 
-  <section class="section section--primary">
-    <div class="container reveal">
-      <div class="section-title">
-        <span class="section-title__tagline">Récapitulatif</span>
-        <h2 class="section-title__title">Typologies disponibles</h2>
-      </div>
-      <div class="table-wrap">
-        <table class="data">
-          <thead>
-            <tr>
-              <th>Typologie</th>
-              <th>Surfaces</th>
-              <th>À partir de</th>
-              <th>Disponibilité</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Studio</td>
-              <td>36–53 m²</td>
-              <td>500 000 DH</td>
-              <td>56 unités</td>
-            </tr>
-            <tr>
-              <td>Appartement 2–3 chambres</td>
-              <td>65–114 m²</td>
-              <td>sur demande</td>
-              <td>16 unités</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <ContactForm
     title="Demander une visite"
     text="Indiquez votre typologie préférée, on vous rappelle rapidement."
     pageSource="appartements"
     compact
-    overlap
   />
 
-  <MapSection overlap />
+  <MapSection />
 </BaseLayout>

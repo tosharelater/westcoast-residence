@@ -14,6 +14,7 @@
   --wc-max: 1200px;
   --wc-wide: 1600px;
   --nav-h: 96px;
+  --section-pad: clamp(80px, 9vw, 110px);
 }
 
 *,
@@ -149,7 +150,7 @@ p {
 .thm-btn--ghost {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.35);
-  padding: 12px 40px 8px;
+  padding: 14px 28px;
 }
 
 .thm-btn--ghost::before {
@@ -157,11 +158,11 @@ p {
 }
 
 .thm-btn--whatsapp {
-  background: #25d366;
+  background: var(--wc-base);
 }
 
 .thm-btn--whatsapp::before {
-  background: #1ebe57;
+  background: var(--wc-black);
 }
 
 .cta-row {
@@ -208,8 +209,16 @@ p {
 }
 
 .section {
-  padding: 100px 0;
+  padding: var(--section-pad) 0;
   position: relative;
+}
+
+.section--tight-top {
+  padding-top: clamp(32px, 4vw, 52px);
+}
+
+.section--tight-bottom {
+  padding-bottom: clamp(32px, 4vw, 52px);
 }
 
 section[id] {
@@ -339,7 +348,7 @@ section[id] {
 .form-note {
   font-size: 13px;
   color: var(--wc-gray);
-  margin: 0;
+  margin: 0 0 18px;
 }
 
 .form-success {

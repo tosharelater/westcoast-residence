@@ -18,7 +18,9 @@ const pathname =
       </div>
       <div class="header-top__right">
         <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
-        <span>{site.address}</span>
+        <a href={site.mapsLink} target="_blank" rel="noopener noreferrer"
+          >{site.address}</a
+        >
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </div>
     </div>
@@ -59,13 +61,8 @@ const pathname =
     </nav>
 
     <div class="header-actions">
-      <a
-        class="thm-btn thm-btn--base"
-        href={whatsappUrl()}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Visite
+      <a class="thm-btn thm-btn--base" href={withBase('/contact')}>
+        Contact
       </a>
       <button class="nav-burger" type="button" aria-label="Menu" data-nav-open>
         <span></span>
@@ -94,8 +91,11 @@ const pathname =
       ))
     }
   </ul>
+  <a class="thm-btn thm-btn--base" href={withBase('/contact')}>
+    Contact
+  </a>
   <a
-    class="thm-btn thm-btn--base"
+    class="thm-btn thm-btn--whatsapp"
     href={whatsappUrl()}
     target="_blank"
     rel="noopener noreferrer"
