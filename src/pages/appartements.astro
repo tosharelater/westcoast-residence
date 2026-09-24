@@ -5,15 +5,16 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
+import { iconCheck, iconMoney } from '../utils/icons';
 
 const paiementSteps = [
   {
-    num: '01',
+    icon: iconMoney,
     title: 'Acompte à la réservation',
     text: 'Un montant fixe pour bloquer le bien choisi.',
   },
   {
-    num: '02',
+    icon: iconCheck,
     title: 'Solde à la signature',
     text: 'Le reste est réglé chez le notaire, remise des clés immédiate.',
   },
@@ -28,8 +29,8 @@ const paiementSteps = [
   <PageHero
     title="Studios et Appartements à Vendre à Mohammedia"
     subtitle="Du studio à l'appartement familial, dans une résidence déjà terminée. À partir de 500 000 DH."
-    image={withBase("/images/bedroom.webp")}
-    alt="Intérieur appartement West Coast Residence"
+    image={withBase("/images/apt-living.webp")}
+    alt="Séjour lumineux West Coast Residence Mohammedia"
   >
     <div class="cta-row">
       <a
@@ -49,8 +50,8 @@ const paiementSteps = [
     <div class="container content-block">
       <div class="media-frame content-block__media reveal">
         <img
-          src={withBase("/images/interior-08.webp")}
-          alt="Studio à vendre à Mohammedia, West Coast Residence"
+          src={withBase("/images/apt-bedroom.webp")}
+          alt="Chambre studio West Coast Residence Mohammedia"
           loading="lazy"
          width="1600" height="1067" decoding="async" />
       </div>
@@ -95,8 +96,8 @@ const paiementSteps = [
     <div class="container content-block content-block--reverse">
       <div class="media-frame content-block__media reveal">
         <img
-          src={withBase("/images/interior-22.webp")}
-          alt="Appartement familial à vendre à Mohammedia"
+          src={withBase("/images/apt-salon.webp")}
+          alt="Salon appartement familial West Coast Residence"
           loading="lazy"
          width="1600" height="1067" decoding="async" />
       </div>
@@ -181,8 +182,8 @@ const paiementSteps = [
         <li>
           <div class="invest-cards__media">
             <img
-              src={withBase('/images/stairs.webp')}
-              alt="Finitions marbre et verrières"
+              src={withBase('/images/apt-finitions.webp')}
+              alt="Finitions bois et éclairage West Coast Residence"
               width="800"
               height="600"
               loading="lazy"
@@ -196,8 +197,8 @@ const paiementSteps = [
         <li>
           <div class="invest-cards__media">
             <img
-              src={withBase('/images/bathroom.webp')}
-              alt="Logement prêt à l'usage"
+              src={withBase('/images/apt-bathroom.webp')}
+              alt="Salle de bain prête à l'usage"
               width="800"
               height="600"
               loading="lazy"
@@ -211,8 +212,8 @@ const paiementSteps = [
         <li>
           <div class="invest-cards__media">
             <img
-              src={withBase('/images/hall.webp')}
-              alt="Parties communes terminées"
+              src={withBase('/images/apt-entree.webp')}
+              alt="Entrée et parties communes West Coast Residence"
               width="800"
               height="600"
               loading="lazy"
@@ -249,27 +250,25 @@ const paiementSteps = [
   <!-- MODALITÉS DE PAIEMENT -->
   <section class="section section--primary" id="paiement">
     <div class="container">
-      <div class="section-title section-title--center reveal">
+      <div class="section-title reveal">
         <span class="section-title__tagline">Paiement</span>
         <h2 class="section-title__title">
           Un paiement simplifié, parce que le bien est déjà livré
         </h2>
       </div>
-      <p class="steps-lead reveal">
-        Contrairement à un achat sur plan, il n'y a pas d'échéancier lié à
-        l'avancement des travaux. En pratique :
-      </p>
-      <ol class="steps steps--duo reveal">
+      <ul class="icon-list icon-list--duo reveal">
         {
-          paiementSteps.map((step) => (
-            <li class="step">
-              <span class="step__num">{step.num}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
+          paiementSteps.map((item) => (
+            <li>
+              <span class="icon" set:html={item.icon} />
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </div>
             </li>
           ))
         }
-      </ol>
+      </ul>
       <p class="icon-list__fine">
         L'échéancier exact et le montant des charges de copropriété vous sont
         communiqués directement selon le bien qui vous intéresse.

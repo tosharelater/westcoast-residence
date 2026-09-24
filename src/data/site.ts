@@ -43,7 +43,7 @@ export const typologies = [
     surface: '36 à 53 m²',
     hook: 'Idéal premier achat',
     href: withBase('/appartements') + '#studios',
-    image: withBase('/images/bedroom.webp'),
+    image: withBase('/images/apt-bedroom.webp'),
     alt: 'Studio à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -53,7 +53,7 @@ export const typologies = [
     surface: '65 à 114 m²',
     hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
-    image: withBase('/images/interior-27.webp'),
+    image: withBase('/images/apt-salon.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
   },
   {

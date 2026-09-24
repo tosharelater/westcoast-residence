@@ -62,21 +62,21 @@ const blocks = [
     title: 'Appartements & Studios',
     surface: '36 à 114 m²',
     href: withBase('/appartements'),
-    image: withBase('/images/bedroom.webp'),
+    image: withBase('/images/apt-living.webp'),
     alt: 'Appartements et studios West Coast Residence Mohammedia',
   },
   {
     title: 'Commerces',
     surface: '58 à 119 m²',
     href: withBase('/commerces'),
-    image: withBase('/images/commerce.webp'),
+    image: withBase('/images/commerce-rue.webp'),
     alt: "Commerces en pied d'immeuble West Coast Residence",
   },
   {
     title: 'Bureaux',
     surface: '45 à 107 m²',
     href: withBase('/bureaux'),
-    image: withBase('/images/interior-15.webp'),
+    image: withBase('/images/bureau-espace.webp'),
     alt: 'Bureaux à vendre West Coast Residence Mohammedia',
   },
 ];
@@ -104,9 +104,9 @@ const gallery = [
   { src: withBase('/images/facade-angle.webp'), alt: 'Façade West Coast Residence Mohammedia' },
   { src: withBase('/images/hall.webp'), alt: "Hall d'entrée West Coast Residence" },
   { src: withBase('/images/stairs.webp'), alt: 'Escalier marbre West Coast Residence' },
-  { src: withBase('/images/interior-22.webp'), alt: 'Intérieur appartement West Coast Residence' },
-  { src: withBase('/images/bathroom.webp'), alt: 'Salle de bain West Coast Residence' },
-  { src: withBase('/images/commerce.webp'), alt: 'Commerces rez-de-chaussée West Coast Residence' },
+  { src: withBase('/images/apt-salon.webp'), alt: 'Salon appartement West Coast Residence' },
+  { src: withBase('/images/apt-kitchen.webp'), alt: 'Cuisine West Coast Residence' },
+  { src: withBase('/images/apt-bathroom.webp'), alt: 'Salle de bain West Coast Residence' },
 ];
 ---
 
@@ -269,7 +269,7 @@ const gallery = [
               class="media-frame inner-gallery__item reveal"
               style={`transition-delay:${i * 60}ms`}
             >
-              <img src={g.src} alt={g.alt} loading="lazy"  width="1600" height="1067" decoding="async" />
+              <img src={g.src} alt={g.alt} loading="lazy" width="1600" height="1067" decoding="async" />
             </div>
           ))
         }
