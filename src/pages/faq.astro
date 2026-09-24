@@ -100,26 +100,29 @@ const schema = {
 
   .faq__group h2 {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 14px;
-    margin: 0 0 1.1rem;
+    margin: 0 0 0.35rem;
+    padding: 14px 18px;
     font-family: var(--wc-font-display);
-    font-size: clamp(1.6rem, 2.6vw, 2rem);
+    font-size: clamp(1.45rem, 2.4vw, 1.85rem);
     font-weight: 500;
     line-height: 1.2;
     color: var(--wc-black);
+    background: var(--wc-primary);
+    border-left: 3px solid var(--wc-base);
   }
 
   .faq__group-num {
     font-family: var(--wc-font);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.14em;
     color: var(--wc-base);
   }
 
   .faq__list {
-    border-top: 1px solid rgba(var(--wc-black-rgb), 0.12);
+    border-top: 0;
   }
 
   details {
