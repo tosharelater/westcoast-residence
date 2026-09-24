@@ -17,6 +17,24 @@ import {
   iconTerrasse,
 } from '../utils/icons';
 
+const garanties = [
+  {
+    icon: iconScales,
+    title: "Titre foncier et permis d'habiter",
+    text: 'Disponibles pour consultation avant toute décision.',
+  },
+  {
+    icon: iconCheck,
+    title: 'Accompagnement notarial',
+    text: 'Nous vous accompagnons dans les démarches, de la réservation à la signature.',
+  },
+  {
+    icon: iconShield,
+    title: 'Résidence déjà réceptionnée',
+    text: "Aucun risque de retard de livraison, contrairement à un achat sur plan.",
+  },
+];
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Residence',
@@ -99,7 +117,7 @@ const gallery = [
   whatsappMessage="Bonjour, je souhaite en savoir plus sur le programme West Coast Residence à Mohammedia."
 >
   <PageHero
-    title="West Coast Residence, une résidence déjà livrée à Mohammedia"
+    title="Une résidence déjà livrée à Mohammedia"
     subtitle="Boulevard Hassan II, Mohammedia. Deux immeubles, un seul objectif : vous permettre de vivre, travailler ou investir sans attendre."
     image={withBase("/images/facade-angle.webp")}
     alt="Façade principale West Coast Residence"
@@ -140,6 +158,18 @@ const gallery = [
           bureaux et commerces au même endroit, pour créer un vrai lieu de vie
           plutôt qu'un simple immeuble.
         </p>
+        <div>
+          <a
+            class="thm-btn"
+            href={whatsappUrl(
+              'Bonjour, je souhaite en savoir plus sur le programme West Coast Residence à Mohammedia.'
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Découvrir le programme
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -208,10 +238,6 @@ const gallery = [
           ))
         }
       </ul>
-      <p class="icon-list__fine">
-        Prestations complémentaires (gardiennage, vidéosurveillance) en cours
-        de validation avec le promoteur.
-      </p>
     </div>
   </section>
 
@@ -258,31 +284,19 @@ const gallery = [
         <span class="section-title__tagline">Garanties</span>
         <h2 class="section-title__title">Un achat sécurisé</h2>
       </div>
-      <div class="info-panel reveal">
-        <ul class="icon-list">
-          <li>
-            <span class="icon" set:html={iconScales} />
-            <div>
-              <strong>Titre foncier et permis d'habiter</strong>
-              <p>Disponibles pour consultation avant toute décision.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconCheck} />
-            <div>
-              <strong>Accompagnement notarial</strong>
-              <p>Nous vous accompagnons dans les démarches, de la réservation à la signature.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconShield} />
-            <div>
-              <strong>Résidence déjà réceptionnée</strong>
-              <p>Aucun risque de retard de livraison, contrairement à un achat sur plan.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <ul class="icon-list icon-list--trio reveal">
+        {
+          garanties.map((item) => (
+            <li>
+              <span class="icon" set:html={item.icon} />
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 

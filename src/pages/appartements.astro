@@ -5,7 +5,19 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
-import { iconCheck, iconMoney } from '../utils/icons';
+
+const paiementSteps = [
+  {
+    num: '01',
+    title: 'Acompte à la réservation',
+    text: 'Un montant fixe pour bloquer le bien choisi.',
+  },
+  {
+    num: '02',
+    title: 'Solde à la signature',
+    text: 'Le reste est réglé chez le notaire, remise des clés immédiate.',
+  },
+];
 ---
 
 <BaseLayout
@@ -237,34 +249,27 @@ import { iconCheck, iconMoney } from '../utils/icons';
   <!-- MODALITÉS DE PAIEMENT -->
   <section class="section section--primary" id="paiement">
     <div class="container">
-      <div class="section-title reveal">
+      <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Paiement</span>
         <h2 class="section-title__title">
           Un paiement simplifié, parce que le bien est déjà livré
         </h2>
       </div>
-      <div class="info-panel reveal">
-        <p class="info-panel__lead">
-          Contrairement à un achat sur plan, il n'y a pas d'échéancier lié à
-          l'avancement des travaux. En pratique :
-        </p>
-        <ul class="icon-list">
-          <li>
-            <span class="icon" set:html={iconMoney} />
-            <div>
-              <strong>Acompte à la réservation</strong>
-              <p>Un montant fixe pour bloquer le lot choisi.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconCheck} />
-            <div>
-              <strong>Solde à la signature</strong>
-              <p>Le reste est réglé chez le notaire, remise des clés immédiate.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <p class="steps-lead reveal">
+        Contrairement à un achat sur plan, il n'y a pas d'échéancier lié à
+        l'avancement des travaux. En pratique :
+      </p>
+      <ol class="steps steps--duo reveal">
+        {
+          paiementSteps.map((step) => (
+            <li class="step">
+              <span class="step__num">{step.num}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
       <p class="icon-list__fine">
         L'échéancier exact et le montant des charges de copropriété vous sont
         communiqués directement selon le bien qui vous intéresse.

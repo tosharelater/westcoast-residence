@@ -3,12 +3,18 @@ import { site } from '../data/site';
 
 interface Props {
   overlap?: boolean;
+  colored?: boolean;
 }
 
-const { overlap = false } = Astro.props;
+const { overlap = false, colored = false } = Astro.props;
 ---
 
-<section class:list={['google-map', { 'google-map--overlap': overlap }]}>
+<section
+  class:list={[
+    'google-map',
+    { 'google-map--overlap': overlap, 'google-map--colored': colored },
+  ]}
+>
   <iframe
     class="google-map__one"
     title="Carte West Coast Residence Mohammedia"
@@ -18,30 +24,3 @@ const { overlap = false } = Astro.props;
     allowfullscreen
   />
 </section>
-
-<style>
-  .google-map {
-    position: relative;
-    display: block;
-    background-color: var(--wc-primary);
-  }
-
-  /* Homepage: slide up under the dark contact form box (Alipes-style) */
-  .google-map--overlap {
-    margin-top: -230px;
-  }
-
-  @media (max-width: 991px) {
-    .google-map--overlap {
-      margin-top: 0;
-    }
-  }
-
-  .google-map__one {
-    display: block;
-    border: none;
-    height: 475px;
-    width: 100%;
-    mix-blend-mode: luminosity;
-  }
-</style>

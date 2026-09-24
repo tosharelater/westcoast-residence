@@ -74,32 +74,64 @@ const pathname =
 </header>
 
 <div class="mobile-nav" data-nav-panel>
-  <button
-    class="mobile-nav__close"
-    type="button"
-    aria-label="Fermer"
-    data-nav-close
-  >
-    ×
-  </button>
-  <ul>
-    {
-      nav.map((item) => (
-        <li>
-          <a href={item.href}>{item.label}</a>
-        </li>
-      ))
-    }
-  </ul>
-  <a class="thm-btn thm-btn--base" href={withBase('/contact')}>
-    Contact
-  </a>
-  <a
-    class="thm-btn thm-btn--whatsapp"
-    href={whatsappUrl()}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Écrire sur WhatsApp
-  </a>
+  <div class="mobile-nav__head">
+    <a class="mobile-nav__brand" href={withBase('/')} aria-label={site.name}>
+      <img
+        src={withBase('/logos/westcoast-logo.webp')}
+        alt="West Coast Residence"
+        width="140"
+        height="44"
+      />
+    </a>
+    <button
+      class="mobile-nav__close"
+      type="button"
+      aria-label="Fermer"
+      data-nav-close
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-nav__body">
+    <ul>
+      {
+        nav.map((item) => {
+          const itemPath = item.href
+            .replace(base, '')
+            .replace(/\/$/, '')
+            .split('#')[0] || '/';
+          const active =
+            itemPath === '/'
+              ? pathname === '/'
+              : pathname === itemPath || pathname.startsWith(`${itemPath}/`);
+          return (
+            <li>
+              <a href={item.href} class:list={[{ 'is-active': active }]}>
+                {item.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <div class="mobile-nav__actions">
+      <a class="thm-btn thm-btn--base" href={withBase('/contact')}>
+        Contact
+      </a>
+      <a
+        class="thm-btn thm-btn--whatsapp"
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Écrire sur WhatsApp
+      </a>
+    </div>
+    <p class="mobile-nav__meta">
+      {site.hours}
+      <br />
+      <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+    </p>
+  </div>
 </div>

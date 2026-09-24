@@ -7,15 +7,30 @@ import MapSection from '../components/MapSection.astro';
 import { whatsappUrl } from '../data/site';
 import {
   iconBlueprint,
-  iconBriefcase,
   iconBuilding,
   iconCorridor,
   iconDrop,
   iconMoney,
-  iconScales,
-  iconTag,
   iconUsers,
 } from '../utils/icons';
+
+const documentSteps = [
+  {
+    num: '01',
+    title: 'Lot de copropriété à usage de bureau',
+    text: 'Bien vendu en pleine propriété.',
+  },
+  {
+    num: '02',
+    title: 'Règlement de copropriété',
+    text: 'Disponible sur demande avant toute décision.',
+  },
+  {
+    num: '03',
+    title: 'Charges communes applicables',
+    text: 'Le montant exact vous est communiqué selon le lot visé.',
+  },
+];
 ---
 
 <BaseLayout
@@ -66,6 +81,18 @@ import {
             ou investissement locatif professionnel
           </li>
         </ul>
+        <div>
+          <a
+            class="thm-btn"
+            href={whatsappUrl(
+              'Bonjour, je veux visiter un bureau à West Coast Residence Mohammedia.'
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Je veux visiter un bureau
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -223,36 +250,22 @@ import {
   <!-- CHARGES & DOCUMENTS -->
   <section class="section section--primary">
     <div class="container">
-      <div class="section-title reveal">
+      <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Documents</span>
         <h2 class="section-title__title">Ce que vous achetez, concrètement</h2>
       </div>
-      <div class="info-panel reveal">
-        <ul class="icon-list">
-          <li>
-            <span class="icon" set:html={iconBriefcase} />
-            <div>
-              <strong>Lot de copropriété à usage de bureau</strong>
-              <p>Bien vendu en pleine propriété.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconScales} />
-            <div>
-              <strong>Règlement de copropriété</strong>
-              <p>Disponible sur demande avant toute décision.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconTag} />
-            <div>
-              <strong>Charges communes applicables</strong>
-              <p>Le montant exact vous est communiqué selon le lot visé.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="cta-row">
+      <ol class="steps reveal">
+        {
+          documentSteps.map((step) => (
+            <li class="step">
+              <span class="step__num">{step.num}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="cta-row steps__cta">
         <a
           class="thm-btn thm-btn--base"
           href={whatsappUrl(

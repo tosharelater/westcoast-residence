@@ -9,9 +9,7 @@ import {
   iconChat,
   iconDoor,
   iconDrop,
-  iconScales,
   iconStore,
-  iconTag,
   iconUsers,
   iconWindow,
 } from '../utils/icons';
@@ -36,6 +34,24 @@ const usages = [
     icon: iconUsers,
     title: 'Services',
     text: 'Agence, coiffure, esthétique — des métiers qui ont besoin de vitrine.',
+  },
+];
+
+const documentSteps = [
+  {
+    num: '01',
+    title: 'Lot de copropriété à usage commercial',
+    text: 'Bien vendu en pleine propriété, comme un lot résidentiel.',
+  },
+  {
+    num: '02',
+    title: 'Règlement de copropriété',
+    text: 'Disponible sur demande avant toute décision.',
+  },
+  {
+    num: '03',
+    title: 'Charges communes applicables',
+    text: 'Le montant exact vous est communiqué selon le lot visé.',
   },
 ];
 ---
@@ -105,6 +121,18 @@ const usages = [
             commerces de détail)
           </li>
         </ul>
+        <div>
+          <a
+            class="thm-btn"
+            href={whatsappUrl(
+              'Bonjour, je veux visiter un local commercial à West Coast Residence Mohammedia.'
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Je veux visiter un commerce
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -254,36 +282,22 @@ const usages = [
   <!-- STATUT JURIDIQUE & DOCUMENTS -->
   <section class="section section--primary">
     <div class="container">
-      <div class="section-title reveal">
+      <div class="section-title section-title--center reveal">
         <span class="section-title__tagline">Documents</span>
         <h2 class="section-title__title">Ce que vous achetez, concrètement</h2>
       </div>
-      <div class="info-panel reveal">
-        <ul class="icon-list">
-          <li>
-            <span class="icon" set:html={iconStore} />
-            <div>
-              <strong>Lot de copropriété à usage commercial</strong>
-              <p>Bien vendu en pleine propriété, comme un lot résidentiel.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconScales} />
-            <div>
-              <strong>Règlement de copropriété</strong>
-              <p>Disponible sur demande avant toute décision.</p>
-            </div>
-          </li>
-          <li>
-            <span class="icon" set:html={iconTag} />
-            <div>
-              <strong>Charges communes applicables</strong>
-              <p>Le montant exact vous est communiqué selon le lot visé.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="cta-row">
+      <ol class="steps reveal">
+        {
+          documentSteps.map((step) => (
+            <li class="step">
+              <span class="step__num">{step.num}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="cta-row steps__cta">
         <a
           class="thm-btn thm-btn--base"
           href={whatsappUrl(
