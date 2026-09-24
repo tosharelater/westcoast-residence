@@ -21,6 +21,8 @@ import {
 const heroImages = [
   withBase('/images/hall.webp'),
   withBase('/images/hero-facade.webp'),
+  withBase('/images/facade-angle.webp'),
+  withBase('/images/interior-33.webp'),
   withBase('/images/stairs.webp'),
   withBase('/images/bedroom.webp'),
 ];
@@ -179,6 +181,10 @@ const whyPoints = advantages.slice(0, 6);
         <span class="section-title__tagline">Typologies</span>
         <h2 class="section-title__title">Un bien pour chaque projet</h2>
       </div>
+      <p class="apartment-one__lead reveal">
+        Pour professionnels comme pour particuliers, chaque typologie répond à un projet précis
+        — du PME au commerçant, du studio au bureau. Résidence déjà livrée et immédiatement habitable.
+      </p>
       <div class="apartment-grid">
         {
           typologies.map((item, i) => (
@@ -190,15 +196,9 @@ const whyPoints = advantages.slice(0, 6);
               <div class="apartment-card__img">
                 <img src={item.image} alt={item.alt} width="900" height="1200" loading="lazy" decoding="async" />
               </div>
-              <span class="apartment-card__badge">{item.surface}</span>
               <div class="apartment-card__body">
                 <div>
-                  <h3>
-                    {item.title}
-                    <br />
-                    {item.price}
-                  </h3>
-                  <p class="apartment-card__hook">{item.hook}</p>
+                  <h3>{item.title}</h3>
                 </div>
                 <span class="apartment-card__arrow" aria-hidden="true">→</span>
               </div>
@@ -310,55 +310,6 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <!-- LOCALISATION -->
-  <section class="section loc-section">
-    <div class="container split">
-      <div class="reveal">
-        <div class="section-title">
-          <span class="section-title__tagline">Localisation</span>
-          <h2 class="section-title__title">Mohammedia, bien placé sur l'axe Casa-Rabat</h2>
-        </div>
-        <p class="loc-section__lead">
-          Mohammedia offre un bon compromis entre calme et accessibilité, à
-          proximité de Casablanca et sur l'axe vers Rabat. West Coast Residence
-          se trouve Boulevard Hassan II.
-        </p>
-        <div class="cta-row">
-          <a
-            class="thm-btn thm-btn--base"
-            href={site.mapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Itinéraire sur Google Maps
-          </a>
-        </div>
-      </div>
-      <aside class="loc-card reveal">
-        <div class="loc-card__head">
-          <span class="loc-card__kicker">Adresse</span>
-          <p class="loc-card__address">{site.address}</p>
-        </div>
-        <ul class="loc-card__list">
-          <li>
-            <span class="loc-card__icon" set:html={iconLayers} />
-            <div>
-              <strong>Axe Casa–Rabat</strong>
-              <p>Accès rapide à Casablanca et Rabat depuis le Bd Hassan II.</p>
-            </div>
-          </li>
-          <li>
-            <span class="loc-card__icon" set:html={iconDrop} />
-            <div>
-              <strong>À proximité</strong>
-              <p>Plages et centre-ville de Mohammedia.</p>
-            </div>
-          </li>
-        </ul>
-      </aside>
-    </div>
-  </section>
-
   <!-- BLOG -->
   <section class="section">
     <div class="container">
@@ -412,9 +363,58 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <ContactForm pageSource="accueil" overlap />
+  <!-- LOCALISATION -->
+  <section class="section loc-section">
+    <div class="container split">
+      <div class="reveal">
+        <div class="section-title">
+          <span class="section-title__tagline">Localisation</span>
+          <h2 class="section-title__title">Mohammedia, bien placé sur l'axe Casa-Rabat</h2>
+        </div>
+        <p class="loc-section__lead">
+          Mohammedia offre un bon compromis entre calme et accessibilité, à
+          proximité de Casablanca et sur l'axe vers Rabat. West Coast Residence
+          se trouve Boulevard Hassan II.
+        </p>
+        <div class="cta-row">
+          <a
+            class="thm-btn thm-btn--base"
+            href={site.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Itinéraire sur Google Maps
+          </a>
+        </div>
+      </div>
+      <aside class="loc-card reveal">
+        <div class="loc-card__head">
+          <span class="loc-card__kicker">Adresse</span>
+          <p class="loc-card__address">{site.address}</p>
+        </div>
+        <ul class="loc-card__list">
+          <li>
+            <span class="loc-card__icon" set:html={iconLayers} />
+            <div>
+              <strong>Axe Casa–Rabat</strong>
+              <p>Accès rapide à Casablanca et Rabat depuis le Bd Hassan II.</p>
+            </div>
+          </li>
+          <li>
+            <span class="loc-card__icon" set:html={iconDrop} />
+            <div>
+              <strong>À proximité</strong>
+              <p>Plages et centre-ville de Mohammedia.</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-  <MapSection overlap />
+  <MapSection />
+
+  <ContactForm pageSource="accueil" />
 </BaseLayout>
 
 <script>

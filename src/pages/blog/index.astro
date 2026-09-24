@@ -3,9 +3,25 @@ import { withBase } from '../../utils/paths';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import { blogPosts } from '../../data/site';
+import { iconTag } from '../../utils/icons';
 
 const featured = blogPosts.find((p) => p.featured) ?? blogPosts[0];
 const others = blogPosts.filter((p) => p.slug !== featured.slug);
+const posts = [featured, ...others];
+
+const postDateMeta = (date: string) => {
+  const parts = date.split('-').map((n) => Number(n) || 1);
+  const month = parts[1] ?? 1;
+  const day = parts[2] ?? 1;
+  const months = [
+    'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
+    'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc',
+  ];
+  return {
+    day: String(day).padStart(2, '0'),
+    month: months[Math.min(Math.max(month, 1), 12) - 1] ?? 'Jan',
+  };
+};
 ---
 
 <BaseLayout
@@ -22,76 +38,49 @@ const others = blogPosts.filter((p) => p.slug !== featured.slug);
 
   <section class="section">
     <div class="container">
-      <a class="featured reveal" href={withBase(`/blog/${featured.slug}`)}>
-        <div class="media-frame featured__media">
-          <img src={featured.image} alt="" loading="eager"  width="1600" height="1067" decoding="async" />
-        </div>
-        <div>
-          <span class="eyebrow">Article pilier</span>
-          <h2>{featured.title}</h2>
-          <div class="divider"></div>
-          <p>{featured.excerpt}</p>
-          <span class="link">Lire l'article →</span>
-        </div>
-      </a>
-
-      <div class="grid">
+      <div class="news-grid">
         {
-          others.map((post, i) => (
-            <a
-              class="card reveal"
-              href={withBase(`/blog/${post.slug}`)}
-              style={`transition-delay:${i * 80}ms`}
-            >
-              <div class="media-frame card__media">
-                <img src={post.image} alt="" loading="lazy"  width="1600" height="1067" decoding="async" />
-              </div>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <span class="link">Lire →</span>
-            </a>
-          ))
+          posts.map((post, i) => {
+            const d = postDateMeta(post.date);
+            return (
+              <a
+                class="news-card reveal"
+                href={withBase(`/blog/${post.slug}`)}
+                style={`transition-delay:${i * 80}ms`}
+              >
+                <div class="news-card__img-box">
+                  <div class="news-card__img">
+                    <img
+                      src={post.image}
+                      alt=""
+                      width="1200"
+                      height="825"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="news-card__date">
+                    <p>{d.day} {d.month}</p>
+                  </div>
+                  <div class="news-card__content">
+                    <ul class="news-card__meta">
+                      <li>
+                        <span set:html={iconTag} />
+                        Guide immobilier
+                      </li>
+                    </ul>
+                    <h3>{post.title}</h3>
+                    <p class="news-card__excerpt">{post.excerpt}</p>
+                    <div class="news-card__bottom">
+                      <span class="news-card__button">Lire l'article →</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })
         }
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .featured {
-    display: grid;
-    gap: 1.75rem;
-    margin-bottom: clamp(3rem, 6vw, 4.5rem);
-    align-items: center;
-  }
-
-  @media (min-width: 900px) {
-    .featured {
-      grid-template-columns: 1.2fr 1fr;
-    }
-  }
-
-  .featured__media {
-    aspect-ratio: 16 / 11;
-  }
-
-  .grid {
-    display: grid;
-    gap: 1.75rem;
-  }
-
-  @media (min-width: 800px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .card__media {
-    aspect-ratio: 16 / 11;
-    margin-bottom: 1rem;
-  }
-
-  .link {
-    color: var(--bronze-deep);
-  }
-</style>

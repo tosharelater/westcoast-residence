@@ -53,40 +53,7 @@ const schema = {
     </div>
   </PageHero>
 
-  <section class="section section--stone">
-    <div class="container coords reveal">
-      <span class="eyebrow">Coordonnées</span>
-      <h2>Nous trouver</h2>
-      <div class="divider"></div>
-      <ul>
-        <li><strong>Adresse</strong> — {site.address}</li>
-        <li><strong>Email</strong> — <a href={`mailto:${site.email}`}>{site.email}</a></li>
-        <li><strong>Horaires de visite</strong> — {site.hours}</li>
-        <li><strong>WhatsApp</strong> — priorité de réponse</li>
-      </ul>
-    </div>
-  </section>
-
   <ContactForm pageSource="contact" overlap />
 
   <MapSection overlap />
 </BaseLayout>
-
-<style>
-  .coords {
-    max-width: 640px;
-  }
-
-  .coords ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.85rem;
-    color: var(--ink-soft);
-  }
-
-  .coords strong {
-    color: var(--ink);
-  }
-</style>
