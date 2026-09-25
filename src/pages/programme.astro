@@ -49,7 +49,7 @@ const schema = {
   },
   url: `${site.url}/programme`,
   telephone: site.phone,
-  image: `${site.url}/images/hero-facade.webp`,
+  image: `${site.url}/images/facade-sunset.webp`,
   geo: {
     '@type': 'GeoCoordinates',
     latitude: site.geo.latitude,
@@ -62,21 +62,21 @@ const blocks = [
     title: 'Appartements & Studios',
     surface: '36 à 114 m²',
     href: withBase('/appartements'),
-    image: withBase('/images/apt-living.webp'),
+    image: withBase('/images/apt-kitchen.webp'),
     alt: 'Appartements et studios West Coast Residence Mohammedia',
   },
   {
     title: 'Commerces',
     surface: '58 à 119 m²',
     href: withBase('/commerces'),
-    image: withBase('/images/commerce-rue.webp'),
+    image: withBase('/images/commerce-mixte.webp'),
     alt: "Commerces en pied d'immeuble West Coast Residence",
   },
   {
     title: 'Bureaux',
     surface: '45 à 107 m²',
     href: withBase('/bureaux'),
-    image: withBase('/images/bureau-espace.webp'),
+    image: withBase('/images/bureau-work.webp'),
     alt: 'Bureaux à vendre West Coast Residence Mohammedia',
   },
 ];
@@ -101,12 +101,12 @@ const equipments = [
 ];
 
 const gallery = [
-  { src: withBase('/images/facade-angle.webp'), alt: 'Façade West Coast Residence Mohammedia' },
-  { src: withBase('/images/hall.webp'), alt: "Hall d'entrée West Coast Residence" },
-  { src: withBase('/images/stairs.webp'), alt: 'Escalier marbre West Coast Residence' },
-  { src: withBase('/images/apt-salon.webp'), alt: 'Salon appartement West Coast Residence' },
+  { src: withBase('/images/facade-front.webp'), alt: 'Façade West Coast Residence Mohammedia' },
+  { src: withBase('/images/apt-living.webp'), alt: 'Appartement West Coast Residence' },
+  { src: withBase('/images/commerce-life.webp'), alt: 'Commerces West Coast Residence' },
+  { src: withBase('/images/bureau-sym.webp'), alt: 'Bureaux West Coast Residence' },
+  { src: withBase('/images/stairs.webp'), alt: 'Parties communes West Coast Residence' },
   { src: withBase('/images/apt-kitchen.webp'), alt: 'Cuisine West Coast Residence' },
-  { src: withBase('/images/apt-bathroom.webp'), alt: 'Salle de bain West Coast Residence' },
 ];
 ---
 
@@ -119,7 +119,7 @@ const gallery = [
   <PageHero
     title="Une résidence déjà livrée à Mohammedia"
     subtitle="Boulevard Hassan II, Mohammedia. Deux immeubles, un seul objectif : vous permettre de vivre, travailler ou investir sans attendre."
-    image={withBase("/images/facade-angle.webp")}
+    image={withBase("/images/facade-golden.webp")}
     alt="Façade principale West Coast Residence"
   >
     <div class="cta-row">

@@ -17,14 +17,13 @@ import {
   iconTag,
 } from '../utils/icons';
 
-// Le texte du hero vient du brief de contenu et reste FIXE ; seules les images défilent.
+// Une image par typologie — pas 3 façades d'affilée
 const heroImages = [
-  withBase('/images/hall.webp'),
-  withBase('/images/hero-facade.webp'),
-  withBase('/images/facade-angle.webp'),
-  withBase('/images/apt-living.webp'),
-  withBase('/images/stairs.webp'),
-  withBase('/images/apt-bedroom.webp'),
+  withBase('/images/facade-sunset.webp'), // façade
+  withBase('/images/apt-living.webp'), // appartement
+  withBase('/images/commerce-vitrines.webp'), // commerces
+  withBase('/images/bureau-open.webp'), // bureaux
+  withBase('/images/stairs.webp'), // parties communes
 ];
 const heroTitle = 'Appartements et Studios à Vendre à Mohammedia';
 const heroBadge = 'Déjà livré';
@@ -67,13 +66,12 @@ const postDateMeta = (date: string) => {
 };
 
 const gallery = [
-  { src: withBase('/images/hero-facade.webp'), alt: 'Façade West Coast Residence', tall: true },
-  { src: withBase('/images/stairs.webp'), alt: 'Escalier marbre West Coast Residence' },
-  { src: withBase('/images/apt-salon.webp'), alt: 'Salon appartement' },
+  { src: withBase('/images/facade-front.webp'), alt: 'Façade West Coast Residence', tall: true },
+  { src: withBase('/images/apt-salon.webp'), alt: 'Appartement West Coast Residence' },
+  { src: withBase('/images/commerce-cafe.webp'), alt: 'Commerces rez-de-chaussée' },
+  { src: withBase('/images/bureau-aisle.webp'), alt: 'Bureaux West Coast Residence' },
   { src: withBase('/images/apt-bedroom.webp'), alt: 'Chambre West Coast Residence' },
-  { src: withBase('/images/commerce.webp'), alt: 'Commerces rez-de-chaussée' },
-  { src: withBase('/images/apt-entree.webp'), alt: 'Entrée West Coast Residence' },
-  { src: withBase('/images/apt-living.webp'), alt: 'Séjour lumineux West Coast Residence', wide: true },
+  { src: withBase('/images/stairs.webp'), alt: 'Parties communes West Coast Residence', wide: true },
 ];
 
 const posts = blogPosts.slice(0, 3);
@@ -83,7 +81,7 @@ const whyPoints = advantages.slice(0, 6);
 <BaseLayout
   title="Appartements & Studios à Vendre à Mohammedia"
   description="Résidence neuve déjà livrée à Mohammedia : studios, appartements, bureaux et commerces disponibles. Visitez cette semaine, écrivez-nous sur WhatsApp."
-  preloadImage="/images/hall.webp"
+  preloadImage="/images/facade-sunset.webp"
 >
   <!-- MAIN SLIDER -->
   <section class="main-slider" data-hero-slider>
@@ -139,7 +137,7 @@ const whyPoints = advantages.slice(0, 6);
     <div class="container about-one__grid">
       <div class="about-one__media reveal-left">
         <span class="about-one__watermark">West Coast</span>
-        <img class="main" src={withBase("/images/facade-angle.webp")} alt="West Coast Residence Mohammedia" width="1600" height="1067" decoding="async" loading="lazy" />
+        <img class="main" src={withBase("/images/hall.webp")} alt="West Coast Residence Mohammedia" width="1600" height="1067" decoding="async" loading="lazy" />
         </div>
       <div class="reveal">
         <div class="section-title">
@@ -212,7 +210,7 @@ const whyPoints = advantages.slice(0, 6);
     <div
       class="why-one__bg"
       data-parallax
-      style={`background-image:url('${withBase('/images/stairs.webp')}')`}
+      style={`background-image:url('${withBase('/images/bureau-team.webp')}')`}
     ></div>
     <div class="container why-one__inner">
       <div class="why-one__head reveal">

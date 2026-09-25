@@ -53,7 +53,7 @@ export const typologies = [
     surface: '65 à 114 m²',
     hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
-    image: withBase('/images/apt-salon.webp'),
+    image: withBase('/images/apt-chambres.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -63,7 +63,7 @@ export const typologies = [
     surface: '58 à 119 m²',
     hook: 'Emplacement en pied d’immeuble',
     href: withBase('/commerces'),
-    image: withBase('/images/commerce.webp'),
+    image: withBase('/images/commerce-pharmacie.webp'),
     alt: 'Local commercial à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -73,7 +73,7 @@ export const typologies = [
     surface: '45 à 107 m²',
     hook: 'Pour professionnels et PME',
     href: withBase('/bureaux'),
-    image: withBase('/images/interior-15.webp'),
+    image: withBase('/images/bureau-aisle.webp'),
     alt: 'Bureau à vendre à Mohammedia, West Coast Residence',
   },
 ];
@@ -117,7 +117,7 @@ export const blogPosts = [
     title: 'Comment acheter à Mohammedia en 2026',
     excerpt:
       'Les étapes clés pour réussir votre achat immobilier à Mohammedia cette année.',
-    image: withBase('/images/facade-angle.webp'),
+    image: withBase('/images/facade-sunset.webp'),
     featured: true,
     date: '2026-09-01',
     ctaHref: withBase('/appartements'),
@@ -128,7 +128,7 @@ export const blogPosts = [
     title: 'Daam Sakane, le guide complet',
     excerpt:
       "Conditions, montants et biens éligibles : tout comprendre avant de demander l'aide.",
-    image: withBase('/images/hall.webp'),
+    image: withBase('/images/apt-bedroom.webp'),
     featured: false,
     date: '2026-08-20',
     ctaHref: withBase('/appartements') + '#studios',
@@ -139,7 +139,7 @@ export const blogPosts = [
     title: 'Studio ou appartement familial : comment choisir',
     excerpt:
       'Premier achat, famille ou investissement : comment trancher selon votre projet.',
-    image: withBase('/images/bedroom.webp'),
+    image: withBase('/images/apt-living.webp'),
     featured: false,
     date: '2026-08-10',
     ctaHref: withBase('/appartements'),
@@ -150,7 +150,7 @@ export const blogPosts = [
     title: 'Investir à Mohammedia : rendement et opportunités',
     excerpt:
       'Rendement locatif, emplacements et typologies pour investir à Mohammedia.',
-    image: withBase('/images/stairs.webp'),
+    image: withBase('/images/commerce-trottoir.webp'),
     featured: false,
     date: '2026-07-28',
     ctaHref: withBase('/commerces'),

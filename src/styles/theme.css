@@ -2062,7 +2062,7 @@ body.solid-nav .header-top__inner {
 }
 
 .content-block__media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   width: 100%;
 }
 
@@ -2133,7 +2133,7 @@ body.solid-nav .header-top__inner {
 }
 
 .offer-card__media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   margin-bottom: 1rem;
   overflow: hidden;
 }
@@ -2177,7 +2177,7 @@ body.solid-nav .header-top__inner {
 }
 
 .inner-gallery__item {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
 }
 
@@ -3518,7 +3518,7 @@ html.steps-js .step {
 }
 
 .invest-cards__media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: var(--wc-primary);
   margin-bottom: 18px;
