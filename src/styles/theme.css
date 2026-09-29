@@ -1837,6 +1837,13 @@ body.solid-nav .header-top__inner {
   transition: color 500ms ease;
 }
 
+.footer-widget__contact-list-email {
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
 .footer-widget__contact-list .text a:hover {
   color: var(--wc-base);
 }

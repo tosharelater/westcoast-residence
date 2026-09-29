@@ -23,7 +23,7 @@ const heroImages = [
   withBase('/images/apt-living.webp'), // appartement
   withBase('/images/commerce-vitrines.webp'), // commerces
   withBase('/images/bureau-open.webp'), // bureaux
-  withBase('/images/stairs.webp'), // parties communes
+  withBase('/images/entree-immeuble.webp'), // parties communes
 ];
 const heroTitle = 'Appartements et Studios à Vendre à Mohammedia';
 const heroBadge = 'Déjà livré';
@@ -66,12 +66,13 @@ const postDateMeta = (date: string) => {
 };
 
 const gallery = [
-  { src: withBase('/images/facade-front.webp'), alt: 'Façade West Coast Residence', tall: true },
-  { src: withBase('/images/apt-salon.webp'), alt: 'Appartement West Coast Residence' },
-  { src: withBase('/images/commerce-cafe.webp'), alt: 'Commerces rez-de-chaussée' },
-  { src: withBase('/images/bureau-aisle.webp'), alt: 'Bureaux West Coast Residence' },
-  { src: withBase('/images/apt-bedroom.webp'), alt: 'Chambre West Coast Residence' },
-  { src: withBase('/images/stairs.webp'), alt: 'Parties communes West Coast Residence', wide: true },
+  { src: withBase('/images/apt-salon.webp'), alt: 'Appartement témoin West Coast Residence', tall: true },
+  { src: withBase('/images/apt-kitchen.webp'), alt: 'Cuisine appartement témoin West Coast Residence' },
+  { src: withBase('/images/bureau-team.webp'), alt: 'Bureaux West Coast Residence' },
+  { src: withBase('/images/bureau-open.webp'), alt: 'Espace bureau West Coast Residence' },
+  { src: withBase('/images/apt-bedroom.webp'), alt: 'Chambre appartement témoin West Coast Residence' },
+  { src: withBase('/images/apt-finitions.webp'), alt: 'Finitions appartement témoin West Coast Residence', wide: true },
+  { src: withBase('/images/apt-bathroom.webp'), alt: 'Salle de bain appartement témoin West Coast Residence' },
 ];
 
 const posts = blogPosts.slice(0, 3);
@@ -121,8 +122,8 @@ const whyPoints = advantages.slice(0, 6);
         >
           Discuter maintenant
         </a>
-        <a class="thm-btn thm-btn--ghost" href={withBase('/programme')}>
-          Voir le programme
+        <a class="thm-btn thm-btn--ghost" href="#localisation">
+          Localisation
         </a>
       </div>
     </div>
@@ -137,7 +138,7 @@ const whyPoints = advantages.slice(0, 6);
     <div class="container about-one__grid">
       <div class="about-one__media reveal-left">
         <span class="about-one__watermark">West Coast</span>
-        <img class="main" src={withBase("/images/hall.webp")} alt="West Coast Residence Mohammedia" width="1600" height="1067" decoding="async" loading="lazy" />
+        <img class="main" src={withBase("/images/entree-immeuble.webp")} alt="Entrée de West Coast Residence Mohammedia" width="1600" height="1067" decoding="async" loading="lazy" />
         </div>
       <div class="reveal">
         <div class="section-title">
@@ -357,7 +358,7 @@ const whyPoints = advantages.slice(0, 6);
   </section>
 
   <!-- LOCALISATION -->
-  <section class="section loc-section section--tight-top">
+  <section id="localisation" class="section loc-section section--tight-top">
     <div class="container split">
       <div class="reveal">
         <div class="section-title">
@@ -409,7 +410,7 @@ const whyPoints = advantages.slice(0, 6);
     </div>
   </section>
 
-  <MapSection />
+  <MapSection colored />
 
   <ContactForm pageSource="accueil" whatsappLabel="Réponse rapide" />
 </BaseLayout>

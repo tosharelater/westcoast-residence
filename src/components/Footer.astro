@@ -50,7 +50,7 @@ const instagramIcon =
         <div class="footer-widget__about">
           <p class="footer-widget__contact-text">
             Résidence neuve déjà livrée à Mohammedia. Studios, appartements,
-            bureaux et commerces — Boulevard Hassan II.
+            bureaux et commerces. Adresse : {site.address}.
           </p>
         </div>
 
@@ -94,7 +94,9 @@ const instagramIcon =
             <li>
               <span class="icon" set:html={mailIcon} />
               <div class="text">
-                <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+                <p class="footer-widget__contact-list-email">
+                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                </p>
               </div>
             </li>
             <li>

@@ -4,13 +4,13 @@ export const site = {
   name: 'West Coast Residence',
   tagline: 'Mohammedia',
   url: 'https://tosharelater.github.io/westcoast-residence',
-  address: 'Boulevard Hassan II, Mohammedia',
+  address: '43, Boulevard Hassan II, Mohammedia',
   city: 'Mohammedia',
   country: 'Maroc',
   phone: '+212661502502',
-  phoneDisplay: '06 61 50 25 02',
+  phoneDisplay: '06 61 502 502',
   email: 'contact@westcoastresidence.ma', // à renseigner
-  hours: 'Lun – Sam : 10h – 19h',
+  hours: 'Lun – Dim : 10h – 19h',
   whatsapp: '212661502502', // format international sans +
   whatsappDefaultMessage:
     "Bonjour, je m'intéresse à West Coast Residence à Mohammedia.",
@@ -53,7 +53,7 @@ export const typologies = [
     surface: '65 à 114 m²',
     hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
-    image: withBase('/images/apt-chambres.webp'),
+    image: withBase('/images/apt-living.webp'),
     alt: 'Appartement familial à vendre à Mohammedia, West Coast Residence',
   },
   {
@@ -150,7 +150,7 @@ export const blogPosts = [
     title: 'Investir à Mohammedia : rendement et opportunités',
     excerpt:
       'Rendement locatif, emplacements et typologies pour investir à Mohammedia.',
-    image: withBase('/images/commerce-trottoir.webp'),
+    image: withBase('/images/bureau-work.webp'),
     featured: false,
     date: '2026-07-28',
     ctaHref: withBase('/commerces'),

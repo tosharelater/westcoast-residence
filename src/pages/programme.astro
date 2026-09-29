@@ -43,7 +43,7 @@ const schema = {
     'Résidence neuve déjà livrée à Mohammedia : appartements, studios, bureaux et commerces.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Boulevard Hassan II',
+    streetAddress: '43, Boulevard Hassan II',
     addressLocality: 'Mohammedia',
     addressCountry: 'MA',
   },
@@ -69,7 +69,7 @@ const blocks = [
     title: 'Commerces',
     surface: '58 à 119 m²',
     href: withBase('/commerces'),
-    image: withBase('/images/commerce-mixte.webp'),
+    image: withBase('/images/commerce-pharmacie.webp'),
     alt: "Commerces en pied d'immeuble West Coast Residence",
   },
   {
@@ -101,12 +101,12 @@ const equipments = [
 ];
 
 const gallery = [
-  { src: withBase('/images/facade-front.webp'), alt: 'Façade West Coast Residence Mohammedia' },
-  { src: withBase('/images/apt-living.webp'), alt: 'Appartement West Coast Residence' },
-  { src: withBase('/images/commerce-life.webp'), alt: 'Commerces West Coast Residence' },
+  { src: withBase('/images/apt-living.webp'), alt: 'Appartement témoin West Coast Residence' },
+  { src: withBase('/images/apt-bathroom.webp'), alt: 'Salle de bain appartement témoin West Coast Residence' },
+  { src: withBase('/images/bureau-work.webp'), alt: 'Bureaux West Coast Residence' },
   { src: withBase('/images/bureau-sym.webp'), alt: 'Bureaux West Coast Residence' },
-  { src: withBase('/images/stairs.webp'), alt: 'Parties communes West Coast Residence' },
-  { src: withBase('/images/apt-kitchen.webp'), alt: 'Cuisine West Coast Residence' },
+  { src: withBase('/images/apt-kitchen.webp'), alt: 'Cuisine appartement témoin West Coast Residence' },
+  { src: withBase('/images/bureau-fenetre.webp'), alt: 'Espace bureau West Coast Residence' },
 ];
 ---
 
@@ -140,8 +140,8 @@ const gallery = [
     <div class="container content-block">
       <div class="media-frame content-block__media reveal">
         <img
-          src={withBase("/images/stairs.webp")}
-          alt="Espaces communs West Coast Residence Mohammedia"
+          src={withBase("/images/entree-immeuble.webp")}
+          alt="Entrée et espaces communs West Coast Residence Mohammedia"
           loading="lazy"
          width="1600" height="1067" decoding="async" />
       </div>
@@ -349,7 +349,7 @@ const gallery = [
     </div>
   </section>
 
-  <MapSection />
+  <MapSection colored />
 
   <ContactForm pageSource="programme" compact overlap />
 </BaseLayout>
