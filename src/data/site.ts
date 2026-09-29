@@ -3,7 +3,7 @@ import { withBase } from '../utils/paths';
 export const site = {
   name: 'West Coast Residence',
   tagline: 'Mohammedia',
-  url: 'https://tosharelater.github.io/westcoast-residence',
+  url: 'https://westcoast.ma',
   address: '43, Boulevard Hassan II, Mohammedia',
   city: 'Mohammedia',
   country: 'Maroc',

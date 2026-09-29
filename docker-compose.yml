@@ -1,0 +1,7 @@
+services:
+  web:
+    image: westcoast-site:latest
+    container_name: westcoast-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3025:80"

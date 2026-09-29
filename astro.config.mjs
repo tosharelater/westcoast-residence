@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages (org project site)
-const site = 'https://tosharelater.github.io';
-const base = '/westcoast-residence/';
+// Production: https://westcoast.ma (served at domain root)
+const site = 'https://westcoast.ma';
+const base = '/';
 
 export default defineConfig({
   site,

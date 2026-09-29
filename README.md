@@ -4,7 +4,7 @@ Site vitrine Astro pour West Coast Residence (Mohammedia).
 
 ## Public preview
 
-**https://tosharelater.github.io/westcoast-residence/**
+**https://westcoast.ma**
 
 Repo: [tosharelater/westcoast-residence](https://github.com/tosharelater/westcoast-residence)
 
@@ -15,10 +15,10 @@ npm install
 npm run dev
 ```
 
-Dev URL with base path: [http://localhost:4321/westcoast-residence/](http://localhost:4321/westcoast-residence/)
+Dev URL with base path: [http://localhost:4321/](http://localhost:4321/)
 
 ## Stack
 
 - Astro + Swiper
 - Fonts: Crimson Pro + Inter
-- GitHub Pages deploy via Actions
+- Docker (nginx) deployed to VPS via GitHub Actions
