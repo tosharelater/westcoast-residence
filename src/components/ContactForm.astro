@@ -109,7 +109,12 @@ const clockIcon =
           <h2 class="section-title__title">Écrivez-nous</h2>
         </div>
 
-        <form class="form" data-contact-form novalidate>
+        <form
+          class="form"
+          data-contact-form
+          data-whatsapp={site.whatsapp}
+          novalidate
+        >
           <div class="form-fields">
             <input type="hidden" name="page" value={pageSource} />
             <input type="hidden" name="utm_source" data-utm="utm_source" />
@@ -129,6 +134,7 @@ const clockIcon =
                 placeholder="Votre nom"
                 required
                 autocomplete="name"
+                maxlength="80"
               />
             </div>
             <div class="contact-one__input-box">
@@ -141,6 +147,8 @@ const clockIcon =
                 required
                 autocomplete="tel"
                 inputmode="tel"
+                maxlength="20"
+                pattern="^[0-9+()\\s.-]{8,20}$"
               />
             </div>
             <div class="contact-one__input-box">
@@ -151,6 +159,7 @@ const clockIcon =
                 type="email"
                 placeholder="Email"
                 autocomplete="email"
+                maxlength="120"
               />
             </div>
 
@@ -214,6 +223,7 @@ const clockIcon =
                     name="message"
                     rows="4"
                     placeholder="Écrivez votre message"
+                    maxlength="1000"
                   />
                 </div>
               )
@@ -221,21 +231,36 @@ const clockIcon =
 
             <p class="form-note">
               Vos informations sont utilisées uniquement pour vous recontacter au
-              sujet de West Coast Residence.
+              sujet de West Coast Residence. En attendant la mise en ligne du
+              formulaire, l’envoi ouvre WhatsApp avec votre message prérempli.
             </p>
+
+            <div class="hp-field" aria-hidden="true">
+              <label for={`company-${pageSource}`}>Société</label>
+              <input
+                id={`company-${pageSource}`}
+                name="company"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
             <button class="thm-btn contact-one__btn" type="submit">
-              Envoyer un message
+              Continuer sur WhatsApp
             </button>
           </div>
 
           <div class="form-success" role="status">
-            <strong>Merci, nous vous recontactons rapidement.</strong>
+            <strong>Presque terminé.</strong>
             <p style="margin:0.75rem 0 1rem">
-              Vous pouvez aussi nous écrire sur WhatsApp.
+              WhatsApp s’ouvre avec votre demande. Si rien ne s’affiche, utilisez
+              le bouton ci-dessous.
             </p>
             <a
               class="thm-btn thm-btn--whatsapp"
               href={whatsappUrl()}
+              data-whatsapp-fallback
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -295,9 +320,39 @@ const clockIcon =
       event.preventDefault();
       if (!(form instanceof HTMLFormElement)) return;
       if (!form.reportValidity()) return;
-      const data = Object.fromEntries(new FormData(form).entries());
-      console.info('[West Coast lead]', data);
+
+      const data = new FormData(form);
+      // Honeypot: bots filling hidden "company" are ignored.
+      if (String(data.get('company') || '').trim()) return;
+
+      const name = String(data.get('name') || '').trim();
+      const phone = String(data.get('phone') || '').trim();
+      const email = String(data.get('email') || '').trim();
+      const interest = String(data.get('interest') || '').trim();
+      const activity = String(data.get('activity') || '').trim();
+      const surface = String(data.get('surface') || '').trim();
+      const message = String(data.get('message') || '').trim();
+      const page = String(data.get('page') || '').trim();
+
+      const lines = [
+        "Bonjour, je souhaite être recontacté(e) au sujet de West Coast Residence.",
+        name && `Nom : ${name}`,
+        phone && `Téléphone : ${phone}`,
+        email && `Email : ${email}`,
+        interest && `Intérêt : ${interest}`,
+        activity && `Activité : ${activity}`,
+        surface && `Surface : ${surface}`,
+        message && `Message : ${message}`,
+        page && `Page : ${page}`,
+      ].filter(Boolean);
+
+      const waNumber = form.getAttribute('data-whatsapp') || '212661502502';
+      const wa = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+      const fallback = form.querySelector('[data-whatsapp-fallback]');
+      if (fallback instanceof HTMLAnchorElement) fallback.href = wa;
+
       form.classList.add('is-success');
+      window.open(wa, '_blank', 'noopener,noreferrer');
     });
   });
 </script>

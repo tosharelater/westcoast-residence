@@ -1,0 +1,107 @@
+---
+import { withBase } from '../../../utils/paths';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import BlogCategoryNav from '../../../components/BlogCategoryNav.astro';
+import { blogCategories, blogPosts } from '../../../data/site';
+import { iconTag } from '../../../utils/icons';
+
+export function getStaticPaths() {
+  return blogCategories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const posts = blogPosts.filter((p) => p.category === category.slug);
+
+const postDateMeta = (date: string) => {
+  const parts = date.split('-').map((n) => Number(n) || 1);
+  const month = parts[1] ?? 1;
+  const day = parts[2] ?? 1;
+  const months = [
+    'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
+    'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc',
+  ];
+  return {
+    day: String(day).padStart(2, '0'),
+    month: months[Math.min(Math.max(month, 1), 12) - 1] ?? 'Jan',
+  };
+};
+---
+
+<BaseLayout
+  title={`${category.label} — Blog West Coast Residence`}
+  description={category.description}
+>
+  <PageHero
+    title={category.label}
+    subtitle={category.description}
+    image={withBase('/images/facade-dusk.webp')}
+    alt="West Coast Residence Mohammedia"
+    compact
+  />
+
+  <section class="section">
+    <div class="container">
+      <BlogCategoryNav active={category.slug} />
+      {
+        posts.length === 0 ? (
+          <p class="blog-empty">Aucun article dans cette catégorie pour le moment.</p>
+        ) : (
+          <div class="news-grid">
+            {posts.map((post, i) => {
+              const d = postDateMeta(post.date);
+              return (
+                <a
+                  class="news-card reveal"
+                  href={withBase(`/blog/${post.slug}`)}
+                  style={`transition-delay:${i * 80}ms`}
+                >
+                  <div class="news-card__img-box">
+                    <div class="news-card__img">
+                      <img
+                        src={post.image}
+                        alt=""
+                        width="1200"
+                        height="825"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="news-card__date">
+                      <p>
+                        {d.day} {d.month}
+                      </p>
+                    </div>
+                    <div class="news-card__content">
+                      <ul class="news-card__meta">
+                        <li>
+                          <span set:html={iconTag} />
+                          {post.categoryLabel}
+                        </li>
+                      </ul>
+                      <h3>{post.title}</h3>
+                      <p class="news-card__excerpt">{post.excerpt}</p>
+                      <div class="news-card__bottom">
+                        <span class="news-card__button">Lire l'article →</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-empty {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+</style>

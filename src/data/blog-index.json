@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "comment-acheter-un-bien-a-mohammedia",
+    "title": "Comment Acheter un Bien à Mohammedia : le Guide Complet 2026",
+    "excerpt": "Budget, démarches, financement et pièges à éviter pour réussir votre achat immobilier à Mohammedia en 2026.",
+    "date": "2026-09-28",
+    "image": "/images/blog/comment-acheter-un-bien-a-mohammedia.webp",
+    "category": "appartements",
+    "featured": true,
+    "ctaHref": "/appartements",
+    "ctaLabel": "Voir les appartements"
+  },
+  {
+    "slug": "daam-sakane-guide-complet",
+    "title": "Daam Sakane : le Guide Complet pour Bénéficier de l'Aide au Logement",
+    "excerpt": "Conditions, montants et biens concernés : tout comprendre avant de demander l'aide Daam Sakane.",
+    "date": "2026-09-26",
+    "image": "/images/blog/daam-sakane-guide-complet.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/appartements#studios",
+    "ctaLabel": "Voir les studios éligibles"
+  },
+  {
+    "slug": "studio-ou-appartement-familial-comment-choisir",
+    "title": "Acheter un Studio ou Appartement Familial : Comment Choisir ?",
+    "excerpt": "Premier achat, famille ou investissement : comment trancher entre studio et appartement familial.",
+    "date": "2026-09-24",
+    "image": "/images/blog/studio-ou-appartement-familial-comment-choisir.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/appartements",
+    "ctaLabel": "Comparer les typologies"
+  },
+  {
+    "slug": "investir-a-mohammedia-rendement-opportunites",
+    "title": "Investir Immobilier à Mohammedia : Rendement et Opportunités",
+    "excerpt": "Rendement locatif, emplacements et typologies pour investir dans l'immobilier à Mohammedia.",
+    "date": "2026-09-22",
+    "image": "/images/blog/investir-a-mohammedia-rendement-opportunites.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/commerces",
+    "ctaLabel": "Voir les commerces"
+  },
+  {
+    "slug": "guide-mre-acheter-a-mohammedia",
+    "title": "Acheter Immobilier Maroc MRE : le Guide Pratique pour Acheter à Mohammedia depuis l'Étranger",
+    "excerpt": "Procuration, financement et parcours à distance : le guide pratique pour les MRE qui achètent à Mohammedia.",
+    "date": "2026-09-20",
+    "image": "/images/blog/guide-mre-acheter-a-mohammedia.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Parler à un conseiller"
+  },
+  {
+    "slug": "meilleurs-quartiers-mohammedia",
+    "title": "Quel Quartier Mohammedia Choisir pour Vivre ou Investir ?",
+    "excerpt": "Où vivre ou investir à Mohammedia : repères pour choisir le bon quartier selon votre projet.",
+    "date": "2026-09-18",
+    "image": "/images/blog/meilleurs-quartiers-mohammedia.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/programme",
+    "ctaLabel": "Découvrir le programme"
+  },
+  {
+    "slug": "prix-immobilier-mohammedia",
+    "title": "Prix Immobilier Mohammedia 2026 : Combien Coûte un Bien par Quartier ?",
+    "excerpt": "Prix au m², budgets par typologie et repères 2026 pour estimer le coût d'un bien à Mohammedia.",
+    "date": "2026-09-16",
+    "image": "/images/blog/prix-immobilier-mohammedia.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/appartements",
+    "ctaLabel": "Voir les prix d'appel"
+  },
+  {
+    "slug": "acheter-sur-plan-ou-residence-livree",
+    "title": "Acheter sur Plan au Maroc ou dans une Résidence Déjà Livrée : que Choisir ?",
+    "excerpt": "Avantages, risques et délais : comment choisir entre achat sur plan et résidence déjà livrée.",
+    "date": "2026-09-14",
+    "image": "/images/blog/acheter-sur-plan-ou-residence-livree.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/programme",
+    "ctaLabel": "Voir la résidence livrée"
+  },
+  {
+    "slug": "ouvrir-un-commerce-a-mohammedia",
+    "title": "Ouvrir un Commerce à Mohammedia : Comment Bien Choisir son Local Commercial ?",
+    "excerpt": "Emplacement, surface et flux : les critères clés pour bien choisir son local commercial à Mohammedia.",
+    "date": "2026-09-12",
+    "image": "/images/blog/ouvrir-un-commerce-a-mohammedia.webp",
+    "category": "commerces",
+    "featured": false,
+    "ctaHref": "/commerces",
+    "ctaLabel": "Voir les commerces"
+  },
+  {
+    "slug": "commerces-a-vendre-a-mohammedia",
+    "title": "Commerces à Vendre à Mohammedia : Prix, Surfaces et Disponibilités",
+    "excerpt": "Surfaces, prix d'appel et disponibilités pour acheter un commerce à Mohammedia.",
+    "date": "2026-09-10",
+    "image": "/images/blog/commerces-a-vendre-a-mohammedia.webp",
+    "category": "commerces",
+    "featured": false,
+    "ctaHref": "/commerces",
+    "ctaLabel": "Voir les commerces disponibles"
+  },
+  {
+    "slug": "bureau-a-vendre-a-mohammedia",
+    "title": "Bureau à Vendre à Mohammedia : Prix, Surfaces et Disponibilités",
+    "excerpt": "Prix, surfaces et usages : ce qu'il faut savoir avant d'acheter un bureau à Mohammedia.",
+    "date": "2026-09-08",
+    "image": "/images/blog/bureau-a-vendre-a-mohammedia.webp",
+    "category": "bureaux",
+    "featured": false,
+    "ctaHref": "/bureaux",
+    "ctaLabel": "Voir les bureaux"
+  },
+  {
+    "slug": "louer-ou-acheter-bureau-professionnel-mohammedia",
+    "title": "Louer ou Acheter un Bureau Professionnel à Mohammedia : que Choisir ?",
+    "excerpt": "Location ou achat : quel choix pour un cabinet, une profession libérale ou une PME à Mohammedia ?",
+    "date": "2026-09-06",
+    "image": "/images/blog/louer-ou-acheter-bureau-professionnel-mohammedia.webp",
+    "category": "bureaux",
+    "featured": false,
+    "ctaHref": "/bureaux",
+    "ctaLabel": "Voir les bureaux disponibles"
+  },
+  {
+    "slug": "credit-immobilier-maroc",
+    "title": "Crédit Immobilier Maroc : Combien Emprunter pour Acheter à Mohammedia ?",
+    "excerpt": "Taux, capacité d'emprunt et simulation : comment financer un achat immobilier à Mohammedia.",
+    "date": "2026-09-04",
+    "image": "/images/blog/credit-immobilier-maroc.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Discuter de votre projet"
+  }
+]

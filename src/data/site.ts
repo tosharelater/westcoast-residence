@@ -9,12 +9,11 @@ export const site = {
   country: 'Maroc',
   phone: '+212661502502',
   phoneDisplay: '06 61 502 502',
-  email: 'contact@westcoastresidence.ma', // à renseigner
+  email: 'contact@westcoastresidence.ma',
   hours: 'Lun – Dim : 10h – 19h',
-  whatsapp: '212661502502', // format international sans +
+  whatsapp: '212661502502',
   whatsappDefaultMessage:
     "Bonjour, je m'intéresse à West Coast Residence à Mohammedia.",
-  // Embed centré sur la fiche Google Maps "West coast Résidence" (33.693386, -7.3915007)
   mapsEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2500!2d-7.3915007!3d33.693386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7b700723a1f81%3A0x5445e7d6d79be724!2sWest%20coast%20R%C3%A9sidence!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma',
   mapsLink: 'https://maps.app.goo.gl/B1zmS67wkt4D868w5',
@@ -111,52 +110,55 @@ export const advantages = [
   },
 ];
 
-export const blogPosts = [
+import blogIndex from './blog-index.json';
+
+export const blogCategories = [
   {
-    slug: 'acheter-mohammedia-2026',
-    title: 'Comment acheter à Mohammedia en 2026',
-    excerpt:
-      'Les étapes clés pour réussir votre achat immobilier à Mohammedia cette année.',
-    image: withBase('/images/facade-sunset.webp'),
-    featured: true,
-    date: '2026-09-01',
-    ctaHref: withBase('/appartements'),
-    ctaLabel: 'Voir les appartements',
+    slug: 'appartements',
+    label: 'Appartements',
+    description:
+      'Guides pour acheter un studio ou un appartement à Mohammedia : budget, aides et choix de typologie.',
   },
   {
-    slug: 'daam-sakane-guide',
-    title: 'Daam Sakane, le guide complet',
-    excerpt:
-      "Conditions, montants et biens éligibles : tout comprendre avant de demander l'aide.",
-    image: withBase('/images/apt-bedroom.webp'),
-    featured: false,
-    date: '2026-08-20',
-    ctaHref: withBase('/appartements') + '#studios',
-    ctaLabel: 'Voir les studios éligibles',
+    slug: 'bureaux',
+    label: 'Bureaux',
+    description:
+      'Conseils pour acheter ou louer un bureau professionnel à Mohammedia.',
   },
   {
-    slug: 'studio-ou-appartement',
-    title: 'Studio ou appartement familial : comment choisir',
-    excerpt:
-      'Premier achat, famille ou investissement : comment trancher selon votre projet.',
-    image: withBase('/images/apt-living.webp'),
-    featured: false,
-    date: '2026-08-10',
-    ctaHref: withBase('/appartements'),
-    ctaLabel: 'Comparer les typologies',
+    slug: 'commerces',
+    label: 'Commerces',
+    description:
+      'Local commercial, pied d’immeuble et investissement commerce à Mohammedia.',
   },
   {
-    slug: 'investir-mohammedia',
-    title: 'Investir à Mohammedia : rendement et opportunités',
-    excerpt:
-      'Rendement locatif, emplacements et typologies pour investir à Mohammedia.',
-    image: withBase('/images/bureau-work.webp'),
-    featured: false,
-    date: '2026-07-28',
-    ctaHref: withBase('/commerces'),
-    ctaLabel: 'Voir les commerces',
+    slug: 'actualite',
+    label: 'Actualité',
+    description:
+      'Marché immobilier, quartiers, prix et financement à Mohammedia.',
   },
-];
+] as const;
+
+export type BlogCategorySlug = (typeof blogCategories)[number]['slug'];
+
+export function getBlogCategory(slug: string) {
+  return blogCategories.find((c) => c.slug === slug);
+}
+
+export const blogPosts = blogIndex
+  .map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    image: withBase(post.image),
+    category: post.category as BlogCategorySlug,
+    categoryLabel: getBlogCategory(post.category)?.label ?? post.category,
+    featured: post.featured,
+    date: post.date,
+    ctaHref: withBase(post.ctaHref),
+    ctaLabel: post.ctaLabel,
+  }))
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
 export const faqItems = [
   {

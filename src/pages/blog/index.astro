@@ -2,6 +2,7 @@
 import { withBase } from '../../utils/paths';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import BlogCategoryNav from '../../components/BlogCategoryNav.astro';
 import { blogPosts } from '../../data/site';
 import { iconTag } from '../../utils/icons';
 
@@ -26,7 +27,7 @@ const postDateMeta = (date: string) => {
 
 <BaseLayout
   title="Blog, Guides pour Acheter à Mohammedia"
-  description="Guides et conseils pour bien acheter un bien immobilier à Mohammedia : financement, Daam Sakane, investissement, choix de typologie."
+  description="Guides et conseils pour bien acheter un bien immobilier à Mohammedia : appartements, bureaux, commerces et actualité du marché."
 >
   <PageHero
     title="Nos guides pour bien acheter à Mohammedia"
@@ -38,6 +39,7 @@ const postDateMeta = (date: string) => {
 
   <section class="section">
     <div class="container">
+      <BlogCategoryNav />
       <div class="news-grid">
         {
           posts.map((post, i) => {
@@ -66,7 +68,7 @@ const postDateMeta = (date: string) => {
                     <ul class="news-card__meta">
                       <li>
                         <span set:html={iconTag} />
-                        Guide immobilier
+                        {post.categoryLabel}
                       </li>
                     </ul>
                     <h3>{post.title}</h3>

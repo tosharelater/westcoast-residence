@@ -1,0 +1,60 @@
+---
+import { withBase } from '../utils/paths';
+import { blogCategories } from '../data/site';
+
+interface Props {
+  active?: string | null;
+}
+
+const { active = null } = Astro.props;
+---
+
+<nav class="blog-cats" aria-label="Catégories du blog">
+  <a
+    class:list={['blog-cats__link', { 'is-active': !active }]}
+    href={withBase('/blog')}
+  >
+    Tous
+  </a>
+  {
+    blogCategories.map((cat) => (
+      <a
+        class:list={['blog-cats__link', { 'is-active': active === cat.slug }]}
+        href={withBase(`/blog/categorie/${cat.slug}`)}
+      >
+        {cat.label}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .blog-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.4rem;
+    margin: 0 0 2.4rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  }
+
+  .blog-cats__link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .blog-cats__link:hover {
+    color: var(--ink);
+  }
+
+  .blog-cats__link.is-active {
+    color: var(--wc-bronze, #b07d47);
+    border-bottom-color: var(--wc-bronze, #b07d47);
+  }
+</style>

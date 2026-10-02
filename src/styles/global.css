@@ -461,6 +461,38 @@ table.data td {
   border: 0;
 }
 
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--wc-black);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+  outline: 2px solid var(--wc-base);
+  outline-offset: 2px;
+}
+
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* ========== MOTION UTILITIES (additive) ========== */
 ::selection {
   background: var(--wc-base);
