@@ -48,7 +48,7 @@ export const typologies = [
   {
     id: 'appartements',
     title: 'Appartements',
-    price: 'sur demande',
+    price: 'dès 980 000 DH',
     surface: '65 à 114 m²',
     hook: 'Pour les familles et les résidences secondaires',
     href: withBase('/appartements') + '#appartements-familiaux',
