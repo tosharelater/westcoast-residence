@@ -1,5 +1,93 @@
 [
   {
+    "slug": "pieges-a-eviter-achat-immobilier-maroc",
+    "title": "Les Pièges à Éviter en Achetant un Bien Immobilier au Maroc",
+    "excerpt": "Pièges achat immobilier Maroc : les erreurs les plus fréquentes et comment les éviter avant de signer votre achat.",
+    "date": "2026-10-14",
+    "image": "/images/blog/pieges-a-eviter-achat-immobilier-maroc.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Sécuriser votre achat"
+  },
+  {
+    "slug": "dossier-credit-immobilier-maroc-documents",
+    "title": "Dossier de Crédit Immobilier : Quels Documents Préparer Selon Votre Profil ?",
+    "excerpt": "Dossier crédit immobilier Maroc : documents à préparer selon votre profil, salarié, indépendant, fonctionnaire ou MRE.",
+    "date": "2026-10-12",
+    "image": "/images/blog/dossier-credit-immobilier-maroc-documents.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Discuter de votre financement"
+  },
+  {
+    "slug": "compromis-de-vente-immobilier-maroc",
+    "title": "Compromis de Vente au Maroc : les Clauses à Vérifier Avant de Signer",
+    "excerpt": "Compromis de vente immobilier Maroc : clauses essentielles, acompte et clause suspensive crédit à vérifier avant de signer.",
+    "date": "2026-10-10",
+    "image": "/images/blog/compromis-de-vente-immobilier-maroc.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Organiser une visite"
+  },
+  {
+    "slug": "titre-foncier-ou-moulkia-maroc",
+    "title": "Titre Foncier ou Moulkia : Comment Vérifier qu'un Bien est en Règle Avant d'Acheter",
+    "excerpt": "Titre foncier ou moulkia au Maroc : comment vérifier le statut juridique d'un bien avant d'acheter, étape par étape.",
+    "date": "2026-10-08",
+    "image": "/images/blog/titre-foncier-ou-moulkia-maroc.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/programme",
+    "ctaLabel": "Découvrir la résidence"
+  },
+  {
+    "slug": "quels-commerces-marchent-a-mohammedia",
+    "title": "Quels Commerces Marchent le Mieux à Mohammedia en 2026 ?",
+    "excerpt": "Quels commerces marchent à Mohammedia en 2026 : secteurs porteurs, franchise, distribution et commerces de proximité.",
+    "date": "2026-10-06",
+    "image": "/images/blog/quels-commerces-marchent-a-mohammedia.webp",
+    "category": "commerces",
+    "featured": false,
+    "ctaHref": "/commerces",
+    "ctaLabel": "Voir les commerces"
+  },
+  {
+    "slug": "rendement-locatif-mohammedia",
+    "title": "Investir en Location Longue Durée à Mohammedia : Quel Rendement Espérer ?",
+    "excerpt": "Rendement locatif Mohammedia : loyers observés, méthode de calcul et exemple chiffré pour un studio avant d'investir.",
+    "date": "2026-10-04",
+    "image": "/images/blog/rendement-locatif-mohammedia.webp",
+    "category": "appartements",
+    "featured": false,
+    "ctaHref": "/appartements#studios",
+    "ctaLabel": "Voir les studios"
+  },
+  {
+    "slug": "taxe-profit-immobilier-maroc",
+    "title": "Taxe sur le Profit Immobilier au Maroc : ce qu'il Faut Savoir Avant de Revendre",
+    "excerpt": "Taxe sur le profit immobilier Maroc : calcul, exonération résidence principale et exemple chiffré avant de revendre votre bien.",
+    "date": "2026-10-02",
+    "image": "/images/blog/taxe-profit-immobilier-maroc.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Discuter de votre projet"
+  },
+  {
+    "slug": "frais-de-notaire-achat-immobilier-maroc",
+    "title": "Frais de Notaire au Maroc : Combien Prévoir en Plus du Prix d'Achat ?",
+    "excerpt": "Frais de notaire achat immobilier Maroc : droits d'enregistrement, conservation foncière, honoraires. Combien prévoir en plus du prix.",
+    "date": "2026-09-30",
+    "image": "/images/blog/frais-de-notaire-achat-immobilier-maroc.webp",
+    "category": "actualite",
+    "featured": false,
+    "ctaHref": "/contact",
+    "ctaLabel": "Estimer vos frais"
+  },
+  {
     "slug": "comment-acheter-un-bien-a-mohammedia",
     "title": "Comment Acheter un Bien à Mohammedia : le Guide Complet 2026",
     "excerpt": "Budget, démarches, financement et pièges à éviter pour réussir votre achat immobilier à Mohammedia en 2026.",
