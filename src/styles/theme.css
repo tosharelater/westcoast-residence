@@ -3704,6 +3704,54 @@ html.steps-js .step {
   font-size: 0.75em;
 }
 
+.article__body table {
+  width: 100%;
+  margin: 1.4rem 0 1.6rem;
+  border-collapse: collapse;
+  border: 1px solid rgba(34, 28, 19, 0.16);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.article__body th,
+.article__body td {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(34, 28, 19, 0.12);
+  text-align: left;
+  vertical-align: top;
+  color: #5c5750;
+  word-break: break-word;
+}
+
+.article__body th {
+  background: var(--wc-primary);
+  color: var(--wc-black);
+  font-family: var(--wc-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article__body tbody tr:nth-child(even) td {
+  background: rgba(34, 28, 19, 0.03);
+}
+
+.article__body blockquote {
+  margin: 1.35rem 0;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--wc-base);
+  background: rgba(176, 125, 71, 0.08);
+  color: var(--wc-black);
+}
+
+.article__body blockquote p {
+  margin: 0;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 .article .cta-row {
   margin-top: 2.4rem;
   padding-top: 1.5rem;
